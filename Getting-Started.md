@@ -17,8 +17,7 @@
 
 ## Install
 
-### Compiling and installing from source
-#### Compile or install the Corosync packages
+### Compile or install the Corosync packages
 Nearly every modern Linux distribution has x86_64 corosync binaries pre-built available via their repositories.  We recommend you use these packages if they are available on your distribution.
 
 For debian package based systems:
@@ -41,9 +40,9 @@ $ sudo make install
 $ cd ..
 ```
 
-See also: [wiki:'Corosync Config']
+See also: [[Corosync Config]]
 
-#### Download, build and install QEMU with Sheepdog support
+### Download, build and install QEMU with Sheepdog support
 
 QEMU 0.13 provides built-in support for sheepdog devices.  Some distributions provide pre-built versions of this newer version of QEMU.  If your distribution has an older version of QEMU or you prefer to compile from source, retrieve the latest QEMU and compile:
 ```
@@ -54,7 +53,7 @@ $ sudo make install
 $ cd ..
 ```
 
-#### Download, build and install the Sheepdog server and command line tools
+### Download, build and install the Sheepdog server and command line tools
 ```
 $ git clone git://sheepdog.git.sf.net/gitroot/sheepdog/sheepdog
 $ cd sheepdog
@@ -75,30 +74,26 @@ $ sudo rpm -ivh x86_64/sheepdog-0.*
 $ cd ..
 ```
 
-
 ## Usage
 
 ### Setup Sheepdog
 
-* Launch the sheepdog daemon on each machines of the cluster.
+1. Launch the sheepdog daemon on each machines of the cluster.
 ```
 $ sheep /store_dir
 ```
-
 /store_dir is a directory to store objects. The directory must be on the filesystem with an xattr support. In case of ext3, you need to add 'user_xattr' to the mount options.
 ```
 $ sudo mount -o remount,user_xattr /store_device
 ```
 
-* Format sheepdog cluster
+1. Format sheepdog cluster
 ```
 $ collie cluster format --copies=3
 ```
-
 "--copies" specifies the number of default data redundancy. In this case, the replicated data will be stored on three machines.
 
-* Check cluster state
-
+1. Check cluster state  
 Following list shows that Sheepdog is running on 32 nodes.
 ```
 $ collie node list
@@ -139,17 +134,17 @@ $ collie node list
 ```
 
 ### Create a VM image
-* Create a 256 GB virtual machine image of Alice.
+1. Create a 256 GB virtual machine image of Alice.
 ```
 $ qemu-img create sheepdog:Alice 256G
 ```
 
-* You can also convert from existing KVM images to Sheepdog ones.
+1. You can also convert from existing KVM images to Sheepdog ones.
 ```
 $ qemu-img convert ~/amd64.raw sheepdog:Bob
 ```
 
-* See Sheepdog images by the following command.
+1. See Sheepdog images by the following command.
 ```
 $ collie vdi list
   name        id    size    used  shared    creation time  object id
@@ -159,18 +154,18 @@ $ collie vdi list
 ```
 
 ### Boot the VM
-* Boot the virtual machine.
+1. Boot the virtual machine.
 ```
 $ qemu-system-x86_64 sheepdog:Alice
 ```
 
 ### Snapshot
-* Snapshot
+1. Create a snapshot
 ```
 $ qemu-img snapshot -c name sheepdog:Alice
 ```
 
-* After getting snapshot, a new virtual machine images are added as a not-current image.
+1. After getting snapshot, a new virtual machine images are added as a not-current image.
 ```
 $ collie vdi list
   name        id    size    used  shared    creation time  object id
@@ -180,18 +175,18 @@ $ collie vdi list
 s Alice        1  256 GB  0.0 MB  0.0 MB 2010-03-23 16:16      40000
 ```
 
-* You can boot from the snapshot image by specifying snapshot id
+1. You can boot from the snapshot image by specifying snapshot id
 ```
 $ qemu-system-x86_64 sheepdog:Alice:1
 ```
 
 ### Cloning from the snapshot
-* Create a Charlie's image as a clone of Alice's image.
+1. Create a Charlie's image as a clone of Alice's image.
 ```
 $ qemu-img create -b sheepdog:Alice:1 sheepdog:Charlie
 ```
 
-* Charlie's image is added to the virtual machine list.
+1. Charlie's image is added to the virtual machine list.
 ```
 $ collie vdi list
   name        id    size    used  shared    creation time  object id
@@ -203,7 +198,7 @@ s Alice        1  256 GB  0.0 MB  0.0 MB 2010-03-23 16:16      40000
 ```
 
 ### Shutdown Sheepdog
-* Run the shutdown command on the one of the cluster machines.
+1. Run the shutdown command on the one of the cluster machines.
 ```
 $ collie cluster shutdown
 ```
