@@ -2,18 +2,15 @@ The architecture of Sheepdog is fully symmetric; there is no central
 node such as a meta-data server. This design enables following
 features.
 
-* Linear scalability in performance and capacity
-
+* Linear scalability in performance and capacity  
 When more performance or capacity is needed, Sheepdog can be grown
 linearly by simply adding new machines to the cluster.
 
-* No single point of failure
-
+* No single point of failure  
 Even if a machine fails, the data is still accessible through other
 machines.
 
-* Easy administration
-
+* Easy administration  
 There is no config file about cluster's role. When administrators
 launch the Sheepdog daemon at the newly added machine, Sheepdog
 automatically detects the added machine and begins to configure it as
@@ -22,14 +19,13 @@ a member of the storage system.
 
 ## Architecture Overview
 
-[[Image(architecture.png, 50%, right)]]
+[[architecture.png]]
 Sheepdog is a distributed storage system and provides an object
 storage (something like simple key-value interface) to Sheepdog client
 (QEMU block driver).  See the later sections for more details of each
 Sheepdog component.
 
-* Object storage
-
+* Object storage  
 Sheepdog is not general file system.  The Sheepdog daemons create a
 distributed object storage system for QEMU (The daemon name of
 Sheepdog is ''sheep'').  We can store ''object'' to the storage
@@ -38,24 +34,24 @@ identifier.  We can do read/write/create/delete operations to objects
 by specifying its identifier.  The object storage is composed of
 ''gateway'' and ''object manager''.
 
-* Gateway
+* Gateway  
 The gateway receives I/O requests (object id, offset, length, and
 operation type) from the QEMU block driver, calculates the target
 nodes based on the consistent hashing algorithm, and forwards the I/O
 requests to the target nodes.
 
-* Object manager
+* Object manager  
 The object manager receives the forwarded I/O requests from the
 gateway, and executes read/write operations to its local disk.
 
-* Cluster manager
+* Cluster manager  
 The cluster manager manages node membership (detection of failed/added
 nodes and notification of node membership changes) and some operations
 which requires consensus between all nodes (vdi creation, snapshoting
 vdi, etc).  Currently, we uses corosync cluster engine for the cluster
 manager.
 
-* QEMU block driver
+* QEMU block driver  
 The QEMU block driver divides a VM image into fixed-sized objects (4 MB
 by default) and store them on the object storage via its gateway.
 
@@ -69,20 +65,20 @@ for managing where to place objects.
 ### object types
 Sheepdog objects are grouped into four types.
 
-* data object
+* data object  
 This contains the actual data of virtual disk images.  The virtual
 disk images are divided into fixed-sized data objects.  Sheepdog
 client basically accesses this object.
 
-* vdi object
+* vdi object  
 This contains the metadata of virtual disk images (e.g. image name,
 disk size, creation time, data object IDs belonging to the vdi, etc)
 
-* vmstate object
+* vmstate object  
 This stores the vm state image of running VM, which is used when the
 administrator takes live snapshot.
 
-* vdi attr object
+* vdi attr object  
 We can store attributes for each VDI.  This object stores them.  The
 attribute is key-value style, something like an extend attribute of a
 regular file.
@@ -97,15 +93,15 @@ Each VDI has a globally unique ID (vdi id), which is calculated from
 the hash value of the VDI name.  The usage of lower 32 bits is as
 follows:
 
-||'''object type'''||'''the usage of lower 32 bits'''||
-||||||
-||data object||the index number in the virtual disk image||
-||vdi object||not used (filled with zero)||
-||vmstate object||the index number in the vm state image||
-||vdi attr objects||the hash value of the key name||
+|**object type**|**the usage of lower 32 bits**|
+|:-----------|:------------|
+|data object|the index number in the virtual disk image|
+|vdi object|not used (filled with zero)|
+|vmstate object|the index number in the vm state image|
+|vdi attr objects|the hash value of the key name|
 
 ### object format
-* data object
+* data object  
 the chunk of the virtual disk image
 * vdi object
 ```
@@ -127,23 +123,23 @@ struct sheepdog_inode {
     uint32_t data_vdi_id[MAX_DATA_OBJS];    /* the data object IDs this VDI contains*/
 };
 ```
+If _snap_ctime_ is non-zero, the VDI is a snapshot.  If the length of
+string _name_ is zero, the VDI is deleted.
 
-If `snap_ctime` is non-zero, the VDI is a snapshot.  If the length of
-string 'name' is zero, the VDI is deleted.
-
-* vmstate object
+* vmstate object  
 the chunk of the vm state image
 
-* vdi attr object
+* vdi attr object  
 The first SD_MAX_VDI_ATTR_KEY_LEN bytes (256 bytes) is the key name of this
 attribute.  The rest of the object is the value of this attribute.
 
 ### read-only/writable objects
 From the view of how to access objects, we can also categorize
 Sheepdog objects into two groups.
-* read-only object (e.g. data objects of a snapshot VDI)
+
+* read-only object (e.g. data objects of a snapshot VDI)  
 one VM can write and read the object but other VMs cannot access.
-* writable object
+* writable object  
 No VM can write the object but any VMs can read the object.
 
 This means that virtual machines cannot share the same volume at the
@@ -186,7 +182,7 @@ could read the old data from the not-updated object for the next time.
 The gateway calculates the target nodes with consistent hashing,
 and sends a read request to one of the target nodes.
 
-* fix object consistency
+* fix object consistency  
 The consistency of the replication could be broken if the node crash
 during forwarding write I/O requests, so the gateway tries to fix the
 consistency when it reads object for the first time; read a whole
@@ -219,7 +215,7 @@ Objects are stored in the following path:
 /store_dir/obj/[epoch number]/[object ID]
 ```
 
-All object files also have an extended attribute "sheepdog.copies",
+All object files also have an extended attribute _sheepdog.copies_,
 which specifies the number of the object redundancy.
 
 ### write journaling
@@ -231,7 +227,8 @@ we must update in all or nothing way because if the vdi objects are updated
 partially, the metadata of VDI could broken.  To avoid
 this problem, we use journal for write operations against vdi
 objects.  The processes of journaling is quite simple.
-1. create a journal file `/store_dir/journal/[epoch]/[vdi object id]`
+
+1. create a journal file "/store_dir/journal/[epoch]/[vdi object id]"
 1. write a data to the journal file first
 1. write a data to the vdi object
 1. remove the journal file
@@ -251,7 +248,7 @@ cluster manager.
 
 ## QEMU Block Driver
 
-[[Image(volume.png, 50%, right)]]
+[[volume.png]]
 Sheepdog volumes are divided into 4 MB data objects.  The object
 of newly created volume are not allocated at all, that is, only
 written objects are allocated.
@@ -275,6 +272,7 @@ of the snapshot, and sends requests against the new VDI.
 ## VDI Operations
 ### lookup
 When looking up the VDI object,
+
 1. calculate a vdi id from the hash value of the vdi name
 1. calculate a vdi object id from the vdi id
 1. send a read request to the vdi object
@@ -314,7 +312,7 @@ the number of virtual nodes) at the epoch.
 ### recovery process
 1. Receive all stored object IDs from all nodes
 1. Calculate which objects to have
-1. Create the object IDs list file `/store_dir/obj/[the current epoch]/list`
+1. Create the object IDs list file "/store_dir/obj/[the current epoch]/list"
 1. Send a read requests to get objects whose ID is in the list file.  The requests are sent to the node which had the object at the previous epoch.
 1. Store the object to the current epoch directory
 
@@ -329,31 +327,31 @@ and the flexible-sized data part.  The header includes a protocol
 version, an operation code, an epoch number, a length of the data, etc.
 
 ### between sheep and QEMU
-||'''operation code'''||'''description'''||
-||||||
-||SD_OP_CREATE_AND_WRITE_OBJ||Sends a request to create a new object and write data to it.  If the object already exists, this operation fails.||
-||SD_OP_READ_OBJ||Sends a request to read data from a object.||
-||SD_OP_WRITE_OBJ||Sends a request to write data to a object.  If the object does not exist, this operation fails||
-||SD_OP_NEW_VDI||Sends a vdi name to the object storage and create a new vdi object. This returns the unique vdi id of the vdi in the response.||
-||SD_OP_LOCK_VDI|| Same as SD_OP_GET_VDI_INFO.||
-||SD_OP_RELEASE_VDI||Not used now.||
-||SD_OP_GET_VDI_INFO||Get information about the vdi (e.g. vdi id).||
-||SD_OP_READ_VDIS||Get the list of vdi IDs which are already used.||
+|**operation code**|**description**|
+|:-----------|:------------|
+|SD_OP_CREATE_AND_WRITE_OBJ|Sends a request to create a new object and write data to it.  If the object already exists, this operation fails.|
+|SD_OP_READ_OBJ|Sends a request to read data from a object.|
+|SD_OP_WRITE_OBJ|Sends a request to write data to a object.  If the object does not exist, this operation fails|
+|SD_OP_NEW_VDI|Sends a vdi name to the object storage and create a new vdi object. This returns the unique vdi id of the vdi in the response.|
+|SD_OP_LOCK_VDI|Same as SD_OP_GET_VDI_INFO.|
+|SD_OP_RELEASE_VDI|Not used now.|
+|SD_OP_GET_VDI_INFO|Get information about the vdi (e.g. vdi id).|
+|SD_OP_READ_VDIS|Get the list of vdi IDs which are already used.|
 ### between sheep and collie
-||'''operation code'''||'''description'''||
-||||||
-||SD_OP_DEL_VDI||Delete the requested VDI.||
-||SD_OP_GET_NODE_LIST||Get the list of sheepdog nodes.||
-||SD_OP_GET_VM_LIST||Not used now.||
-||SD_OP_MAKE_FS||Create a sheepdog cluster.||
-||SD_OP_SHUTDOWN||Stop a sheepdog cluster.||
-||SD_OP_STAT_SHEEP||Get information about local disk usage.||
-||SD_OP_STAT_CLUSTER||Get information about the sheepdog cluster||
-||SD_OP_KILL_NODE||Abort the sheep daemon.||
-||SD_OP_GET_VDI_ATTR||Get a vdi attr object id.||
+|**operation code**|**description**|
+|:-----------|:------------|
+|SD_OP_DEL_VDI|Delete the requested VDI.|
+|SD_OP_GET_NODE_LIST|Get the list of sheepdog nodes.|
+|SD_OP_GET_VM_LIST|Not used now.|
+|SD_OP_MAKE_FS|Create a sheepdog cluster.|
+|SD_OP_SHUTDOWN|Stop a sheepdog cluster.|
+|SD_OP_STAT_SHEEP|Get information about local disk usage.|
+|SD_OP_STAT_CLUSTER|Get information about the sheepdog cluster|
+|SD_OP_KILL_NODE|Abort the sheep daemon.|
+|SD_OP_GET_VDI_ATTR|Get a vdi attr object id.|
 ### between sheeps
-||'''operation code'''||'''description'''||
-||||||
-||SD_OP_REMOVE_OBJ||Removes the object.||
-||SD_OP_GET_OBJ_LIST||Get the list of object IDs which are stored on the target node.||
+| **operation code**| **description** |
+|:-----------|:------------|
+|SD_OP_REMOVE_OBJ|Removes the object.|
+|SD_OP_GET_OBJ_LIST|Get the list of object IDs which are stored on the target node.|
 
