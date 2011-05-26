@@ -11,3 +11,4 @@ Enjoy!
 
 ## Developer Guide
  * [[Sheepdog Design]]
+ * [[Submit a Patch]]
