@@ -1,5 +1,3 @@
-# General Protocol Support
-
 Currently, there is no direct support for any client other than QEMU,
 but there are some means to export Sheepdog volumes using more general
 protocols.
