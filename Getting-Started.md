@@ -168,10 +168,10 @@ $ qemu-img snapshot -c name sheepdog:Alice
 1. After getting snapshot, a new virtual machine images are added as a not-current image.
 <pre>
 $ collie vdi list
-  name        id    size    used  shared    creation time  object id
+&nbsp; name        id    size    used  shared    creation time  object id
 --------------------------------------------------------------------
-  Bob          0  2.0 GB  1.6 GB  0.0 MB 2010-03-23 16:16      80000
-  Alice        0  256 GB  0.0 MB  0.0 MB 2010-03-23 16:21      c0000
+&nbsp; Bob          0  2.0 GB  1.6 GB  0.0 MB 2010-03-23 16:16      80000
+&nbsp; Alice        0  256 GB  0.0 MB  0.0 MB 2010-03-23 16:21      c0000
 s Alice        1  256 GB  0.0 MB  0.0 MB 2010-03-23 16:16      40000
 </pre>
 
@@ -189,12 +189,12 @@ $ qemu-img create -b sheepdog:Alice:1 sheepdog:Charlie
 1. Charlie's image is added to the virtual machine list.
 <pre>
 $ collie vdi list
-  name        id    size    used  shared    creation time  object id
+&nbsp; name        id    size    used  shared    creation time  object id
 --------------------------------------------------------------------
-  Bob          0  2.0 GB  1.6 GB  0.0 MB 2010-03-23 16:16      80000
-  Alice        0  256 GB  0.0 MB  0.0 MB 2010-03-23 16:21      c0000
+&nbsp; Bob          0  2.0 GB  1.6 GB  0.0 MB 2010-03-23 16:16      80000
+&nbsp; Alice        0  256 GB  0.0 MB  0.0 MB 2010-03-23 16:21      c0000
 s Alice        1  256 GB  0.0 MB  0.0 MB 2010-03-23 16:16      40000
-  Charlie      0  256 GB  0.0 MB  0.0 MB 2010-03-23 16:23     100000
+&nbsp; Charlie      0  256 GB  0.0 MB  0.0 MB 2010-03-23 16:23     100000
 </pre>
 
 ### Shutdown Sheepdog
