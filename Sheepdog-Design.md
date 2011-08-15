@@ -104,25 +104,25 @@ follows:
 * data object  
 the chunk of the virtual disk image
 * vdi object
-```
-struct sheepdog_inode {
-    char name[SD_MAX_VDI_LEN];              /* the name of this VDI*/
-    char tag[SD_MAX_VDI_TAG_LEN];           /* the snapshot tag name */
-    uint64_t ctime;                         /* creation time of this VDI */
-    uint64_t snap_ctime;                    /* the time snapshot is taken */
-    uint64_t vm_clock_nsec;                 /* vm clock (used for live snapshot) */
-    uint64_t vdi_size;                      /* the size of VDI */
-    uint64_t vm_state_size;                 /* the size of vm state (used for live snapshot) */
-    uint16_t copy_policy;                   /* reserved */
-    uint8_t  nr_copies;                     /* the number of object redundancy */
-    uint8_t  block_size_shift;              /* info about the size of the data object */
-    uint32_t snap_id;                       /* the snapshot id */
-    uint32_t vdi_id;                        /* the vdi id */
-    uint32_t parent_vdi_id;                 /* the parent snapshot vdi id of this VDI */
-    uint32_t child_vdi_id[MAX_CHILDREN];    /* the children VDIs of this VDI */
-    uint32_t data_vdi_id[MAX_DATA_OBJS];    /* the data object IDs this VDI contains*/
-};
-```
+<pre>
+&nbsp;struct sheepdog_inode {
+&nbsp;    char name[SD_MAX_VDI_LEN];              /* the name of this VDI*/
+&nbsp;    char tag[SD_MAX_VDI_TAG_LEN];           /* the snapshot tag name */
+&nbsp;    uint64_t ctime;                         /* creation time of this VDI */
+&nbsp;    uint64_t snap_ctime;                    /* the time snapshot is taken */
+&nbsp;    uint64_t vm_clock_nsec;                 /* vm clock (used for live snapshot) */
+&nbsp;    uint64_t vdi_size;                      /* the size of VDI */
+&nbsp;    uint64_t vm_state_size;                 /* the size of vm state (used for live snapshot) */
+&nbsp;    uint16_t copy_policy;                   /* reserved */
+&nbsp;    uint8_t  nr_copies;                     /* the number of object redundancy */
+&nbsp;    uint8_t  block_size_shift;              /* info about the size of the data object */
+&nbsp;    uint32_t snap_id;                       /* the snapshot id */
+&nbsp;    uint32_t vdi_id;                        /* the vdi id */
+&nbsp;    uint32_t parent_vdi_id;                 /* the parent snapshot vdi id of this VDI */
+&nbsp;    uint32_t child_vdi_id[MAX_CHILDREN];    /* the children VDIs of this VDI */
+&nbsp;    uint32_t data_vdi_id[MAX_DATA_OBJS];    /* the data object IDs this VDI contains*/
+&nbsp;};
+</pre>
 If _snap_ctime_ is non-zero, the VDI is a snapshot.  If the length of
 string _name_ is zero, the VDI is deleted.
 
@@ -211,9 +211,9 @@ supported now.
 ### path name rule
 Objects are stored in the following path:
 
-```
+<pre>
 /store_dir/obj/[epoch number]/[object ID]
-```
+</pre>
 
 All object files also have an extended attribute _sheepdog.copies_,
 which specifies the number of the object redundancy.
@@ -303,9 +303,9 @@ of the VDIs, and set the null string to the name of the vdi objects.
 ### epoch
 Sheepdog stores histories of node membership in the stored directory.
 The path name is
-```
+<pre>
 /store_dir/epoch/[epoch number]
-```
+</pre>
 Each file contains the list of nodes info (IP address, port number,
 the number of virtual nodes) at the epoch.
 
