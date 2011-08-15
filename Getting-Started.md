@@ -78,7 +78,7 @@ $ cd ..
 
 ### Setup Sheepdog
 
-1. Launch the sheepdog daemon on each machine of the cluster.
+1. Launch the sheepdog daemon on each machines of the cluster.
 ```
 $ sheep /store_dir
 ```
@@ -91,7 +91,6 @@ $ sudo mount -o remount,user_xattr /store_device
 ```
 $ collie cluster format --copies=3
 ```
-It is enough to run this command on one of machines.
 "--copies" specifies the number of default data redundancy. In this case, the replicated data will be stored on three machines.
 
 1. Check cluster state  
