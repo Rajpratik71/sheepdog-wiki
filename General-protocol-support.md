@@ -4,43 +4,43 @@ protocols.
 
 ## iSCSI
 1. Setup a patched version of QEMU to support Sheepdog data preallocation
-```
+<pre>
 $ git clone git://sheepdog.git.sourceforge.net/gitroot/sheepdog/qemu -b iscsi
 $ cd qemu
 $ ./configure
 $ make
 # make install
-```
+</pre>
 
 1. Create a image with data preallocation.
-```
+<pre>
 $ qemu-img create sheepdog:image -o preallocation=data 1G
-```
+</pre>
 
 1. Install iSCSI target daemon (tgt) with Sheepdog support
-```
+<pre>
 $ git clone git://git.kernel.org/pub/scm/linux/kernel/git/tomo/tgt.git -b sheepdog
 $ cd tgt
 $ make
 # make install
-```
+</pre>
 
 1. Setup tgt
-```
+<pre>
 # tgtd
 # tgtadm --op new --mode target --tid 1 --lld iscsi -T iqn.2001-04.com.example:storage.sr.rose.sys1.xyz
 # tgtadm --op new --mode logicalunit --tid 1 --lun 1 -b image --bstype sheepdog
-```
+</pre>
 
 See also http://www.mail-archive.com/sheepdog@lists.wpkg.org/msg00679.html
 
 ## NBD
 1. Create a Sheepdog image
-```
+<pre>
 $ qemu-img create sheepdog:image 4G
-```
+</pre>
 
 1. Start qemu-nbd on the one of Sheepdog servers
-```
+<pre>
 $ qemu-nbd sheepdog:image
-```
+</pre>
