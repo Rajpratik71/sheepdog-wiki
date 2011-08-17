@@ -2,7 +2,8 @@ Corosync provides IPC and cluster multicast membership to Sheepdog. It must be c
 
 ## Config
 Your distribution's default corosync.conf settings may not be compatible with Sheepdog, or may have unneeded components. See below for a basic example configuration. 
-```
+
+~~~
 # Please read the corosync.conf 5 manual page
 compatibility: whitetank
 totem {
@@ -38,13 +39,14 @@ logging {
 amf {
   mode: disabled
 }
-```
+~~~
 
 To access corosync daemon without root priviledge, you need to create a file in /etc/corosync/uidgid.d/.
 If your username and groupname are 'sdog', write below to /etc/corosync/uidgid.d/sdog
-```
+
+~~~
 uidgid {
    uid: sdog
    gid: sdog
 }
-```
+~~~
