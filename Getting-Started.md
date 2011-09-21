@@ -55,7 +55,7 @@ $ cd ..
 
 ### Download, build and install the Sheepdog server and command line tools
 <pre>
-$ git clone git://sheepdog.git.sf.net/gitroot/sheepdog/sheepdog
+$ git clone git://github.com/collie/sheepdog.git
 $ cd sheepdog
 $ ./autogen.sh
 $ ./configure
@@ -65,7 +65,7 @@ $ cd ..
 
 Please note, sheepdog supports a "make rpm" target which will generate an rpm package that can be installed on the local machine.  To use this installation method, use the following instructions:
 <pre>
-$ git clone git://sheepdog.git.sf.net/gitroot/sheepdog/sheepdog
+$ git clone git://github.com/collie/sheepdog.git
 $ cd sheepdog
 $ ./autogen.sh
 $ ./configure
