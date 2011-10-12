@@ -14,5 +14,5 @@ Enjoy!
  * [[Submit a Patch]]
 
 ## External Articles
- * [Setting up a Sheepdog cluster and exporting a volume to a KVM guest -- Daniel P. Berrangé](http://berrange.com/posts/2011/10/11/setting-up-a-sheepdog-cluster-and-exporting-a-volume-to-a-kvm-guest/)
+ * [Setting up a Sheepdog cluster and exporting a volume to a KVM guest -- Daniel P. Berrangé (2011-10-11)](http://berrange.com/posts/2011/10/11/setting-up-a-sheepdog-cluster-and-exporting-a-volume-to-a-kvm-guest/)
 
