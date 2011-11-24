@@ -30,14 +30,20 @@ For RPM package based systems:
 $ sudo yum install corosynclib-devel
 </pre>
 
+For EL6 (RHEL, CentOS, SL, etc), the provided version of corosync is too old and you must install corosync from source. The following command will remove any existing copies of corosync.
+
+<pre>
+yum remove corosync corosynclib corosynclib-devel 
+</pre>
+
 If your distribution doesn't provide the corosync packages, or you prefer to compile from source:
 <pre>
-$ svn co http://svn.fedorahosted.org/svn/corosync/branches/flatiron
-$ cd flatiron
+$ git clone git://github.com/corosync/corosync.git
+$ cd corosync
+$ git checkout -b flatiron origin/flatiron
 $ ./autogen.sh
-$ ./configure
+$ ./configure --enable-nss
 $ sudo make install
-$ cd ..
 </pre>
 
 See also: [[Corosync Config]]
@@ -78,20 +84,31 @@ $ cd ..
 
 ### Setup Sheepdog
 
-1. Launch the sheepdog daemon on each machine of the cluster.
+1. To launch the sheepdog daemon, either start it using '/etc/init.d/sheepdog start' or launch the sheepdog daemon by directly calling 'sheepdog <store_dir>' on each machine of the cluster.
+
+Note: At this time, the sheepdog init.d script is hard-coded to use /var/lib/sheepdog as the store directory. If you wish to use another directory, you will need to always start sheepdog using the 'sheep <store_dir>' call.
+
 <pre>
-$ sheep /store_dir
+$ sudo /etc/init.d/sheepdog start
 </pre>
-/store_dir is a directory to store objects. The directory must be on the filesystem with an xattr support. In case of ext3, you need to add 'user_xattr' to the mount options.
+
+Or;
+
 <pre>
-$ sudo mount -o remount,user_xattr /store_device
+$ sudo sheep /var/lib/sheepdog
+</pre>
+
+The /var/lib/sheepdog will be where sheepdog will store objects. The directory must be on a filesystem with an xattr support. In case of ext3 or ext4, you need to add 'user_xattr' to the mount options.
+
+<pre>
+$ sudo mount -o remount,user_xattr /var/lib/sheepdog
 </pre>
 
 1. Format sheepdog cluster
 <pre>
 $ collie cluster format --copies=3
 </pre>
-It is enough to run this command on one of machines.
+It is enough to run this command on just one machine.
 "--copies" specifies the number of default data redundancy. In this case, the replicated data will be stored on three machines.
 
 1. Check cluster state  
