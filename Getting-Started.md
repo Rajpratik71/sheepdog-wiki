@@ -33,7 +33,7 @@ $ sudo yum install corosynclib-devel
 For EL6 (RHEL, CentOS, SL, etc), the provided version of corosync is too old and you must install corosync from source. The following command will remove any existing copies of corosync.
 
 <pre>
-yum remove corosync corosynclib corosynclib-devel 
+$ sudo yum remove corosync corosynclib corosynclib-devel 
 </pre>
 
 If your distribution doesn't provide the corosync packages, or you prefer to compile from source:
