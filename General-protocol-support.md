@@ -19,7 +19,7 @@ $ qemu-img create sheepdog:image -o preallocation=data 1G
 
 1. Install iSCSI target daemon (tgt) with Sheepdog support
 <pre>
-$ git clone git://git.kernel.org/pub/scm/linux/kernel/git/tomo/tgt.git -b sheepdog
+$ git clone git://github.com/fujita/tgt.git -b sheepdog
 $ cd tgt
 $ make
 # make install
