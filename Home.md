@@ -9,6 +9,8 @@ Enjoy!
  * [[Getting Started]]
  * [[General Protocol Support]]
 
+ * [[Google Summer of Code 2012]]
+
 ## Developer Guide
  * [[Sheepdog Design]]
  * [[Submit a Patch]]
