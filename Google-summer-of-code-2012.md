@@ -47,15 +47,15 @@ Every node of Sheepdog cluster has a backend store that provides storage for bot
 
   * **Expected results:** Objects can be stored reliably to LevelDB. The IO performance and recovery process can be comparable to original stores. The snapshot and any features you think of are optional.
   * **Component:** sheep
-  * **Skill level:** Medium to High.
+  * **Skill level:** Medium to high.
   * **Language:** C
   * **Mentor:** Liu Yuan or Kazutaka Morita
 
  * Add transient failure detection mechanism
-  * **Brief explanation:**
-  * **Expected results:**
+  * **Brief explanation:** Sheepdog cluster uses redundant data to achieve the high availability. When one of nodes fails, the cluster need to restore the replica level and when a node joins, those replica need to rebalance on the nodes. That is, when there happens node change event, those replica distribution need to rebuild. Currently this rebuilding process is triggered immediately. That is, the cluster doesn't distinguish the transient and permanent node failure, thus transient node failure will be counted as two node change event, wasting network bandwidth. Your task is to implement transient failure detection mechanism.
+  * **Expected results:** The cluster can deal with transient node failure. We might benefit from this mechanism by upgrading sheepdog binary without wasting bandwidth. 
   * **Component:** sheep
-  * **Skill level:**
+  * **Skill level:** Medium to high
   * **Language:** C
   * **Mentor:** Liu Yuan or Kazutaka Morita
 
