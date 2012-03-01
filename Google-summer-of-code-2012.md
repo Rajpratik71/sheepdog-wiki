@@ -69,24 +69,34 @@ Every node of Sheepdog cluster has a backend store that provides storage for bot
 
  * Make Accord more configurable
   * **Brief explanation:**
+Currently, we can find so many hard-coded constant values in the source code of accord.  Our task is to make it all configurable. 
   * **Expected results:**
+1) Create a configure template file.
+2) add some code to parse it and use these configurable options.
   * **Component:** accord
-  * **Skill level:**
+  * **Skill level:** Simple
   * **Language:** C
   * **Mentor:** Yunkai Zhang or Kazutaka Morita
 
  * Improving Accord logging system
   * **Brief explanation:**
+We need a more powerful logging system, it can help me analysis complicated problems, maybe libqb can help me achieve this target, but you can use any library or skill as long as you like.
   * **Expected results:**
+1) logging message should have multiple levels and can be output to multiple target, just like log4j.
+2) generate core dump file in a specify directory after accord crash, such as received segment fault signal.
   * **Component:** accord
-  * **Skill level:**
+  * **Skill level:** Medium to high
   * **Language:** C
   * **Mentor:** Yunkai Zhang or Kazutaka Morita
 
  * Add Accord tools to show inner states
   * **Brief explanation:**
+Currently, accord just like a black box when it work. We need to  create some tools to help us monitor its inner states, such as all connected client information.
   * **Expected results:**
+1) can show us connected client list.
+2) can read/search messages stored in accord.
+3) ...
   * **Component:** accord
-  * **Skill level:**
+  * **Skill level:** Medium to high
   * **Language:** C
   * **Mentor:** Yunkai Zhang or Kazutaka Morita
