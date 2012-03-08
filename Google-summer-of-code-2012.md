@@ -39,7 +39,7 @@ Every node of Sheepdog cluster has a backend store that provides storage for bot
 
   * **Expected results:** Objects can be stored reliably to LevelDB. The IO performance and recovery process can be comparable to original stores. The snapshot and any features you think of are optional.
   * **Component:** sheep
-  * **Skill level:** Medium to high.
+  * **Skill level:** Medium.
   * **Language:** C
   * **Mentor:** Liu Yuan or Kazutaka Morita
 
@@ -55,7 +55,7 @@ Every node of Sheepdog cluster has a backend store that provides storage for bot
   * **Brief explanation:** Farm is an object store for Sheepdog on node basis. It consists of backend store, which caches the snapshot objects, and working directory, storing objects that Sheepdog currently operates. Now it has a raw snapshot operation support. Your task is to make use of current low level infrastructure to add user snapshot feature.
   * **Expected results:** Users can snapshot the cluster at any moment. The system state can be restored to the correct state despite of node change events.
   * **Component:** sheep/farm
-  * **Skill level:** Medium to high
+  * **Skill level:** Medium
   * **Language:** C
   * **Mentor:** Liu Yuan or Kazutaka Morita
 
