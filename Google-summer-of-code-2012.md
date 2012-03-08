@@ -3,41 +3,33 @@
 ## Project ideas
  *  Create sheepdog client library
   * **Brief explanation:**
+The goal of this task is to implement libsheepdog, and
+enables other clients than QEMU to use Sheepdog block-level volumes.
+
   * **Expected results:**
+libsheepdog provides
+<ol>
+   <li> low level I/O APIs (create/read/write/delete operations against Sheepdog object storage)
+   <li> high level I/O APIs (read/write operations against Sheepdog VDIs)
+   <li> management APIs (operations for administrator, something like snapshotting and cloning)
+</ol>
+
   * **Component:** sheep
-  * **Skill level:**
+  * **Skill level:** Medium
   * **Language:** C
   * **Mentor:** Kazutaka Morita or Liu Yuan
 
- * Support variable object size
+ * Get differences between snapshot VDIs for efficient backup
   * **Brief explanation:**
-  * **Expected results:**
-  * **Component:** sheep
-  * **Skill level:**
-  * **Language:** C
-  * **Mentor:** Kazutaka Morita or Liu Yuan
+Snapshots are useful for making consistent backups, To support
+differential backups, it is nice to support getting differential data
+between snapshots.
 
- * Add writeback support
-  * **Brief explanation:**
   * **Expected results:**
-  * **Component:** sheep
-  * **Skill level:**
-  * **Language:** C
-  * **Mentor:** Kazutaka Morita or Liu Yuan
+Collie (Sheepdog administrator utility) supports "vdi diff" command, and it generates a differential data between two snapshot VDIs.
 
- * Get differences between VDIs for efficient backup
-  * **Brief explanation:**
-  * **Expected results:**
-  * **Component:** sheep
-  * **Skill level:**
-  * **Language:** C
-  * **Mentor:** Kazutaka Morita or Liu Yuan
-
- * Support hierarchical zone
-  * **Brief explanation:**
-  * **Expected results:**
-  * **Component:** sheep
-  * **Skill level:**
+  * **Component:** sheep and collie
+  * **Skill level:** Medium
   * **Language:** C
   * **Mentor:** Kazutaka Morita or Liu Yuan
 
