@@ -179,9 +179,28 @@ $ collie vdi list
 </pre>
 
 ### Boot the VM
-1. Boot the virtual machine.
+1. Boot the virtual machine with sheep daemon started on local node
 <pre>
 $ qemu-system-x86_64 sheepdog:Alice
+</pre>
+
+2. Boot the virtual machine without sheep daemon started on local node
+<pre>
+$ qemu-system-x86_64 sheepdog:192.168.10.2:7000:Alice
+</pre>
+This suppose you have one sheep started up on the node with the IP 192.168.10.2 and port 7000
+
+3. Sheepdog supports local cache called object cache.
+Object cache caches data and vdi objects on the local node. It is at
+higher level than backend store. This extra cache layer translate gateway
+requests into local requests, largely reducing the network traffic and highly
+improve the IO performance.
+Dirty objects will be flushed to the cluster storage by 'sync' request from
+guest OS.
+You have to run latest QEMU to work with object cache. To enable the object cache,
+you can start QEMU by following command:
+<pre>
+$ qemu-system-x86_64 -drive file=sheepdog:Alice,cache=writeback
 </pre>
 
 ### Snapshot
