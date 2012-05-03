@@ -50,16 +50,15 @@ Enter a one line description of the change
 Enter a multiple line description of the patch and rationale
 
 Save the results, and send the commit to the mailing list:
+
+send a patch directly
 ```
-- send a patch directly
-$ git send-email --to=sheepdog@lists.wpkg.org
---smtp-server=YOURSMTPSERVERHERE -1
-
-- send a patch via file
+$ git send-email --to=sheepdog@lists.wpkg.org --smtp-server=YOURSMTPSERVERHERE -1
+```
+send a patch via file
+```
 $ git format-patch HEAD~
-$ git send-email --to=sheepdog@lists.wpkg.org
---smtp-server=YOURSMTPSERVERHERE 0001-your-patch
-
+$ git send-email --to=sheepdog@lists.wpkg.org --smtp-server=YOURSMTPSERVERHERE 0001-your-patch
 ```
 This will send the patch to the list and format it properly for merging into the tree
 
