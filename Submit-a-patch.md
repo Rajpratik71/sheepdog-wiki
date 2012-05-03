@@ -51,7 +51,8 @@ Enter a multiple line description of the patch and rationale
 
 Save the results, and send the commit to the mailing list:
 ```
-$ git send-email --to=sheepdog@lists.wpkg.org --smtp-server=YOURSMTPSERVERHERE -1
+$ git format-patch HEAD~
+$ git send-email --to=sheepdog@lists.wpkg.org --smtp-server=YOURSMTPSERVERHERE -1  0001-your-patch
 ```
 This will send the patch to the list and format it properly for merging into the tree
 
@@ -66,3 +67,6 @@ Add amended description to commit log
 ```
 $ git send-email --to=sheepdog@lists.wpkg.org --smtp-server=YOURSMTPSERVERHERE -1
 ```
+### For a big patch series
+
+Guilt[guilt - quilt on top of git] is a useful tool to manage multiple patches.
