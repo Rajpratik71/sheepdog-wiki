@@ -7,6 +7,8 @@ Enjoy!
 ## User Guide
 
  * [[Getting Started]]
+ * [[Cluster Management Backends]]
+
  * [[General Protocol Support]]
 
  * [[Google Summer of Code 2012]]
