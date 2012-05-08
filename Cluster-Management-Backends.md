@@ -40,13 +40,12 @@ $ make
 $ make install
 </pre>
 
-Set configuration
+Set configuration(how to configure [zookeeper](http://zookeeper.apache.org/doc/r3.3.3/zookeeperAdmin.html#sc_configuration))
 <pre>
 $ cd zookeeper-3.3.4/conf
 $ mv zoo_sample.cfg zoo.cfg
-  --You can learn more options from here: http://zookeeper.apache.org/doc/r3.3.3/zookeeperAdmin.html#sc_configuration
 $ mkdir -p /tmp/zookeeper
-</pre>
+</pre> 
 
 Start zookeeper
 <pre>
