@@ -46,7 +46,7 @@ As mentioned above, sheep needs to flush dirty objects to cluster storage. This 
 
 Specify asyncflush means you can tolerate the transient failure of sync request from the guest OS because sheep will try to flush the dirty objects until it succeeds. (Later sync request will trigger flush again)
 
-As default, object cache layer tries to utilize page cache (memory cache) as much as possible, so if you want a more durable cache, you can specify '-D' option. This means we don't use kernel's page cache to store data, and thus those data can survive the host OS crash.
+As default, object cache layer tries to utilize page cache (memory cache) as much as possible, so if you want a more durable cache, you can specify '-D' option. This means we don't use kernel's page cache to further cache data before it reaching to disk, and thus those data can survive the host OS crash.
 
 ### Snapshot and Convert
 Since **qemu-img** use 'writeback ' or 'unsafe' mode as its default option, with object cached added into Sheepdog, we should pass explicitly a cache control option to stop it from doing anything wrong.
