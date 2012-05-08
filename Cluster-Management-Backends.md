@@ -61,7 +61,7 @@ $ make
 $ sudo make install
 </pre>
 
-Start sheepdog
+Start sheepdog with zookeeper
 <pre>
 $ sudo sheep -d /store/29 -z 29 -p 7029 -c zookeeper:127.0.0.1:2181
 </pre>
