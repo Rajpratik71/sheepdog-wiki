@@ -16,8 +16,47 @@ Farm is yet another backend store with much more code lines, which is supposed t
 
 Sheepdog user from Taobao.com uses Farm as its default store since its inception and would continue to tune it into better performance and add more features. You can also request any feature you think of proper in the mailing list.
 
+To use Farm, you can start up the sheep:
+<pre>
+$ sheep -b farm ...other...option...
+</pre>
+
 ### Cluster snapshot
 
 ### Deal with stale objects
 
 ## Object Cache
+We can control whether use object cache or not by manipulating the 'cache' option in QEMU command. For example,
+<pre>
+$ qemu-system-x86_64 --enable-kvm -m 1024 -drive file=sheepdog:test,cache=writeback
+</pre>
+enables object cache for the dedicated virtual disk image (VDI) named "test" and
+<pre>
+$ qemu-system-x86_64 --enable-kvm -m 1024 -drive file=sheepdog:test
+</pre>
+doesn't enable object cache for the 'test'.
+
+There are some more options to do finer control over how object cache does read/write internally
+<pre>
+  -a, --asyncflush        flush the object cache asynchronously
+  -D, --directio          use direct IO when accessing the object from object cache
+</pre>
+
+As mentioned above, sheep needs to flush dirty objects to cluster storage. This kind of operation does its job mostly fine, but when the node event(node join/leave) happens, there is a small chance to fail the operation. Even though sheepdog has a built-in retry mechanism to handle this case, unfortunately some flush requests are asked to be finished in a time window. For e.g, journal file system such as Ext4 in Linux kernel will issue a sync request to update its meta periodically and timeout on it, any single failure of such kind of requests will put the file system into read-only. So if you don't have a strong consistency for your VM, you can specify '-a' option to sheep start-up command.
+
+Specify asyncflush means you can tolerate the transient failure of sync request from the guest OS because sheep will try to flush the dirty objects until it succeeds. (Later sync request will trigger flush again)
+
+As default, object cache layer tries to utilize page cache (memory cache) as much as possible, so if you want a more durable cache, you can specify '-D' option. This means we don't use kernel's page cache to store data, and thus those data can survive the host OS crash.
+
+### Snapshot and Convert
+Since **qemu-img** use 'writeback ' or 'unsafe' mode as its default option, we should pass explicitly an cache control option to stop it from doing anything wrong.
+
+To convert an image to VDI 'test':
+<pre>
+$ qemu-img convert -t writethrough linux-0.2.img sheepdog:test
+</pre>
+
+To snapshot an image named 'test':
+<pre>
+qemu-img snapshot -t writethrough -c tag sheepdog:test
+</pre>
