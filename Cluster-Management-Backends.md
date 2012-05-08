@@ -76,6 +76,16 @@ $ ./configure --enable-zookeeper
 $ make
 $ sudo make install
 </pre>
+
+Enable zookeeper driver in sheep
+<pre>
+$ git clone git://github.com/collie/sheepdog.git
+$ cd sheepdog/
+$ ./configure --enable-debug --enable-zookeeper
+$ make
+$ sudo make install
+</pre>
+
 Start the sheep
 <pre>
 $ sheep -c zookeeper:IP1:PORT1,IP2:PORT2,IP3:PORT3 ...other...option...
