@@ -8,7 +8,7 @@ Enjoy!
 
  * [[Getting Started]]
  * [[Cluster Management Backends]]
-
+ * [[Backend Stores and Object Cache]]
  * [[General Protocol Support]]
 
  * [[Google Summer of Code 2012]]
