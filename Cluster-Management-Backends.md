@@ -1,4 +1,4 @@
-sheepdog use a cluster management backend to manage
+Sheepdog uses a cluster management backend to manage
 memebership and broadcast messages to the cluster nodes.
 
 For now, sheepdog can use [corosync](http://corosync.org/doku.php) (the default), [zookeeper](http://zookeeper.apache.org/) and
