@@ -25,7 +25,40 @@ with object cache enabled.
 
 To enable zookeeper support (Suppose we have a zookeeper cluster with 3 nodes):
 
-Install zookeeper (Debian-based distribution)
+## Install zookeeper (by source tarball)
+Fetch the newest tarball(>= 3.3.4)
+<pre>
+$ wget http://mirror.bjtu.edu.cn/apache/zookeeper/zookeeper-3.3.4/zookeeper-3.3.4.tar.gz
+</pre>
+
+Install zookeeper C client library(used by sheep)
+<pre>
+$ tar -zxvf zookeeper-3.3.4.tar.gz
+$ cd zookeeper-3.3.4/src/c
+$ ./configure
+$ make
+$ make install
+</pre>
+
+Set configuration
+<pre>
+$ cd zookeeper-3.3.4/conf
+$ mv zoo_sample.cfg zoo.cfg
+  --You can learn more options from here: http://zookeeper.apache.org/doc/r3.3.3/zookeeperAdmin.html#sc_configuration
+$ mkdir -p /tmp/zookeeper
+</pre>
+
+Start zookeeper
+<pre>
+$ sudo ./bin/zkServer.sh start 
+</pre>
+
+Start sheepdog
+<pre>
+$ sudo sheep -d /store/29 -z 29 -p 7029 -c zookeeper:127.0.0.1:2181
+</pre>
+
+## Install zookeeper (Debian-based distribution)
 <pre>
 $ sudo apt-get install zookeeper
 </pre>
@@ -54,4 +87,3 @@ For a cluster more than 1000 nodes, I think Accord would come up to our
 rescue, but it is currently in a unstable development state. When the
 sheepdog scales up to 1000 nodes reliably, we might go to look at Accord
 and refine it to be a working state.
-
