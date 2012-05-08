@@ -58,5 +58,5 @@ $ qemu-img convert -t writethrough linux-0.2.img sheepdog:test
 
 To snapshot an image named 'test':
 <pre>
-qemu-img snapshot -t writethrough -c tag sheepdog:test
+$ qemu-img snapshot -t writethrough -c tag sheepdog:test
 </pre>
