@@ -49,7 +49,7 @@ Specify asyncflush means you can tolerate the transient failure of sync request 
 As default, object cache layer tries to utilize page cache (memory cache) as much as possible, so if you want a more durable cache, you can specify '-D' option. This means we don't use kernel's page cache to store data, and thus those data can survive the host OS crash.
 
 ### Snapshot and Convert
-Since **qemu-img** use 'writeback ' or 'unsafe' mode as its default option, we should pass explicitly an cache control option to stop it from doing anything wrong.
+Since **qemu-img** use 'writeback ' or 'unsafe' mode as its default option, with object cached added into Sheepdog, we should pass explicitly a cache control option to stop it from doing anything wrong.
 
 To convert an image to VDI 'test':
 <pre>
