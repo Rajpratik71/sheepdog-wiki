@@ -30,6 +30,10 @@ $ ./configure --enable-zookeeper
 $ make
 $ sudo make install
 </pre>
+Start the sheep
+<pre>
+$ sheep -c zookeeper:ip:port ...
+</pre>
 
 # Accord 
 
