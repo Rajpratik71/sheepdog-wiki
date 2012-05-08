@@ -35,7 +35,7 @@ Install zookeeper C client library(used by sheep)
 <pre>
 $ tar -zxvf zookeeper-3.3.4.tar.gz
 $ cd zookeeper-3.3.4/src/c
-$ ./configure
+$ ./configure --prefix=/usr
 $ make
 $ make install
 </pre>
@@ -58,7 +58,7 @@ Enable zookeeper driver in sheepdog
 <pre>
 $ git clone git://github.com/collie/sheepdog.git
 $ cd sheepdog/
-$ ./configure --enable-debug --enable-zookeeper
+$ ./configure --enable-zookeeper
 $ make
 $ sudo make install
 </pre>
