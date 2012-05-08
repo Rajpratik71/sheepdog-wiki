@@ -11,7 +11,7 @@ Corosync runs on every node as a dademon.
 Corosync can only works reliably with less than 15 nodes,
 due to its implementation and design goal for small sized cluster.
 
-# zookeeper
+# Zookeeper
 
 Zookeeper runs as a standalone cluster. This means you need to set up zookeeper cluster
 first, then pass the IP:PORT list to sheep start-up option.
