@@ -18,6 +18,19 @@ nodes in their test environment. For several month expediencies with
 zookeeper, they have found that it works well for node number below 1000,
 with object cache enabled.
 
+To enable zookeeper support:
+
+Firstly install zookeeper devel files (Debian-based distribution)
+<pre>
+$ sudo apt-get install libzookeeper-dev
+</pre>
+Then configure, make the sheep source
+<pre>
+$ ./configure --enable-zookeeper
+$ make
+$ sudo make install
+</pre>
+
 # Accord 
 
 For a cluster more than 1000 nodes, I think Accord would come up to our
