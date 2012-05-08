@@ -53,6 +53,15 @@ Start zookeeper
 $ sudo ./bin/zkServer.sh start 
 </pre>
 
+Enable zookeeper driver in sheepdog
+<pre>
+$ git clone git://github.com/collie/sheepdog.git
+$ cd sheepdog/
+$ ./configure --enable-debug --enable-zookeeper
+$ make
+$ sudo make install
+</pre>
+
 Start sheepdog
 <pre>
 $ sudo sheep -d /store/29 -z 29 -p 7029 -c zookeeper:127.0.0.1:2181
@@ -73,15 +82,6 @@ $ sudo apt-get install libzookeeper-dev
 Then configure, make the sheep source
 <pre>
 $ ./configure --enable-zookeeper
-$ make
-$ sudo make install
-</pre>
-
-Enable zookeeper driver in sheep
-<pre>
-$ git clone git://github.com/collie/sheepdog.git
-$ cd sheepdog/
-$ ./configure --enable-debug --enable-zookeeper
 $ make
 $ sudo make install
 </pre>
