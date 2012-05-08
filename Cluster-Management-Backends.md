@@ -44,6 +44,8 @@ Set configuration(how to configure [zookeeper](http://zookeeper.apache.org/doc/r
 <pre>
 $ cd zookeeper-3.3.4/conf
 $ mv zoo_sample.cfg zoo.cfg
+//Setting this to 0 entirely removes the limit on concurrent connections.
+$ echo "maxClientCnxns=0" >> zoo.cfg
 $ mkdir -p /tmp/zookeeper
 </pre> 
 
