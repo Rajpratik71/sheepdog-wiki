@@ -12,7 +12,7 @@ Currently Sheepdog supports two kinds of backend store, one is Simple store (def
 
 Simple store, as the name suggests, it simply translate requests into system calls to store data into files backed by local file systems.
 
-Farm is yet another backend store with much more code lines, which is supposed to provide advanced features such as cluster-wide snapshot, faster recovery, data de-duplication(not implemented yet) and so on, and tries to keep comparable IO performance as Simple store.
+Farm is yet another backend store with much more code lines, which is supposed to provide advanced features such as cluster-wide snapshot, faster recovery, better stale object handling, data de-duplication(not implemented yet) and so on, and tries to keep comparable IO performance as Simple store.
 
 Sheepdog user from Taobao.com uses Farm as its default store since its inception and would continue to tune it into better performance and add more features. You can also request any feature you think of proper in the mailing list.
 
