@@ -6,10 +6,15 @@ For now, sheepdog can use [corosync](http://corosync.org/doku.php) (the default)
 
 # Corosync
 
+Corosync runs on every node as a dademon.
+
 Corosync can only works reliably with less than 15 nodes,
 due to its implementation and design goal for small sized cluster.
 
 # zookeeper
+
+Zookeeper runs as a standalone cluster. This means you need to set up zookeeper cluster
+first, then pass the IP:PORT list to sheep start-up option.
 
 If you want to add more nodes into sheepdog cluster, you should run
 sheepdog against zookeeper. Some users (eg. at Taobao.com) have been working with
@@ -18,9 +23,17 @@ nodes in their test environment. For several month expediencies with
 zookeeper, they have found that it works well for node number below 1000,
 with object cache enabled.
 
-To enable zookeeper support:
+To enable zookeeper support (Suppose we have a zookeeper cluster with 3 nodes):
 
-Firstly install zookeeper devel files (Debian-based distribution)
+Install zookeeper (Debian-based distribution)
+<pre>
+$ sudo apt-get install zookeeper
+</pre>
+Start the zookeeper
+<pre>
+$ /usr/share/zookeeper/bin/zkServer.sh start # The default port is 2181
+</pre>
+To compile sheep, firstly install zookeeper files (Debian-based distribution)
 <pre>
 $ sudo apt-get install libzookeeper-dev
 </pre>
@@ -32,7 +45,7 @@ $ sudo make install
 </pre>
 Start the sheep
 <pre>
-$ sheep -c zookeeper:ip:port ...
+$ sheep -c zookeeper:IP1:PORT1,IP2:PORT2,IP3:PORT3 ...other...option...
 </pre>
 
 # Accord 
