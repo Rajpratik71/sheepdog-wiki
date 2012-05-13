@@ -6,9 +6,9 @@ For now, sheepdog can use [corosync](http://corosync.org/doku.php) (the default)
 
 # Corosync
 
-Corosync runs on every node as a dademon.
+Corosync runs on every node as a daemon.
 
-Corosync can only works reliably with less than 15 nodes,
+Corosync can only work reliably with less than 15 nodes,
 due to its implementation and design goal for small sized cluster.
 
 # Zookeeper
