@@ -68,6 +68,16 @@ Start sheepdog with zookeeper
 $ sudo sheep -d /store/29 -z 29 -p 7029 -c zookeeper:127.0.0.1:2181
 </pre>
 
+**Note**: We should not start multiple sheeps at the same time when use zookeeper driver. In fact, we *just* need to start _the first_ sheep separately, after that, we can start other sheeps *concurrently*. Let's say, you want to start 100 sheeps:
+<pre>
+- start the fist sheep alone, and sleep 2 seconds:
+$ sheep -d /store/0 -z 0 -p 7000 -c zookeeper:localhost:2181
+$ sleep 2
+
+- start other sheeps simultaneously(need not to sleep between them):
+$ for i in {1..99}; do sheep -d /store/$i -z $i -p $((7000 + $i)) -c zookeeper:localhost:2181
+</pre>
+
 ## Install zookeeper (Debian-based distribution)
 <pre>
 $ sudo apt-get install zookeeper
@@ -90,6 +100,16 @@ $ sudo make install
 Start the sheep
 <pre>
 $ sheep -c zookeeper:IP1:PORT1,IP2:PORT2,IP3:PORT3 ...other...option...
+</pre>
+
+**Note**: We should not start multiple sheeps at the same time when use zookeeper driver. In fact, we *just* need to start _the first_ sheep separately, after that, we can start other sheeps *concurrently*. Let's say, you want to start 100 sheeps:
+<pre>
+- start the fist sheep alone, and sleep 2 seconds:
+$ sheep -d /store/0 -z 0 -p 7000 -c zookeeper:localhost:2181
+$ sleep 2
+
+- start other sheeps simultaneously(need not to sleep between them):
+$ for i in {1..99}; do sheep -d /store/$i -z $i -p $((7000 + $i)) -c zookeeper:localhost:2181
 </pre>
 
 # Accord 
