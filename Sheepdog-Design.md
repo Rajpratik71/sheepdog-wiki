@@ -137,9 +137,10 @@ attribute.  The rest of the object is the value of this attribute.
 From the view of how to access objects, we can also categorize
 Sheepdog objects into two groups.
 
-* read-only object (e.g. data objects of a snapshot VDI)  
+* writable
 one VM can write and read the object but other VMs cannot access.
-* writable object  
+
+* read-only object (e.g. data objects of a snapshot VDI) 
 No VM can write the object but any VMs can read the object.
 
 This means that virtual machines cannot share the same volume at the
