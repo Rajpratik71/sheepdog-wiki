@@ -51,7 +51,14 @@ To convert an image to VDI 'test':
 $ qemu-img convert -t writethrough linux-0.2.img sheepdog:test
 </pre>
 
-To snapshot an image named 'test':
+To snapshot an image named 'test' tagged as 'snap':
 <pre>
-$ qemu-img snapshot -t writethrough -c tag sheepdog:test
+$ collie vdi snapshot -s snap test
 </pre>
+
+Snapshot images can be used as base images for cloned VMs. To clone an existing snapshot 'test' as 'cloned_vm':
+<pre>
+$ collie vdi clone -s snap test cloned_vm
+</pre>
+
+Cloned VMs are implemented by Copy On Write semantics in the Sheepdog cluster, this means cloning operation is very fast and storage-wise cheap, those cloned VMs will share as much as possible data objects from base image.
