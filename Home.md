@@ -9,6 +9,7 @@ Enjoy!
  * [[Getting Started]]
  * [[Cluster Management Backends]]
  * [[Backend Stores and Object Cache]]
+ * [[Sheepfs]]
  * [[General Protocol Support]]
 
 ## Release Plan
