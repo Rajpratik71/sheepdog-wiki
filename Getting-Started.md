@@ -166,7 +166,7 @@ $ qemu-img create sheepdog:Alice 256G
 
 1. You can also convert from existing KVM images to Sheepdog ones.
 <pre>
-$ qemu-img convert ~/amd64.raw sheepdog:Bob
+$ qemu-img convert -t writethrough ~/amd64.raw sheepdog:Bob
 </pre>
 
 1. See Sheepdog images by the following command.
