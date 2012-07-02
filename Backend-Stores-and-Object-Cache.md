@@ -3,7 +3,7 @@ Every node of Sheepdog cluster has a backend store that provides weighted storag
 
 Object cache caches data and VDI objects on the local node which runs a sheep daemon. It is at higher level than backend store. This extra cache layer translates gateway requests (from VM) into local requests, largely reducing the network traffic and highly improving the IO performance, at the expense of data inconsistency between objects in object cache and backend store. These dirty objects will be flushed to cluster storage by 'sync' request from guest OS.
 
-If you run QEMU without a local sheep daemon, you need be aware that object won't be cached at local node, instead will be cached at the node QEMU is remotely connected to.
+If you run QEMU without a local sheep daemon, you need be aware that objects won't be cached at local node, instead will be cached at the node QEMU is remotely connected to.
 
 Let's put it all together from the perspective of the request from VM (with object cache enabled):
 
