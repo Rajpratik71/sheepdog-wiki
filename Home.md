@@ -11,6 +11,7 @@ Enjoy!
  * [[Backend Stores and Object Cache]]
  * [[Sheepfs]]
  * [[General Protocol Support]]
+ * [[Migration from v0.3.0 (simple) to v0.4.0 (farm) - the right way?]]
 
 ## Release Plan
 
@@ -40,4 +41,3 @@ The latest pulished version is the [v0.3.0](https://github.com/collie/sheepdog/t
 
 ## External Articles
  * [Setting up a Sheepdog cluster and exporting a volume to a KVM guest -- Daniel P. Berrangé (2011-10-11)](http://berrange.com/posts/2011/10/11/setting-up-a-sheepdog-cluster-and-exporting-a-volume-to-a-kvm-guest/)
-
