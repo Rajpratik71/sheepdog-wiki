@@ -85,7 +85,7 @@ $ cd ..
 
 ### Setup Sheepdog
 
-1. To launch the sheepdog daemon, either start it using '/etc/init.d/sheepdog start' or launch the sheepdog daemon by directly calling 'sheepdog <store_dir>' on each machine of the cluster.
+1. To launch the sheepdog daemon, either start it using '/etc/init.d/sheepdog start' or launch the sheepdog daemon by directly calling 'sheepdog <store_dir>' on each machine of the cluster. Make sure that TCP port 7000 is open for sheepdog communication.
 
 Note: At this time, the sheepdog init.d script is hard-coded to use /var/lib/sheepdog as the store directory. If you wish to use another directory, you will need to always start sheepdog using the 'sheep <store_dir>' call.
 
