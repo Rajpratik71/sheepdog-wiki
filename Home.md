@@ -15,7 +15,7 @@ Enjoy!
 
 ## Release Plan
 
-The latest pulished version is the [v0.4.0](https://github.com/collie/sheepdog/tarball/v0.4.0), with:
+ * [0.4.0](https://github.com/collie/sheepdog/tarball/v0.4.0) is the latest pulished version with:
   
    - a new store driver 'farm'
    - an object cache support 
@@ -28,7 +28,7 @@ The latest pulished version is the [v0.4.0](https://github.com/collie/sheepdog/t
    - zookeeper cluster driver
    - many bug fixes
 
-See [[Changelog]] for more details.
+   See the [[changelog]] for more details.
 
  * 0.5.0 is probably due to the end of september 2012, with:
    - differential backup of VDIs
