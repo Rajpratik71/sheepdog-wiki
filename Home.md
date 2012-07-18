@@ -15,22 +15,31 @@ Enjoy!
 
 ## Release Plan
 
-The latest pulished version is the [v0.3.0](https://github.com/collie/sheepdog/tarball/v0.3.0).
+The latest pulished version is the [v0.4.0](https://github.com/collie/sheepdog/tarball/v0.4.0), with:
+  
+   - a new store driver 'farm'
+   - an object cache support 
+   - sheepfs
+   - a tracer support
+   - support for variable virtual nodes
+   - start sheep daemon as gateway
+   - cluster driver cleanups
+   - object list cache
+   - zookeeper cluster driver
+   - many bug fixes
 
- * 0.4.0 is due to the end of june 2012, with:
-  
-   - a new store driver 'farm' (done)
-   - en object cache support (done)
-   - a tracer support (done)
-   - support for variable virtual nodes (done)
-   - start sheep daemon as gateway (done)
-   - support larger object size
-   - use differential copy for fast object recovery
-   - add hierarchical zones support
-   - reclaim unused objects automatically
-   - more doc
-   - more tests
-  
+See [[Changelog]] for more details.
+
+ * 0.5.0 is probably due to the end of september 2012, with:
+   - differential backup of VDIs
+   - variable object size
+   - variable virtual nodes according to the free spaces
+   - server-side write cache (write object without O_DSYNC, and sync
+     them when qemu sends a flush request.  I think we can use it
+     combined with object cache.)
+   - redesign threads for better performance
+   - testing framework
+
  * 1.0.0 is expected for the end of the year
  
 ## Developer Guide
