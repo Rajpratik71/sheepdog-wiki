@@ -7,11 +7,11 @@ Enjoy!
 ## User Guide
 
  * [[Getting Started]]
+ * [[Cluster Management: good practices]]
  * [[Cluster Management Backends]]
  * [[Backend Stores and Object Cache]]
  * [[Sheepfs]]
  * [[General Protocol Support]]
- * [[Migration from v0.3.0 (simple) to v0.4.0 (farm) - the right way?]]
 
 ## Release Plan
 
