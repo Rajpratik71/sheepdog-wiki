@@ -1,7 +1,6 @@
-
 ## General remarks
 
-Do never kill more than X sheep daemons (X being the number of copies you formatted your cluster with) at a time, or you will **loose your data**. If you need to do some sysadmin task, shutdown gracefully the cluster (all qemu IOs must have been stopped before), using ''collie cluster shutdown''.
+Do never kill more than X-1 sheep daemons (X being the number of copies you formatted your cluster with) at a time or during a recovery procedure, or you will **loose your data**. If you need to do some sysadmin task, shutdown gracefully the cluster (all qemu IOs must have been stopped before), using ''collie cluster shutdown''.
 
 At the time of writing this, it is very easy to loose the data stored in a sheepdog cluster. (Hopefully, it will be safer for the 1.0.0 release, and init scripts will be smarter than they are now. Help is always welcome!)
 
