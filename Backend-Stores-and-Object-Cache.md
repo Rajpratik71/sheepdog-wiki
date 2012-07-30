@@ -33,6 +33,16 @@ $ qemu-system-x86_64 --enable-kvm -m 1024 -drive file=sheepdog:test
 </pre>
 doesn't enable object cache for the 'test'.
 
+Object cache is disabled by default in Sheepdog, to enable the object cache in Sheepdog and specify max cache size:
+
+<pre>$ sheep -w 100 /path/to/sheep -z 0 -p 7000</pre>
+
+As the example above, we enable object cache in Sheep and specify the max cache size to 100M.
+
+To modify the max cache size:
+
+<pre>$ collie node cache 300</pre>
+
 There are some more options to do finer control over how object cache does read/write internally
 <pre>
   -a, --asyncflush        flush the object cache asynchronously
