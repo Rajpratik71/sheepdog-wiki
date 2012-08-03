@@ -43,6 +43,8 @@ To modify the max cache size:
 
 <pre>$ collie node cache 300</pre>
 
+NOTE ‘max cache size' is a hint to Sheepdog that when the object cache size reaches specified 'max cache size', it begins to do reclaiming, that tries to shrink the cache size to a lower watermark. So probably for some corner cases, you might have object cache more than specified max size, when the rate of reclaiming is lower than the new object created by on the fly IO requests.
+
 There are some more options to do finer control over how object cache does read/write internally
 <pre>
   -D, --directio          use direct IO when accessing the object from object cache
