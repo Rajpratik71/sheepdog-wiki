@@ -12,8 +12,7 @@
 * pkg-config
 * corosync devel package
 * git (when compiling from source repo)
-* nss devel packages (when compiling corosync from source)
-* libssl-dev (for Farm)
+* liburcu
 * optional:fuse-devel (for sheepfs)
 
 ## Install
