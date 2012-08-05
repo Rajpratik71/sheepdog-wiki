@@ -1,8 +1,15 @@
 Sheepdog uses a cluster management backend to manage
 membership and broadcast messages to the cluster nodes.
 
-For now, sheepdog can use [corosync](http://corosync.org/doku.php) (the default), [zookeeper](http://zookeeper.apache.org/) and
+For now, sheepdog can use local driver (for development on a single box), [corosync](http://corosync.org/doku.php) (the default), [zookeeper](http://zookeeper.apache.org/) and
 [Accord](http://www.osrg.net/accord/).
+
+# Local driver
+This driver just makes use of Unix IPC mechanism to management the membership on a single box, where we start multiple 'sheep' processes to simulate the cluster. It is very easy and fast setup and especially useful to test functionality and for developer without involving any other software.
+
+To set up a 3 node using local driver in one liner bash with debug mode (mkdir /path/to/store first):
+
+ $ for i in 0 1 2; do sheep/sheep -c local -d /path/to/store/$i -z $i -p 700$i;sleep 1;done
 
 # Corosync
 
