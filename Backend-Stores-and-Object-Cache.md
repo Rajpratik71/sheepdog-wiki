@@ -3,6 +3,8 @@ Every node of Sheepdog cluster has a backend store that provides weighted storag
 
 Object cache caches data and VDI objects on the local node which runs a sheep daemon. It is at higher level than backend store. This extra cache layer translates gateway requests (from VM) into local requests, largely reducing the network traffic and highly improving the IO performance, at the expense of data inconsistency between objects in object cache and backend store. These dirty objects will be flushed to cluster storage by 'sync' request from guest OS.
 
+Currently, object cache supports writeback | writethrough mode, cache quota.
+
 If you run QEMU without a local sheep daemon, you need be aware that objects won't be cached at local node, instead will be cached at the node QEMU is remotely connected to.
 
 Let's put it all together from the perspective of the request from VM (with object cache enabled):
@@ -35,9 +37,12 @@ doesn't enable object cache for the 'test'.
 
 Object cache is disabled by default in Sheepdog, to enable the object cache in Sheepdog and specify max cache size:
 
-<pre>$ sheep -w 100 /path/to/sheep -z 0 -p 7000</pre>
+<pre>$ sheep -w 100 /path/to/sheep</pre>
 
-As the example above, we enable object cache in Sheep and specify the max cache size to 100M.
+As the example above, we enable object cache in Sheep and specify the max cache size to 100M and use default writethrough mode.
+
+to use writeback mode:
+<pre>$ sheep -w 1000,writeback /path/to/sheep</pre>
 
 To modify the max cache size:
 
