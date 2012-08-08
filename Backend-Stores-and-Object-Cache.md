@@ -42,7 +42,7 @@ Object cache is disabled by default in Sheepdog, to enable the object cache in S
 As the example above, we enable object cache in Sheep and specify the max cache size to 100M and use default writethrough mode.
 
 to use writeback mode:
-<pre>$ sheep -w 1000,writeback /path/to/sheep</pre>
+<pre>$ sheep -w 100,writeback /path/to/sheep</pre>
 
 To modify the max cache size:
 
