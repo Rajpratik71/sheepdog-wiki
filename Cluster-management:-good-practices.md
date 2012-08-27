@@ -1,14 +1,25 @@
 ## General remarks
 
-Do never kill more than X-1 sheep daemons (X being the number of copies you formatted your cluster with) at a time or during a recovery procedure, or you will **loose your data**. If you need to do some sysadmin task, shutdown gracefully the cluster (all qemu IOs must have been stopped before), using ''collie cluster shutdown''.
+Sheepdog uses a zone concept for data replication. In the default
+configuration, each node in the cluster is one zone and sheepdog replicate
+the vdi objects to the number of zones defined by the number of copies (X).
 
-At the time of writing this, it is very easy to loose the data stored in a sheepdog cluster. (Hopefully, it will be safer for the 1.0.0 release, and init scripts will be smarter than they are now. Help is always welcome!)
+To keep a working cluster, never kill sheeps in more than X-1 zones at
+a time, or during recovery is not finished. If you kill X or more zones
+at a time, you will have no access to some of the objects. It never mind,
+if you kill the complete zone, or only a few sheeps in X different zones
+at a time, there will '''always''' some objects, that are only hold by
+these specific sheeps, only the amount of inaccessible objects will differ.
 
+Including up to version 0.4 you will '''loose your data''' in this case!
+With the introduction of plain_store and the rework of farm to use it as
+core in version 0.5, you wont loose data, but as long as the zones are not
+restarted, you cant access the objects that are only available on this
+zones and your VM get a I/O Error.
 
 Make sure your UPS auto-shutdown (eg. apcupsd config) scripts do the correct job!  
 
 ## Upgrading the nodes
-
 
 The update scenario depends if you need a running cluster the
 whole time, or if you can plan a complete shutdown for some time.
