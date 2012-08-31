@@ -87,9 +87,9 @@ $ for i in {1..99}; do sheep -d /store/$i -z $i -p $((7000 + $i)) -c zookeeper:l
 
 ## Install zookeeper (Debian-based distribution)
 <pre>
-$ sudo apt-get install zookeeper
+$ sudo apt-get install zookeeper zookeeperd
 </pre>
-Start the zookeeper zookeeperd
+Start the zookeeper
 <pre>
 $ /usr/share/zookeeper/bin/zkServer.sh start # The default port is 2181
 </pre>
