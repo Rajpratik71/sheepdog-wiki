@@ -3,7 +3,11 @@ Every node of Sheepdog cluster has a backend store that provides weighted storag
 
 Object cache caches data and VDI objects on the local node which runs a sheep daemon. It is at higher level than backend store. This extra cache layer translates gateway requests (from VM) into local requests, largely reducing the network traffic and highly improving the IO performance, at the expense of data inconsistency between objects in object cache and backend store. These dirty objects will be flushed to cluster storage by 'sync' request from guest OS.
 
-Currently, object cache supports writeback | writethrough mode, cache quota.
+Object cache supports cache quota. As explained below, it can be specified with command line option.
+
+In previous sheepdog, writeback or writethrough of object cache could be specified with command line option.
+But in current sheepdog, writeback or writethrough is determined by request from QEMU.
+
 
 If you run QEMU without a local sheep daemon, you need be aware that objects won't be cached at local node, instead will be cached at the node QEMU is remotely connected to.
 
@@ -37,12 +41,9 @@ doesn't enable object cache for the 'test'.
 
 Object cache is disabled by default in Sheepdog, to enable the object cache in Sheepdog and specify max cache size:
 
-<pre>$ sheep -w 100 /path/to/sheep</pre>
+<pre>$ sheep -w object:size=100 /path/to/sheep</pre>
 
 As the example above, we enable object cache in Sheep and specify the max cache size to 100M and use default writethrough mode.
-
-to use writeback mode:
-<pre>$ sheep -w 100,writeback /path/to/sheep</pre>
 
 To modify the max cache size:
 
@@ -51,11 +52,8 @@ To modify the max cache size:
 NOTE ‘max cache size' is a hint to Sheepdog that when the object cache size reaches specified 'max cache size', it begins to do reclaiming, that tries to shrink the cache size to a lower watermark. So probably for some corner cases, you might have object cache more than specified max size, when the rate of reclaiming is lower than the new object created by on the fly IO requests.
 
 There are some more options to do finer control over how object cache does read/write internally
-<pre>
-  -D, --directio          use direct IO when accessing the object from object cache
-</pre>
 
-As default, object cache layer tries to utilize page cache (memory cache) as much as possible, so if you want a more durable cache, you can specify '-D' option. This means we don't use kernel's page cache to further cache data before it reaching to disk, and thus those data can survive the host OS crash.
+As default, object cache layer tries to utilize page cache (memory cache) as much as possible, so if you want a more durable cache, you can specify '-w object:directio' option. This means we don't use kernel's page cache to further cache data before it reaching to disk, and thus those data can survive the host OS crash.
 
 ### Snapshot and Convert
 Since **qemu-img** use 'writeback ' or 'unsafe' mode as its default option, with object cached added into Sheepdog, we should pass explicitly a cache control option to stop it from doing anything wrong.
@@ -76,3 +74,12 @@ $ collie vdi clone -s snap test cloned_vm
 </pre>
 
 Cloned VMs are implemented by Copy On Write semantics in the Sheepdog cluster, this means cloning operation is very fast and storage-wise cheap, those cloned VMs will share as much as possible data objects from base image. Sheepdog also supports tree structured cloning: you can snapshot the cloned VM and have it as a new base and so on.
+
+## Disk Cache
+Backend stores of sheeps can be configured to use disk cache of their host. If disk cache is enabled, sheeps open() their object without O_DSYNC.
+
+Disk cache improves the performance of sheepdog, but you must be careful when you use it.
+
+Because if the disk cache is enabled, write requests to sheeps don't mean storing data to persistent storage. So explicit disk cache flushing is required when guest OSes issue sync request to their block device of QEMU. This sync request causes performance degradation. The degradation is serious especially in an environment which contains lots of VMs.
+
+The performance degradation is workload specific. So you should evaluate the effect of disk cache well.
