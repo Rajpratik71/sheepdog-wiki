@@ -9,7 +9,7 @@ Enjoy!
  * [[Getting Started]]
  * [[Cluster Management: good practices]]
  * [[Cluster Management Backends]]
- * [[Backend Stores and Object Cache]]
+ * [[Backend Stores, Object Cache and Disk Cache]]
  * [[Sheepfs]]
  * [[General Protocol Support]]
 
