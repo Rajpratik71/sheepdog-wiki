@@ -26,12 +26,19 @@ Sheepdog user from Taobao.com uses Farm as its default store since its inception
 
 ### Cluster snapshot
 
-## Object Cache
+## Object cache and disk cache
 Generally speaking, we support _writeback_, which caches write update for a period of time and flushes dirty bits by a 'sync' request from Guest OS, routed by QEMU and _writethrough_, which means we don't need care about cache and backend consistency. In writethrough mode, in fact, QEMU won't issue 'sync' request at all.
 
+There are currently two cache supported by Sheepdog, one is object cache and another is disk cache.  They are operating in different layers, object cache can be thought as local cache while disk cache control how we write to the every host disk. If disk cache is enabled, sheeps open() their object without O_DSYNC flag at backend, this means we take advantage of write cache built in the hard drive.
+
+Disk cache improves the performance of sheepdog, but you must be careful when you use it.
+
+Because if the disk cache is enabled, write requests to sheeps don't mean storing data to persistent storage. So explicit disk cache flushing is required when guest OSes issue sync request to their block device of QEMU. This sync request causes performance degradation. The degradation is serious especially in an environment which contains lots of VMs.
+
+The performance degradation is workload specific. So you should evaluate the effect of disk cache well.
 Object cache support both writeback and writhrough semantics. For writeback mode, you'll enjoy near native local image performance and for writethrough mode, we can also enjoy performance boost for read requests. (You can think it as read only cache)
 
-We can control which mode object cache is on by manipulating the 'cache' option in QEMU command. For example,
+We can control which mode object/disk cache is on by manipulating the 'cache' option in QEMU command. For example,
 
 <pre>
 $ qemu-system-x86_64 --enable-kvm -m 1024 -drive file=sheepdog:test,cache=writeback
@@ -46,13 +53,13 @@ $ qemu-system-x86_64 --enable-kvm -m 1024 -drive file=sheepdog:test,cache=writet
 </pre>
 enables writethrough mode.
 
-Object cache is disabled by default in Sheepdog, to enable the object cache in Sheepdog and specify max cache size:
+Both object cache and disk cache is disabled by default in Sheepdog. '-w' is used for enabling object cache in local node and disk cache's writeback semantics in backend stores. Example of '-w' is like this:
+    -w disk  # enable writeback cache semantics of disks
+    -w disk,object:size=50 # enable writeback cache semantics of disks, and enable object cache with 50MB memory
+    -w object:size=50 # enable object cache with 50MB memory
+    -w object:size=50:directio # enable object cache with 50MB memory with O_DIRECT for cached objects
 
-<pre>$ sheep -w object:size=100 /path/to/sheep</pre>
-
-As the example above, we enable object cache in Sheep and specify the max cache size to 100M.
-
-To modify the max cache size:
+To modify the max object cache size:
 
 <pre>$ collie node cache 300</pre>
 
@@ -83,10 +90,3 @@ $ collie vdi clone -s snap test cloned_vm
 Cloned VMs are implemented by Copy On Write semantics in the Sheepdog cluster, this means cloning operation is very fast and storage-wise cheap, those cloned VMs will share as much as possible data objects from base image. Sheepdog also supports tree structured cloning: you can snapshot the cloned VM and have it as a new base and so on.
 
 ## Disk Cache
-Backend stores of sheeps can be configured to use disk cache of their host. If disk cache is enabled, sheeps open() their object without O_DSYNC.
-
-Disk cache improves the performance of sheepdog, but you must be careful when you use it.
-
-Because if the disk cache is enabled, write requests to sheeps don't mean storing data to persistent storage. So explicit disk cache flushing is required when guest OSes issue sync request to their block device of QEMU. This sync request causes performance degradation. The degradation is serious especially in an environment which contains lots of VMs.
-
-The performance degradation is workload specific. So you should evaluate the effect of disk cache well.
