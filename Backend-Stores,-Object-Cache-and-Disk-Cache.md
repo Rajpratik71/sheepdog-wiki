@@ -26,24 +26,31 @@ Sheepdog user from Taobao.com uses Farm as its default store since its inception
 
 ### Cluster snapshot
 
-### Deal with stale objects
-
 ## Object Cache
-We can control whether use object cache or not by manipulating the 'cache' option in QEMU command. For example,
+Generally speaking, we support _writeback_, which caches write update for a period of time and flushes dirty bits by a 'sync' request from Guest OS, routed by QEMU and _writethrough_, which means we don't need care about cache and backend consistency. In writethrough mode, in fact, QEMU won't issue 'sync' request at all.
+
+Object cache support both writeback and writhrough semantics. For writeback mode, you'll enjoy near native local image performance and for writethrough mode, we can also enjoy performance boost for read requests. (You can think it as read only cache)
+
+We can control which mode object cache is on by manipulating the 'cache' option in QEMU command. For example,
+
 <pre>
 $ qemu-system-x86_64 --enable-kvm -m 1024 -drive file=sheepdog:test,cache=writeback
 </pre>
-enables object cache for the dedicated virtual disk image (VDI) named "test" and
+enables writeback mode for the dedicated virtual disk image (VDI) named "test" and
 <pre>
 $ qemu-system-x86_64 --enable-kvm -m 1024 -drive file=sheepdog:test
 </pre>
-doesn't enable object cache for the 'test'.
+or 
+<pre>
+$ qemu-system-x86_64 --enable-kvm -m 1024 -drive file=sheepdog:test,cache=writethrough
+</pre>
+enables writethrough mode.
 
 Object cache is disabled by default in Sheepdog, to enable the object cache in Sheepdog and specify max cache size:
 
 <pre>$ sheep -w object:size=100 /path/to/sheep</pre>
 
-As the example above, we enable object cache in Sheep and specify the max cache size to 100M and use default writethrough mode.
+As the example above, we enable object cache in Sheep and specify the max cache size to 100M.
 
 To modify the max cache size:
 
