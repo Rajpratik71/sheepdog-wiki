@@ -90,5 +90,3 @@ $ collie vdi clone -s snap test cloned_vm
 </pre>
 
 Cloned VMs are implemented by Copy On Write semantics in the Sheepdog cluster, this means cloning operation is very fast and storage-wise cheap, those cloned VMs will share as much as possible data objects from base image. Sheepdog also supports tree structured cloning: you can snapshot the cloned VM and have it as a new base and so on.
-
-## Disk Cache
