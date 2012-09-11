@@ -54,10 +54,12 @@ $ qemu-system-x86_64 --enable-kvm -m 1024 -drive file=sheepdog:test,cache=writet
 enables writethrough mode.
 
 Both object cache and disk cache is disabled by default in Sheepdog. '-w' is used for enabling object cache in local node and disk cache's writeback semantics in backend stores. Example of '-w' is like this:
+<pre>
     -w disk  # enable writeback cache semantics of disks
     -w disk,object:size=50 # enable writeback cache semantics of disks, and enable object cache with 50MB memory
     -w object:size=50 # enable object cache with 50MB memory
     -w object:size=50:directio # enable object cache with 50MB memory with O_DIRECT for cached objects
+</pre>
 
 To modify the max object cache size:
 
