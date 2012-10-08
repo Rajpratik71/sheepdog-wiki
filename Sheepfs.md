@@ -1,7 +1,7 @@
 # Introduction
    Sheepfs is a FUSE-based pseudo file system in userland to access both
 sheepdog's internal state (for e.g, cluster info, vdi list) as well as sheepdog's high
-reliable stroage.
+reliable storage.
 
    The idea here is that its sometimes useful that we can envision our interaction with
 an sheepdog's object in terms of a directory structure and filesystem operations.
