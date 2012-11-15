@@ -11,6 +11,7 @@ Enjoy!
  * [[Cluster Management Backends]]
  * [[Backend Stores, Object Cache and Disk Cache]]
  * [[Sheepfs]]
+ * [[Journaling]]
  * [[General Protocol Support]]
 
 ## Release Plan
