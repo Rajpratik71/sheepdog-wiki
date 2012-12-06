@@ -46,7 +46,9 @@ Then sheepfs will be automatically compiled in. The binary will be located in sh
 
     $ echo test > sheepfs_dir/vdi/mount
 
-   Then we can boot it if it is a bootable image:
+   Then it will show up at sheepfs_dir/volume/test as a normal file which you can read/write in whatever way you want.
+
+   We can boot it if it is a bootable image:
 
     $ qemu-system-x86_64 --enable-kvm -m 1024 -drive file=sheepfs_dir/volume/test,cache=writeback.
 
