@@ -1,4 +1,4 @@
-Some people might want to read images from Sheepdog cluster and store them as local images which can be copied to somewhere else, we can actually convert it by:
+Some people might want to read images out of Sheepdog cluster and store them as local images which can be copied to somewhere else, we can actually convert it by:
 
     $ qemu-img sheepdog:image -O qcow2 backup_name
 
