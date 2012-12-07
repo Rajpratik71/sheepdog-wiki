@@ -6,4 +6,4 @@ Then you can see a qcow2(you can specify other formats) image named backup_name 
 
 Besides 'qemu-img convert', we can also use 'vdi read/write/setattr/getattr' the sheepdog images. And we can even export Sheepdog images as a pseudo block file in the local file system hierarchy via [[Sheepfs]] and use common tools like scp to transport to wherever you want as a raw image.
 
-Sheepdog supports yet another backup mechanism: backup differential data between two snapshots. See more info at http://lists.wpkg.org/pipermail/sheepdog/2012-September/006771.html.
+Sheepdog supports yet another backup mechanism: backup differential data between two snapshots. See more info at [incremental snapshot backup](http://comments.gmane.org/gmane.comp.file-systems.sheepdog/6749)
