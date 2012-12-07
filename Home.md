@@ -12,6 +12,7 @@ Enjoy!
  * [[Backend Stores, Object Cache and Disk Cache]]
  * [[Sheepfs]]
  * [[Journaling]]
+ * [[Backup]]
  * [[General Protocol Support]]
 
 ## Release Plan
