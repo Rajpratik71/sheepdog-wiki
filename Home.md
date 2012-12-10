@@ -17,11 +17,9 @@ Enjoy!
 
 ## Release Plan
 
- * [0.5.4](https://github.com/collie/sheepdog/tarball/v0.5.4) is the latest version:
-   - sheep: add support for using unix domain socket
-   - test: some spurious failures
-   - vditest: refine so that we can use it for benchmark tests
-   - logger: cleanup and improve performance
+ * [0.5.5](https://github.com/collie/sheepdog/tarball/v0.5.5) is the latest version:
+   - journaling supprot
+   - one fatal deadlock during node change events fixed.
    - many bug fixes and cleanups
 
    See the [[changelog]] for more details.
