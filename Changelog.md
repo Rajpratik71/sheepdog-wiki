@@ -42,7 +42,10 @@
   - logger: cleanup and improve performance
   - many bug fixes and cleanups
 
-
+ * [0.5.5](https://github.com/collie/sheepdog/tarball/v0.5.5) :
+   - journaling supprot
+   - one fatal deadlock during node change events fixed.
+   - many bug fixes and cleanups
 
 ## v0.5.0
 
