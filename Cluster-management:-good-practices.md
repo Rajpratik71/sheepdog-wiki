@@ -1,3 +1,16 @@
+## Environment
+
+Sheepdog often use more FDs than you think. The larger scale, the bigget set of FDs will be used in some period of time. So make sure you have big enough limit on FDs
+
+    $ ulimit -n
+
+If you see '1024' which is the default value on most distributions, please set it as big as possible.
+
+To help debug crashed Sheepdog of any case, please allow your systems to dump core file. And most importantly, before you throw your blames on Sheepdog, it is nice of you to paste gdb output from core file (the core file of Sheep is default located at /path/to/store/core) by
+
+    $ gdb /path/to/sheep /path/to/core_file
+    $ (gdb console) bt full
+
 ## General remarks
 
 Sheepdog uses a zone concept for data replication. In the default
