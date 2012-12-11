@@ -32,7 +32,7 @@ zones and your VM get a I/O Error.
 
 Make sure your UPS auto-shutdown (eg. apcupsd config) scripts do the correct job!  
 
-## Upgrading the nodes
+## Upgrading the nodes  (**outdated**, help is needed to work out a better process for latest sheep)
 
 The update scenario depends if you need a running cluster the
 whole time, or if you can plan a complete shutdown for some time.
