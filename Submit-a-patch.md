@@ -62,6 +62,16 @@ $ git send-email --to=sheepdog@lists.wpkg.org --smtp-server=YOURSMTPSERVERHERE 0
 ```
 This will send the patch to the list and format it properly for merging into the tree
 
+The final patch header should have this format:
+```
+
+sheep: one-line-subject-description
+
+More detailed description
+
+Signed-off-by: Your Name <your-email>
+```
+
 ### If changes are requested to patch
 
 Please don't take personal offense if changes are asked in a patch. We have many users and we don't want to break the tree with changes.
