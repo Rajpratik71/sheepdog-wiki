@@ -57,7 +57,7 @@ $ git send-email --to=sheepdog@lists.wpkg.org --smtp-server=YOURSMTPSERVERHERE -
 ```
 send a patch via file
 ```
-$ git format-patch HEAD~
+$ git format-patch -1
 $ git send-email --to=sheepdog@lists.wpkg.org --smtp-server=YOURSMTPSERVERHERE 0001-your-patch
 ```
 This will send the patch to the list and format it properly for merging into the tree
