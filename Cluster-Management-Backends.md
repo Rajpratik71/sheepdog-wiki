@@ -21,7 +21,8 @@ due to its implementation and design goal for small sized cluster.
 # Zookeeper
 
 Zookeeper runs as a standalone cluster. This means you need to set up zookeeper cluster
-first, then pass the IP:PORT list to sheep start-up option.
+first, then pass the IP:PORT list to sheep start-up option. For most of use cases, zookeeper
+cluster of 3~5 nodes will be good enough to driver hundreds of sheep daemons. 
 
 If you want to add more nodes into sheepdog cluster, you should run
 sheepdog against zookeeper. Some users (eg. at Taobao.com) have been working with
@@ -33,9 +34,9 @@ with object cache enabled.
 To enable zookeeper support (Suppose we have a zookeeper cluster with 3 nodes):
 
 ## Install zookeeper (by source tarball)
-Fetch the newest tarball(>= 3.3.4)
+Fetch the newest stable tarball(3.4.5 as of  Dec. 25, 2012)
 <pre>
-$ wget http://mirror.bjtu.edu.cn/apache/zookeeper/zookeeper-3.3.4/zookeeper-3.3.4.tar.gz
+$ wget http://mirror.bjtu.edu.cn/apache/zookeeper/zookeeper-3.4.5/zookeeper-3.4.5.tar.gz
 </pre>
 
 Install zookeeper C client library(used by sheep)
@@ -47,11 +48,11 @@ $ make
 $ make install
 </pre>
 
-Set configuration(how to configure [zookeeper](http://zookeeper.apache.org/doc/r3.3.3/zookeeperAdmin.html#sc_configuration))
+Set configuration(how to configure [zookeeper](http://zookeeper.apache.org/doc/r3.4.5/zookeeperAdmin.html#sc_configuration))
 <pre>
 $ cd zookeeper-3.3.4/conf
 $ mv zoo_sample.cfg zoo.cfg
-//Setting this to 0 entirely removes the limit on concurrent connections.
+#Setting this to 0 entirely removes the limit on concurrent connections.
 $ echo "maxClientCnxns=0" >> zoo.cfg
 $ mkdir -p /tmp/zookeeper
 </pre> 
@@ -70,20 +71,15 @@ $ make
 $ sudo make install
 </pre>
 
-Start sheepdog with zookeeper
+Start sheepdog
 <pre>
-$ sudo sheep -d /store/29 -z 29 -p 7029 -c zookeeper:127.0.0.1:2181
+$ sudo sheep /store  -c zookeeper:IP1:2181,IP2:2181,IP3:2181 # use default 30s heartbeat or
+$ sudo sheep /store  -c zookeeper:IP1:2181,IP2:2181,IP3:2181,timeout=10s # use 10s heartbeat for small sized cluster like 30 nodes.
 </pre>
 
-**Note**: We should not start multiple sheeps at the same time when use zookeeper driver. In fact, we *just* need to start _the first_ sheep separately, after that, we can start other sheeps *concurrently*. Let's say, you want to start 100 sheeps:
-<pre>
-- start the fist sheep alone, and sleep 2 seconds:
-$ sheep -d /store/0 -z 0 -p 7000 -c zookeeper:localhost:2181
-$ sleep 2
+Lower timeout will reduce the latency to propagate the leave events of failed node, but will consume more network bandwidth. Larger timeout will help reduce the false alarm of failed down in a busy network.
 
-- start other sheeps simultaneously(need not to sleep between them):
-$ for i in {1..99}; do sheep -d /store/$i -z $i -p $((7000 + $i)) -c zookeeper:localhost:2181
-</pre>
+It is recommended to configure dataDir of zookeeper to a  {ramfs, tmpfs, another light use disk} to reduce the chances of operation timeout of zookeeper because of its dumping snapshots onto disk, which might cause sever problems of Sheepdog cluster, such as segfault or inconsistent epoch.
 
 ## Install zookeeper (Debian-based distribution)
 <pre>
@@ -111,16 +107,6 @@ $ sudo make install
 Start the sheep
 <pre>
 $ sheep -c zookeeper:IP1:PORT1,IP2:PORT2,IP3:PORT3 ...other...option...
-</pre>
-
-**Note**: We should not start multiple sheeps at the same time when use zookeeper driver. In fact, we *just* need to start _the first_ sheep separately, after that, we can start other sheeps *concurrently*. Let's say, you want to start 100 sheeps:
-<pre>
-- start the fist sheep alone, and sleep 2 seconds:
-$ sheep -d /store/0 -z 0 -p 7000 -c zookeeper:localhost:2181
-$ sleep 2
-
-- start other sheeps simultaneously(need not to sleep between them):
-$ for i in {1..99}; do sheep -d /store/$i -z $i -p $((7000 + $i)) -c zookeeper:localhost:2181
 </pre>
 
 # Accord 
