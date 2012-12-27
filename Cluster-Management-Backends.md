@@ -41,8 +41,8 @@ $ wget http://mirror.bjtu.edu.cn/apache/zookeeper/zookeeper-3.4.5/zookeeper-3.4.
 
 Install zookeeper C client library(used by sheep)
 <pre>
-$ tar -zxvf zookeeper-3.3.4.tar.gz
-$ cd zookeeper-3.3.4/src/c
+$ tar -zxvf zookeeper-x.x.x.tar.gz
+$ cd zookeeper-x.x.x/src/c
 $ ./configure --prefix=/usr
 $ make
 $ make install
@@ -50,7 +50,7 @@ $ make install
 
 Set configuration(how to configure [zookeeper](http://zookeeper.apache.org/doc/r3.4.5/zookeeperAdmin.html#sc_configuration))
 <pre>
-$ cd zookeeper-3.3.4/conf
+$ cd zookeeper-x.x.x/conf
 $ mv zoo_sample.cfg zoo.cfg
 #Setting this to 0 entirely removes the limit on concurrent connections.
 $ echo "maxClientCnxns=0" >> zoo.cfg
