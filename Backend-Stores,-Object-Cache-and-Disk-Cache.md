@@ -56,9 +56,9 @@ enables writethrough mode.
 Both object cache and disk cache is disabled by default in Sheepdog. '-w' is used for enabling object cache in local node and disk cache's writeback semantics in backend stores. Example of '-w' is like this:
 <pre>
    sheep -w disk  # enable writeback cache semantics of disks
-   sheep -w disk,object:size=50 # enable writeback cache semantics of disks, and enable object cache with 50MB memory
-   sheep -w object:size=50 # enable object cache with 50MB memory
-   sheep -w object:size=50:directio # enable object cache with 50MB memory with O_DIRECT for cached objects
+   sheep -w disk,object:size=50 # enable writeback cache semantics of disks, and enable object cache with 50MB space
+   sheep -w object:size=50 # enable object cache with 50MB space
+   sheep -w object:size=50:directio # enable object cache with 50MB space with O_DIRECT for cached objects
 </pre>
 
 To modify the max object cache size:
@@ -71,12 +71,17 @@ There are some more options to do finer control over how object cache does read/
 
 As default, object cache layer tries to utilize page cache (memory cache) as much as possible, so if you want a more durable cache, you can specify '-w object:directio' option. This means we don't use kernel's page cache to further cache data before it reaching to disk, and thus those data can survive the host OS crash.
 
+For users that want to use a faster disk to accelerate the IO performance with object cache, you can also specify where the object cache directory is located by:
+<pre>
+   sheep -w object:size=200000:dir=/path/to/cache # enable object cache with 200G to /path/to/cache directory
+</pre>
+
 ### Snapshot and Convert
 Since **qemu-img** use 'writeback ' or 'unsafe' mode as its default option, with object cached added into Sheepdog, we should pass explicitly a cache control option to stop it from doing anything wrong.
 
 To convert an image to VDI 'test':
 <pre>
-$ qemu-img convert -t writethrough linux-0.2.img sheepdog:test
+$ qemu-img convert -t directsync linux-0.2.img sheepdog:test
 </pre>
 
 To snapshot an image named 'test' tagged as 'snap':
