@@ -161,12 +161,13 @@ Following list shows that Sheepdog is running on 32 nodes.
 ### Create a VM image
 1. Create a 256 GB virtual machine image of Alice.
 <pre>
-$ qemu-img create sheepdog:Alice 256G
+$ qemu-img create sheepdog:Alice 256G # default as raw image
+$ qemu-img create -f qcow2 sheepdog:Alice 256G # you can enjoy all the qcow2 features
 </pre>
 
 1. You can also convert from existing KVM images to Sheepdog ones.
 <pre>
-$ qemu-img convert -t writethrough ~/amd64.raw sheepdog:Bob
+$ qemu-img convert -t directsync ~/amd64.raw sheepdog:Bob
 </pre>
 
 1. See Sheepdog images by the following command.
