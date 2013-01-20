@@ -14,6 +14,7 @@ Enjoy!
  * [[Journaling]]
  * [[Image Backup]]
  * [[General Protocol Support]]
+ * [[OpenStack]]
 
 ## Release Plan
 
