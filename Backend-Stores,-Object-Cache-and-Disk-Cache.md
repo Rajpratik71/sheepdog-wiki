@@ -87,11 +87,11 @@ pages on demand to serve the read/write requests operated on the pages.
 <pre>
 QEMU 《----》 VM
   ^
-  |                       writeback/readahead pages
-  V                              |
+  |                                   writeback/readahead pages
+  V                                                 |
 POSIX file 《 --- 》 page cache 《 --- 》 disk
-                      |
-        kernel does page wb/ra and reclaim
+                                    |
+          kernel does page wb/ra and reclaim
 </pre>
 Object cache of Sheepdog do the similar things, the difference is that
 we map those requested blocks into objects (which is plain fixed size
@@ -101,10 +101,10 @@ make room to allocate objects for other requests.
 <pre>
 QEMU 《----》VM
   ^
-  |                           push/pull objects
-  V                               |
+  |                                                       push/pull objects
+  V                                                              |
 Sheepdog device 《----》 object cache 《---》 Sheepdog replicated object storage.
-                      |
+                                                  |
                Sheep daemon does object push/pull and reclaim
 </pre>
 
