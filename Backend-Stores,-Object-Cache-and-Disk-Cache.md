@@ -76,6 +76,42 @@ For users that want to use a faster disk to accelerate the IO performance with o
    sheep -w object:size=200000:dir=/path/to/cache # enable object cache with 200G to /path/to/cache directory
 </pre>
 
+### How object cache works
+Let me start with local file as backend of block device of QEMU. It
+basically uses host memory pages to cache blocks of emulated device.
+Kernel internally maps those blocks into pages of file (A.K.A page
+cache) and then we relies on the kernel memory subsystem to do writeback
+of those cached pages. When VM read/write some blocks, kernel allocate
+pages on demand to serve the read/write requests operated on the pages.
+
+<pre>
+QEMU 《----》 VM
+  ^
+  |                       writeback/readahead pages
+  V                              |
+POSIX file 《 --- 》 page cache 《 --- 》 disk
+                      |
+        kernel does page wb/ra and reclaim
+</pre>
+Object cache of Sheepdog do the similar things, the difference is that
+we map those requested blocks into objects (which is plain fixed size
+file on each node) and the sheep daemon play the role of kernel that
+doing writeback of the dirty objects and reclaim of the clean objects to
+make room to allocate objects for other requests.
+<pre>
+QEMU 《----》VM
+  ^
+  |                           push/pull objects
+  V                               |
+Sheepdog device 《----》 object cache 《---》 Sheepdog replicated object storage.
+                      |
+               Sheep daemon does object push/pull and reclaim
+</pre>
+
+Object is implemented as fixed size file on disks, so for object cache,
+those objects are all fixed size files on the node that sheep daemon
+runs and sheep does directio on them. In this sense that we don't
+consume memory, except those objects' metadata(inode & dentry) on the node.
 ### Snapshot and Convert
 Since **qemu-img** use 'writeback ' or 'unsafe' mode as its default option, with object cached added into Sheepdog, we should pass explicitly a cache control option to stop it from doing anything wrong.
 
