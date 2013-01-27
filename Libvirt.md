@@ -27,7 +27,7 @@ $ virsh create sheepdog.xml
 $ vncviewer localhost
 ```
 
-### Manage sheepdog with libvirt
+### Manage sheepdog storage with libvirt
 1. make sure that sheepdog is running
 2. create a pool for sheepdog
 ```
