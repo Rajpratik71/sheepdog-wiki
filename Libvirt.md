@@ -39,7 +39,7 @@ $ cat > pool.xml
           <host name='localhost' port='7000'/>
         </source>
       </pool>
-$ virsh pool-create pool.xml
+$ virsh pool-create mysheeppool pool.xml
 ```
 3. create a volume
 ```
