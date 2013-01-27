@@ -15,6 +15,7 @@ Enjoy!
  * [[Image Backup]]
  * [[General Protocol Support]]
  * [[OpenStack]]
+ * [[libvirt]]
 
 ## Release Plan
 
