@@ -1,4 +1,4 @@
-# Quick start guide to use sheepdog images from libvirt
+## Quick start guide to use sheepdog images from libvirt
 
 1. prepare a file containing an XML domain description
 ```
