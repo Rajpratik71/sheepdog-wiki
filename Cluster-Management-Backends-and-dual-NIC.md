@@ -109,9 +109,17 @@ Start the sheep
 $ sheep -c zookeeper:IP1:PORT1,IP2:PORT2,IP3:PORT3 ...other...option...
 </pre>
 
-# Accord 
+# Dual NIC
 
-For a cluster more than 1000 nodes, I think Accord would come up to our
-rescue, but it is currently in a unstable development state. When the
-sheepdog scales up to 1000 nodes reliably, we might go to look at Accord
-and refine it to be a working state.
+We can choose a dedicated NIC for IO requests, which we call IO NIC, and then cluster management software can use a dedicated NIC, which we call it non-IO NIC,  to pass messages such as node heartbeat to detect if a node is alive.
+
+We also take advantage of redundant NICs. That is, when IO NIC is reconfigured,  we can also fallback on the non-io connection when IO NIC is down. But this is not true for non-IO NIC. When non-IO NIC is down, our cluster is brain split.
+
+Even we support cluster with heterogeneous NIC configuration but the main purpose is to
+allow separation of IO requests and cluster membership heartbeat messages to get
+better reliability and scalability if secondary NIC is provided on all the nodes.
+
+Usage:
+<pre>
+$ sheep -i host=yyy{,port=xxx} ... # this add a dedicated io nic
+</pre>
