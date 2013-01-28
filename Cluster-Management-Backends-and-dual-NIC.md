@@ -113,7 +113,7 @@ $ sheep -c zookeeper:IP1:PORT1,IP2:PORT2,IP3:PORT3 ...other...option...
 
 We can choose a dedicated NIC for IO requests, which we call IO NIC, and then cluster management software can use a dedicated NIC, which we call it non-IO NIC,  to pass messages such as node heartbeat to detect if a node is alive.
 
-We also take advantage of redundant NICs. That is, when IO NIC is reconfigured,  we can also fallback on the non-io connection when IO NIC is down. But this is not true for non-IO NIC. When non-IO NIC is down, our cluster is brain split.
+We also take advantage of redundant NICs. That is, when IO NIC is configured,  we can also fallback on the non-io connection to handle IO requests when IO NIC is down. But this is not true for non-IO NIC. When non-IO NIC is down, our cluster is brain split.
 
 Even we support cluster with heterogeneous NIC configuration but the main purpose is to
 allow separation of IO requests and cluster membership heartbeat messages to get
