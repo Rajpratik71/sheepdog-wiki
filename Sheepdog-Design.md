@@ -26,7 +26,7 @@ storage (something like simple key-value interface) to Sheepdog client
 Sheepdog component.
 
 * Object storage  
-Sheepdog is not general file system.  The Sheepdog daemons create a
+Sheepdog is not a general file system.  The Sheepdog daemons create a
 distributed object storage system for QEMU (The daemon name of
 Sheepdog is ''sheep'').  We can store ''object'' to the storage
 system.  A object is flexible-sized data and has a globally unique
