@@ -19,10 +19,10 @@ Enjoy!
 
 ## Release Plan
 
- * [0.5.5](https://github.com/collie/sheepdog/tarball/v0.5.5) is the latest version:
-   - journaling supprot
-   - one fatal deadlock during node change events fixed.
-   - many bug fixes and cleanups
+ * [0.5.6](https://github.com/collie/sheepdog/tarball/v0.5.6) is the latest stable version:
+ - Add dual NIC support, which can further improve the scalability and reliability in networking aspect.
+ - Rework the object cache reclaim logic, which fixes fatal defects and stabilize it a lot.
+ - Rewrite the zookeeper driver completely towards a more stable state.
 
    See the [[changelog]] for more details.
 
