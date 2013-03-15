@@ -47,6 +47,13 @@
   - one fatal deadlock during node change events fixed.
   - many bug fixes and cleanups
 
+* [0.5.6] (https://github.com/collie/sheepdog/tarball/v0.5.6) :
+  - Add dual NIC support, which can further improve the scalability and
+reliability in networking aspect.
+  - Rework the object cache reclaim logic, which fixes fatal defects and
+stabilize it a lot.
+  - Rewrite the zookeeper driver completely towards a more stable state.
+
 ## v0.5.0
 
 - manual object recovery
@@ -151,4 +158,3 @@
 
   There are so many bug fixes from 0.3.0.  See commit logs for more
   details.
-
