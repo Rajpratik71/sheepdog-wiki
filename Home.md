@@ -13,6 +13,7 @@ Enjoy!
  * [[Sheepfs]]
  * [[Journaling]]
  * [[Image Backup]]
+ * [[Multi disk on Single Node Support]]
  * [[General Protocol Support]]
  * [[OpenStack]]
  * [[libvirt]]
