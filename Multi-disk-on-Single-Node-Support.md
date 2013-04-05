@@ -46,4 +46,4 @@ MD recovery share the same logic of node change events, so the next event(disk o
  $ collie cluster recover enable # enable the automatic recovery  
 ```
  
-  In this way, you can minimize the unnecessary objects ping-pong between disks or nodes.
+  In this way, you can minimize the unnecessary objects ping-pong between disks or nodes
