@@ -6,7 +6,7 @@ The basic idea of this multi-disk(MD) is implement RAID-0 like mechanism that di
 
 The MD module use a private consistent hash ring per sheep for object distributing, which allow MD layer completely transparent to sheep node managent. This means that hot plug/unplug the disk (include faulty disks) to the local sheep won't cause unnecessary object movements between the nodes. 
 
-MD can automatically handle all the cases you can think of, serve VM IO requests while handling disk failures(or new disk added), several disks fail at the same time, disk failure while plugging new disk, disk failure in tandem with node failure , etc. All MD handling is transparent to VM.  When all the local disks are broken, the local sheep will act as gateway-only node like before.
+MD can automatically handle all the cases you can think of, support different sized disks, serve VM IO requests while handling disk failures(or new disk added), several disks fail at the same time, disk failure while plugging new disk, disk failure in tandem with node failure , etc. All MD handling is transparent to VM.  When all the local disks are broken, the local sheep will act as gateway-only node like before.
 
 ## Enable MD
  ```
