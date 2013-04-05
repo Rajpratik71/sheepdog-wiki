@@ -32,7 +32,7 @@ Three command added:
  $ collie node md unplug path1{,path2,...} # unplug disk(s) into node
 ```
 
-## How MD interact with node change events.
+## How MD interact with node change events
 
 MD recovery share the same logic of node change events, so the next event(disk or node) will supersede the previous one and multiple events will fold into single event to minimize the objects recovery.
 
