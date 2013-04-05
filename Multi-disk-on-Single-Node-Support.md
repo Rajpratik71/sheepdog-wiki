@@ -28,8 +28,8 @@ You can (un)plug one disk or group of disks in to the sheep on the fly by collie
 Three command added:
  $ collie node md info # show information about md of this node
  $ collie node md info --all # show information about md of all nodes
- $ collie node md plug path1,{path2,...} # plug disk(s) into node
- $ collie node md unplug path1,{path2,...} # unplug disk(s) into node
+ $ collie node md plug path1{,path2,...} # plug disk(s) into node
+ $ collie node md unplug path1{,path2,...} # unplug disk(s) into node
 ```
 
 ## How MD interact with node change events.
