@@ -61,6 +61,13 @@ Both object cache and disk cache is disabled by default in Sheepdog. '-w' is use
    sheep -w object:size=50:directio # enable object cache with 50MB space with O_DIRECT for cached objects
 </pre>
 
+Disk cache was removed after 0.5.6. The new command line is incompatible to above old commands. So for release after 0.5.6, the new commands is:
+<pre>
+   sheep -w size=500000 # enable object cache with 500G space
+   sheep -w size=500000, directio # enable object cache with 500G space with O_DIRECT for cached objects
+   sheep -w size=200000,dir=/path/to/cache # enable object cache with 200G to /path/to/cache directory
+</pre>
+
 To modify the max object cache size:
 
 <pre>$ collie node cache 300</pre>
