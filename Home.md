@@ -17,6 +17,7 @@ Enjoy!
  * [[General Protocol Support]]
  * [[OpenStack]]
  * [[libvirt]]
+ * [[Log formatter]]
 
 ## Release Plan
 
