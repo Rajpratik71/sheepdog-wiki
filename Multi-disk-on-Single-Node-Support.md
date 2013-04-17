@@ -39,7 +39,7 @@ If you want to separate meta-store and object-store as the recommended way, you 
 1. $ collie cluster shutdown
 2. $ mkdir /object-store1
 3. $ mv /store1/obj/* /object-store1
-4. $ sheep /store,/object-store1
+4. $ sheep /store1,/object-store1
 5. repeat {2,3,4} on node2
 </pre>
 
