@@ -18,6 +18,12 @@ $ sheep /path/to/meta-store,/path/to/disk1{,/path/to/disk2,...}
 
 Meta-store is a single point of failure as our old /store directory for this sheep daemon, we store epoch file and config file in meta-store, so it only needs several Kilo-bytes of storage.  It is recommended to put mete-store to the partition where OS lives.
 
+You can actually put meta-store and object-store in the same path (This is just intended for easy upgrading) if you only specify one path:
+
+ ```
+$ sheep /path/to/store # both meta-store and object-store are located in /path/to/store as old sheep
+ ```
+
 ## Upgrading from old sheep
 The easiest way to upgrade sheep to the new sheep with MD feature is 
 
