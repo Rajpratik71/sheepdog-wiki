@@ -9,14 +9,33 @@ The MD module use a private consistent hash ring per sheep for object distributi
 MD can automatically handle all the cases you can think of, support different sized disks, serve VM IO requests while handling disk failures(or new disk added), several disks fail at the same time, disk failure while plugging new disk, disk failure in tandem with node failure , etc. All MD handling is transparent to VM.  When all the local disks are broken, the local sheep will act as gateway-only node like before.
 
 ## Enable MD
+
+MD is built-in function of sheep. You don't need special options to enable it. The recommended way to start sheep with multiple disk is
+
  ```
 $ sheep /path/to/meta-store,/path/to/disk1{,/path/to/disk2,...}
  ```
 
-Meta-store is a single point of failure as our old /store directory for this sheep daemon, we store epoch file and config file in meta-store, so it only needs several Kilo-bytes of storage.  It is recommended to put mete-store to the partition where OS lives. NOTE: You have to set at least one disk to enable MD, otherwise MD support is disabled (You can't hot-plug in disks later).  So
+Meta-store is a single point of failure as our old /store directory for this sheep daemon, we store epoch file and config file in meta-store, so it only needs several Kilo-bytes of storage.  It is recommended to put mete-store to the partition where OS lives.
+
+## Upgrading from old sheep
+The easiest way to upgrade sheep to the new sheep with MD feature is 
+
 ```
-$ sheep /path/to/store # works as before, put objects and meta data in the same directory with MD disabled.
+$ collie cluster shutdown
+# upgrade the sheep binary 
+$ sheep /path/to/store # works as before, put objects and meta data in the same directory.
 ```
+
+If you want to separate meta-store and object-store as the recommended way, you have to manually doing some objects movement as following steps (suppose we have two sheep started as 'sheep /store1', 'sheep /store2':
+
+<pre>
+1. $ collie cluster shutdown
+2. $ mkdir /object-store1
+3. $ mv /store1/obj/* /object-store1
+4. $ sheep /store,/object-store1
+5. repeat {2,3,4} on node2
+</pre>
 
 ## Hot-plug and Hot-unplug
 
