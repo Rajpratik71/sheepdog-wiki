@@ -24,6 +24,12 @@ You can actually put meta-store and object-store in the same path (This is just 
 $ sheep /path/to/store # both meta-store and object-store are located in /path/to/store as old sheep
  ```
 
+This actually works the same as 
+
+```
+$ sheep /path/to/store,/path/to/store/obj 
+ ```
+
 ## Upgrading from old sheep
 The easiest way to upgrade sheep to the new sheep with MD feature is 
 
