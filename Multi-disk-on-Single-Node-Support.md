@@ -28,7 +28,7 @@ This actually works the same as
 
 ```
 $ sheep /path/to/store,/path/to/store/obj 
- ```
+```
 
 ## Upgrading from old sheep
 The easiest way to upgrade sheep to the new sheep with MD feature is 
