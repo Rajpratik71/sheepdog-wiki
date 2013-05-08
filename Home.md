@@ -14,6 +14,7 @@ Enjoy!
  * [[Journaling]]
  * [[Image Backup]]
  * [[Multi disk on Single Node Support]]
+ * [[Discard Support]]
  * [[General Protocol Support]]
  * [[OpenStack]]
  * [[libvirt]]
