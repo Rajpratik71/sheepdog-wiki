@@ -7,7 +7,8 @@ Even though Sheepdog provides sparse volumes to the VM, the discard can be also 
 
 ## Enable discard for the VM
 
-Requirements: QEMU version >= 1.5, Kernel version of Guest: vanilla kernel >= 3.4 or RHEL-based kernel >= 6.3, Sheepdog latest from git repo
+Requirements: QEMU version >= 1.5, Kernel version of Guest: vanilla kernel >= 3.4 or RHEL-based kernel >= 6.3, Sheepdog latest from git repo.
+
 For QEMU device, all kinds of IDE and scsi (include virtio-scsi) support discard operation, note virtio-blk isn't supported. Discard support is off as default. You need to explicitly enable it at start-up command. For e.g,
 
 <pre>
