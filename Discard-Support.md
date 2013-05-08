@@ -3,7 +3,7 @@ Discard command allows an operating system to inform underlying storage drive wh
 
 Sheepdog support the discard command in a way that objects as the backing storage for discarded space of one particular volume  will be removed from host file system.   The discard command issuer in the VM is file system like EXT4 or XFS which support discard operation. The deletion of one particular file will *transparently* trigger a discard request to the underlying storage system to discard the space that deleted file occupies. Command like mkfs will actually issue a discard request that asks to release the whole storage space.
 
-Even though Sheepdog provides sparse volumes to the VM, the discard can be also useful for the case that, the objects that are allocated for the volume at some time can be de-allocated later if Sheepdog is informed later that those objects are discarded by the VM.
+Even though Sheepdog provides sparse volumes to the VM, the discard can be also useful for the case that, the objects that are allocated for the volume at some time can be de-allocated later if Sheepdog is informed that those objects are discarded by the VM.
 
 ## Enable discard for the VM
 
