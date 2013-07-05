@@ -22,22 +22,16 @@ Enjoy!
 
 ## Release Plan
 
- * [0.5.6](https://github.com/collie/sheepdog/tarball/v0.5.6) is the latest stable version:
-   - Add dual NIC support, which can further improve the scalability and reliability in networking aspect.
-   - Rework the object cache reclaim logic, which fixes fatal defects and stabilize it a lot.
-   - Rewrite the zookeeper driver completely towards a more stable state.
+ * [0.6.0](https://github.com/collie/sheepdog/tarball/v0.6.0) is the latest stable version:
+   - Add MD support
+   - Add journaling support
+   - Move farm from sheep to collie.
+   - Use hash check for vdi check and recovery
+   - Shepherd
 
    See the [[changelog]] for more details.
 
- * 0.6.0 is planned for the end of november 2012, with:
-   - journaling to boost performance
-   - sheepkeeper: yet another cluster manager for large-scale cluster
-   - object reclaim based on reference counting
-   - flexible options to control backend cache
-   - variable object size
-
-
- * 1.0.0 is expected for the end of the year
+ * 0.7.0 is planned for the end of 2013.8.15, with:
  
 ## Developer Guide
  * [[Sheepdog Design]]
