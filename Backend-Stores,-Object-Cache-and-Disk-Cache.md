@@ -26,7 +26,7 @@ Sheepdog user from Taobao.com uses Farm as its default store since its inception
 
 ### Cluster snapshot
 
-## Object cache and disk cache
+## Object cache and disk cache [ disk cache was removed after 0.5.6 ]
 Generally speaking, we support _writeback_, which caches write update for a period of time and flushes dirty bits by a 'sync' request from Guest OS, routed by QEMU and _writethrough_, which means we don't need care about cache and backend consistency. In writethrough mode, in fact, QEMU won't issue 'sync' request at all.
 
 There are currently two cache supported by Sheepdog, one is object cache and another is disk cache.  They are operating in different layers, object cache can be thought as local cache while disk cache control how we write to the every host disk. If disk cache is enabled, sheeps open() their object without O_DSYNC flag at backend, this means we take advantage of write cache built in the hard drive.
