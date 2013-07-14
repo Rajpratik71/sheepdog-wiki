@@ -19,6 +19,7 @@ Enjoy!
  * [[OpenStack]]
  * [[libvirt]]
  * [[Log formatter]]
+ * [[stable branches]]
 
 ## Release Plan
 
