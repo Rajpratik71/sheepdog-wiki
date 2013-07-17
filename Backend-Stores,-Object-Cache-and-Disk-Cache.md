@@ -16,15 +16,24 @@ Let's put it all together from the perspective of the request from VM (with obje
 IO req (from VM) <--> object cache on local node <--> gateway req <--> targeted sheep backend store
 
 ## Farm
-Currently Sheepdog supports two kinds of backend store, one is Simple store (removed) and the other called Farm (as of now, default).
+In the old sheep (before 0.6.0), farm referred to one of the backend store implementations. Now it refers to the mechanism collie uses to do cluster wide snapshot backup.
 
-Simple store, as the name suggests, it simply translate requests into system calls to store data into files backed by local file systems.
+### Cluster backup
+We can use collie command to save all the snapshots of the running cluster into a single directory (currently directory in the local file system but other protocols are planned). Replicated snapshots will only store one copy in the backup directory so the suggested storage for backup data are RAID disk arrays or other dedicated backup storage.
 
-Farm is yet another backend store with much more code lines, which is supposed to provide advanced features such as cluster-wide snapshot, faster recovery, better stale object handling, data de-duplication(not implemented yet) and so on, and tries to keep comparable IO performance as Simple store.
+Data of the snapshot volume and  memory state from live snapshot are both backed up.
 
-Sheepdog user from Taobao.com uses Farm as its default store since its inception and would continue to tune it into better performance and add more features. You can also request any feature you think of proper in the mailing list.
+Backup data are automatically
+*  deduplicated while storing into medium (from test, we notice upto 50% dedup ratio)
+*  self-validated of data while reading from medium
+*  incrementally backed up
 
-### Cluster snapshot
+Usage
+<pre>
+$ collie cluster snapshot save your-tag /path/to/backup # save the backup and tag it
+$ collie cluster snapshot list /path/tobackup # list the backups with tag names
+$ collie cluster snapshot load your-tag /path/to/backup # restore the tagged backup
+</pre>
 
 ## Object cache and disk cache [ disk cache was removed after 0.5.6 ]
 Generally speaking, we support _writeback_, which caches write update for a period of time and flushes dirty bits by a 'sync' request from Guest OS, routed by QEMU and _writethrough_, which means we don't need care about cache and backend consistency. In writethrough mode, in fact, QEMU won't issue 'sync' request at all.
