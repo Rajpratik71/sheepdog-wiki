@@ -23,6 +23,8 @@ Enjoy!
 
 ## Release Plan
 
+ * [[release schedule]]
+
  * [0.6.0](https://github.com/collie/sheepdog/tarball/v0.6.0) is the latest stable version:
    - Add MD support
    - Add journaling support
