@@ -14,3 +14,5 @@ $ cd devstack; CINDER_DRIVER=sheepdog ./stack.sh
 </pre>
 
 See also http://devstack.org/
+
+As of now (Aug 7, 2013), Openstack's Glance and Cinder can make use of sheepdog cluster as the backend storage.
