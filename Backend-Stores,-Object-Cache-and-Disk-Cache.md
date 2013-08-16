@@ -24,8 +24,8 @@ We can use collie command to save all the snapshots of the running cluster into 
 Data of the snapshot volume and  memory state from live snapshot are both backed up.
 
 Backup data are automatically
-*  deduplicated while storing into medium (from test, we notice upto 50% dedup ratio)
-*  self-validated of data while reading from medium
+*  deduplicated while storing into medium (from test, we notice up-to 50% dedup ratio)
+*  self-validated of data while reading from backup medium
 *  incrementally backed up
 
 Usage
