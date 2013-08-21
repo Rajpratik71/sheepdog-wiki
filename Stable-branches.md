@@ -6,6 +6,6 @@ Because the release cycle of sheepdog is corresponding to the cycle of QEMU, eac
 These stable branches of sheepdog will be maintained until corresponding stable branches of QEMU become obsolete.
 
 # Maintenance policy of the stable branches
-A maintainer of the stable branches sends backported patches to sheepdog@lists.wpkg.org. The subject of the emails will contain a prefix like [PATCH stable-0.6].
+A maintainer of the stable branches sends backported patches to sheepdog@lists.wpkg.org. The subject of the emails will contain a prefix like [PATCH stable-x.y].
 - If the patches are bugfixes, they will be pushed to the branches immediately.
 - If the patches are for implementing new features, they will not be pushed to the branches directly. If no one disagrees with backporting them in 7 days, they will be pushed to the branches officially. Basically, backporting features should be avoided.
