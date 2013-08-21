@@ -60,3 +60,7 @@ Then sheepfs will be automatically compiled in. The binary will be located in sh
    When the connected sheep daemon crashes, we can re-connect to another live sheep deamon on the fly:
 
     $ echo ip:port > sheepfs_dir/config/sheep_info
+
+   When you are done with sheepfs, you can umount the sheepfs directory
+
+    $ umount sheepfs_dir
