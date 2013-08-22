@@ -17,7 +17,7 @@ $ qemu-system-x86_64 -drive if=ide,file=sheepdog:data,cache=writeback,discard=on
 </pre>
 
 <pre>
-# for viriot-scsi device backed by sheepdog volume named 'data'
+# for virtio-scsi device backed by sheepdog volume named 'data'
 $ qemu-system-x86_64 -drive if=none,id=disk,file=sheepdog:data,cache=writeback,discard=on -device scsi-hd,drive=disk
 </pre>
 
