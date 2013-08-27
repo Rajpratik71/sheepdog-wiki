@@ -9,3 +9,16 @@ These stable branches of sheepdog will be maintained until corresponding stable 
 A maintainer of the stable branches sends backported patches to sheepdog@lists.wpkg.org. The subject of the emails will contain a prefix like [PATCH stable-x.y].
 - If the patches are bugfixes, they will be pushed to the branches immediately.
 - If the patches are for implementing new features, they will not be pushed to the branches directly. If no one disagrees with backporting them in 7 days, they will be pushed to the branches officially. Basically, backporting features should be avoided.
+
+# Release plans of stable-0.6 in the near future
+
+| Date       | Event                                                                           |
+|:-----------|:--------------------------------------------------------------------------------|
+| 2013-08-29 | Apply [the bugfix of recovery progress] (https://github.com/mitake/sheepdog/tree/stable-0.6-for-2013-08-29) and tag v0.6.2.       |
+| 2013-09-06 | Tag v0.6.3       |
+
+# Release plans of stable-0.7 in the near future
+
+| Date       | Event                                                                           |
+|:-----------|:--------------------------------------------------------------------------------|
+| 2013-09-06 | Tag v0.7.3       |
