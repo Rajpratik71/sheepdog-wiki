@@ -7,7 +7,7 @@ These stable branches of sheepdog will be maintained until corresponding stable 
 
 # Maintenance policy of the stable branches
 ## Basic maintenance policy
-A maintainer of the stable branches sends backported patches to sheepdog@lists.wpkg.org and sheepdog-users@lists.wpkg.org. The subject of the emails will contain a prefix like [PATCH stable-x.y].
+A maintainer of the stable branches sends backported patches to sheepdog@lists.wpkg.org and sheepdog-users@lists.wpkg.org (only a cover letter will be sent to the users list). The subject of the emails will contain a prefix like [PATCH stable-x.y].
 - If the patches are bugfixes, they will be pushed to the branches immediately.
 - If the patches are for implementing new features, they will not be pushed to the branches directly. If no one disagrees with backporting them in 7 days, they will be pushed to the branches officially. Basically, backporting features should be avoided.
 
