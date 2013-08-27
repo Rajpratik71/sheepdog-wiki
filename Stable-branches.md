@@ -16,15 +16,15 @@ When emergent bugfixes are merged to the master branch, emergent releases of sta
 
 In such a case, 2 days are allocated for reviewing window. If no one complains about the emergent releases in the window, tags for the releases will be created.
 
-# Release plans of stable-0.6 in the near future
+# Release plans in the near future
 
+## stable-0.6 based releases
 | Date       | Event                                                                           |
 |:-----------|:--------------------------------------------------------------------------------|
 | 2013-08-29 | Apply [the bugfix of recovery progress] (https://github.com/mitake/sheepdog/tree/stable-0.6-for-2013-08-29) and tag v0.6.2.       |
 | 2013-09-06 | Tag v0.6.3       |
 
-# Release plans of stable-0.7 in the near future
-
+## stable-0.7 based releases
 | Date       | Event                                                                           |
 |:-----------|:--------------------------------------------------------------------------------|
 | 2013-09-06 | Tag v0.7.3       |
