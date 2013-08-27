@@ -5,7 +5,13 @@ Each major release has its stable branch. e.g. stable branch of 0.6 is [stable-0
 Because the release cycle of sheepdog is corresponding to the cycle of QEMU, each stable version has its corresponding one. e.g. stable-0.6 of sheepdog corresponds to stable-1.5 of QEMU.
 These stable branches of sheepdog will be maintained until corresponding stable branches of QEMU become obsolete.
 
-# Maintenance policy of the stable branches
+# Obtain stable release based on the stable branches
+| Branch | Latest Release (tag)      | Corresponding stable version of QEMU |
+|:-----------|:-----------|:-----------|
+| [stable-0.6] (https://github.com/sheepdog/sheepdog/tree/stable-0.6) | [v0.6.1] (https://github.com/sheepdog/sheepdog/releases/tag/v0.6.1) | [stable-1.5] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.5) |
+| [stable-0.7] (https://github.com/sheepdog/sheepdog/tree/stable-0.7) | [v0.7.2] (https://github.com/sheepdog/sheepdog/releases/tag/v0.7.2) | stable-1.6 (not created yet) |
+
+# Maintenance policy of the branches
 ## Basic maintenance policy
 A maintainer of the stable branches sends backported patches to sheepdog@lists.wpkg.org and sheepdog-users@lists.wpkg.org (only a cover letter will be sent to the users list). The subject of the emails will contain a prefix like [PATCH stable-x.y].
 - If the patches are bugfixes, they will be pushed to the branches immediately.
