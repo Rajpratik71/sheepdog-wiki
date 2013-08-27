@@ -12,7 +12,9 @@ A maintainer of the stable branches sends backported patches to sheepdog@lists.w
 - If the patches are for implementing new features, they will not be pushed to the branches directly. If no one disagrees with backporting them in 7 days, they will be pushed to the branches officially. Basically, backporting features should be avoided.
 
 ## Emergent bug fixes
-- When emergent bugfixes are merged to the master branch, emergent releases of stable branches can be created. In such a case, 2 days are allocated for reviewing window. If no one complains about the emergent releases in the window, tags for the releases will be created.
+When emergent bugfixes are merged to the master branch, emergent releases of stable branches can be created. 
+
+In such a case, 2 days are allocated for reviewing window. If no one complains about the emergent releases in the window, tags for the releases will be created.
 
 # Release plans of stable-0.6 in the near future
 
