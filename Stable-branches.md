@@ -8,7 +8,7 @@ These stable branches of sheepdog will be maintained until corresponding stable 
 # Obtain stable release based on the stable branches
 | Branch | Latest Release (tag)      | Corresponding stable version of QEMU |
 |:-----------|:-----------|:-----------|
-| [stable-0.6] (https://github.com/sheepdog/sheepdog/tree/stable-0.6) | [v0.6.2] (https://github.com/sheepdog/sheepdog/releases/tag/v0.6.2) | [stable-1.5] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.5) |
+| [stable-0.6] (https://github.com/sheepdog/sheepdog/tree/stable-0.6) | [v0.6.2-rc0] (https://github.com/sheepdog/sheepdog/releases/tag/v0.6.2-rc0) | [stable-1.5] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.5) |
 | [stable-0.7] (https://github.com/sheepdog/sheepdog/tree/stable-0.7) | [v0.7.2] (https://github.com/sheepdog/sheepdog/releases/tag/v0.7.2) | stable-1.6 (not created yet) |
 
 # Maintenance policy of the branches
@@ -27,7 +27,7 @@ In such a case, 2 days are allocated for reviewing window. If no one complains a
 ## stable-0.6 based releases
 | Date       | Event                                                                           |
 |:-----------|:--------------------------------------------------------------------------------|
-| ~~2013-08-29~~ | Apply [the bugfix of recovery progress] (https://github.com/mitake/sheepdog/tree/stable-0.6-for-2013-08-29) and tag v0.6.2.       |
+| 2013-08-29 | Apply [the bugfix of recovery progress] (https://github.com/mitake/sheepdog/tree/stable-0.6-for-2013-08-29) and tag v0.6.2.       |
 | 2013-09-06 | Tag v0.6.3       |
 
 ## stable-0.7 based releases
