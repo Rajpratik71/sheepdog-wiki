@@ -33,4 +33,5 @@ In such a case, 2 days are allocated for reviewing window. If no one complains a
 ## stable-0.7 based releases
 | Date       | Event                                                                           |
 |:-----------|:--------------------------------------------------------------------------------|
-| 2013-09-06 | Tag v0.7.3       |
+| ~~2013-09-06~~ | Tag v0.7.3       |
+| 2013-09-20 | Tag v0.7.4       |
