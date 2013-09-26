@@ -34,4 +34,4 @@ In such a case, 2 days are allocated for reviewing window. If no one complains a
 | Date       | Event                                                                           |
 |:-----------|:--------------------------------------------------------------------------------|
 | ~~2013-09-06~~ | Tag v0.7.3       |
-| 2013-09-20 | Tag v0.7.4       |
+| 2013-10-04 | Tag v0.7.4-rc0       |
