@@ -25,16 +25,10 @@ Enjoy!
 
  * [[release schedule]]
 
- * [0.6.0](https://github.com/collie/sheepdog/tarball/v0.6.0) is the latest stable version:
-   - Add MD support
-   - Add journaling support
-   - Move farm from sheep to collie.
-   - Use hash check for vdi check and recovery
-   - Shepherd
-
+ * [0.7.3](https://github.com/collie/sheepdog/tarball/v0.7.3) is the latest stable version:
    See the [[changelog]] for more details.
 
- * 0.7.0 is planned for the end of 2013.8.15, with:
+ * 0.8.0 is planned for the end of 2013.11.15, with:
  
 ## Developer Guide
  * [[Sheepdog Design]]
