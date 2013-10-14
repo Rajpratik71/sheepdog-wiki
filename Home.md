@@ -29,7 +29,10 @@ Enjoy!
    See the [[changelog]] for more details.
 
  * 0.8.0 is planned for the end of 2013.11.15, with:
- 
+   - erasure code support
+   - MD support unlimited disks and max node number bump to 6k+
+   - basic stats added
+   - toward better hash performance
 ## Developer Guide
  * [[Sheepdog Design]]
  * [[Submit a Patch]]
