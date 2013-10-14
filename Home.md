@@ -34,6 +34,7 @@ Enjoy!
    - MD support unlimited disks and max node number bump to 6k+
    - basic stats added
    - toward better hash performance
+
 ## Developer Guide
  * [[Sheepdog Design]]
  * [[Submit a Patch]]
