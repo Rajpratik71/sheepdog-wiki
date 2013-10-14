@@ -20,6 +20,7 @@ Enjoy!
  * [[libvirt]]
  * [[Log formatter]]
  * [[stable branches]]
+ * [[Make package on your own]]
 
 ## Release Plan
 
