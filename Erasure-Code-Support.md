@@ -21,7 +21,7 @@
     $ dog vdi create -c 3 test 10G # 2x redundancy and can tolerate 2 nodes failure at the same time
 
 # Characteristics
-  Erasure coding is seamlessly functional with all other features such as snapshot/clone/cluster-wide/Multi-disk/auto-healing e.c with following characteristics:
+  Erasure coding is seamlessly functional with all other features such as snapshot/clone/cluster-wide snapshot/multi-disk/auto-healing e.c with following characteristics:
   
   1. Data is erasure coded automatically while being written to sheepdog storage, no extra operations.
   2. Support random read/write, in-place-update, misaligned read/write
