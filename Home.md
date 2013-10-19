@@ -1,6 +1,6 @@
 # Sheepdog wiki
 
-Sheepdog is a distributed storage system for QEMU. It provides highly available block level storage volumes that can be attached to QEMU-based virtual machines. Sheepdog scales to several hundreds nodes, and supports advanced volume management features such as snapshot, cloning, and thin provisioning. Stuff like volumes, snapshots, QEMU's vm-state (from live snapshot), even ISO files can be stored in the Sheepdog cluster.
+Sheepdog is a distributed storage system for QEMU and RESTful services. It provides highly available block level storage volumes that can be attached to QEMU-based virtual machines. Sheepdog scales to several hundreds nodes, and supports advanced volume management features such as snapshot, cloning, and thin provisioning. Stuff like volumes, snapshots, QEMU's vm-state (from live snapshot), even ISO files can be stored in the Sheepdog cluster.
 
 Enjoy!
 
