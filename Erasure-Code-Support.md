@@ -8,9 +8,10 @@
   
     $ dog vdi create -c x:y vdi size # Create a erasure coded VDI
  
-  X represent number of data strips, must be one of {2,4,8,16} while Y represents number of parity strips, can be any number between 1 and 15 inclusive, with the condition x > y. For example, you can
+  X represent number of data strips, must be one of {2,4,8,16} while Y represents number of parity strips, can be any number between 1 and 15 inclusive. For example, you can
 
     $ dog vdi create -c 2:1 test 10G # 0.5 redundancy and can tolerate 1 node failure at the same time
+    $ dog vdi create -c 2:3 test 10G # 1.5 redundancy and can tolerate 3 node failure at the same time
     $ dog vdi create -c 4:2 test 10G # 0.5 redundancy and can tolerate 2 nodes failure at the same time
     $ dog vdi create -c 8:3 test 10G # 0.375 redundancy and can tolerate 3 nodes failure at the same time
     $ dog vdi create -c 16:4 test 10G # 0.25 redundancy and can tolerate 4 nodes failure at the same time
