@@ -21,6 +21,7 @@ There is no special procedures in this step.
 $ dog vdi create tgt0 100G
 </pre>
 
+Of course you can use existing VDIs as iSCSI logical units.
 
 ### 3. Setup iSCSI target provided by tgt
 
