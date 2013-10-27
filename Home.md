@@ -16,7 +16,7 @@ Enjoy!
  * [[Multi disk on Single Node Support]]
  * [[Erasure Code Support]]
  * [[Discard Support]]
- * [[General-protocol-support-(iSCSI-and-NBD)]]
+ * [[General protocol support (iSCSI and NBD)]]
  * [[OpenStack]]
  * [[libvirt]]
  * [[Log formatter]]
