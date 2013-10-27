@@ -1,4 +1,3 @@
-
 ## iSCSI
 
 (If you are not familiar with iSCSI terms like target, initiator, or session, the page on wikipedia: http://en.wikipedia.org/wiki/ISCSI would be helpful)
@@ -69,7 +68,7 @@ Next, we need to let iscsid discover and login to the target we've already creat
 # iscsiadm -m node --targetname iqn.2013-10.org.sheepdog-project --portal 127.0.0.1:3260 --login
 </pre>
 
-Now your system can use the speepdog VDIs like ordinal HDDs.
+New device files, e.g. /dev/sdb, will be created on your system after login completion. Now your system can use the speepdog VDIs like ordinal HDDs.
 
 ## NBD
 1. Create a Sheepdog image
