@@ -1,7 +1,5 @@
 ## iSCSI
 
-(If you are not familiar with iSCSI terms like target, initiator, or session, the page on wikipedia: http://en.wikipedia.org/wiki/ISCSI would be helpful)
-
 iSCSI support of sheepdog is provided by tgt, Linux SCSI target framework ( https://github.com/fujita/tgt ). If you want to attach VDIs of sheepdog via iSCSI, you need to install tgt.
 
 ### 1. Install and launch tgt
