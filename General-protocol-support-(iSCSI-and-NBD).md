@@ -69,6 +69,9 @@ Next, we need to let iscsid discover and login to the target we've already creat
 
 New device files, e.g. /dev/sdb, will be created on your system after login completion. Now your system can use the speepdog VDIs like ordinal HDDs.
 
+### ToDo
+Currently, iSCSI multipath is not supported by sheepdog. It will be implemented in v0.9.0.
+
 ## NBD
 1. Create a Sheepdog image
 <pre>
