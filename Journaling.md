@@ -10,8 +10,8 @@
 directory instead of a file entry. This means we can't operate on raw
 device file
 
-     $ sheep -j dir=/path/to/dir,size=256, # enable external journaling with the size 256M
-     $ sheep -j dir=/path/to/dir,size=256,skip #like above, but skip recovery at startup
-     $ sheep -j size=512 # enable internal journaling with the size 512M
+     $ sheep -j dir=/path/to/dir,size=256M, # enable external journaling with the size 256M
+     $ sheep -j dir=/path/to/dir,size=256M,skip #like above, but skip recovery at startup
+     $ sheep -j size=512M # enable internal journaling with the size 512M
 
    Note 'size' is mandatory parameter to enable journaling.
