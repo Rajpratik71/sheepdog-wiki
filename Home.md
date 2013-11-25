@@ -22,6 +22,7 @@ Enjoy!
  * [[Log formatter]]
  * [[stable branches]]
  * [[Make package on your own]]
+ * [[Why The Performance Of My Cluster Is Bad]]
 
 ## Release Plan
 
