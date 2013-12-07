@@ -7,7 +7,11 @@
   Sheepdog support user-define redundancy on a per VDI basis both for replication and erasure coding schemes. To create a erasure coded VDI
   
     $ dog vdi create -c x:y vdi size # Create a erasure coded VDI
- 
+
+  You can also format the cluster to set erasure code as default redundancy policy
+
+    $ dog cluster format -c x:y 
+
   X represent number of data strips, must be one of {2,4,8,16} while Y represents number of parity strips, can be any number between 1 and 15 inclusive. For example, you can
 
     $ dog vdi create -c 2:1 test 10G # 0.5 redundancy and can tolerate 1 node failure at the same time
@@ -39,3 +43,6 @@ at most, while read get 1.15x faster, compared with copies=3 (4:2 scheme)
     
     replication(3 copies): write 36.5 MB/s, read 71.8 MB/s
     erasure code(4 : 2)  : write 46.6 MB/s, read 82.9 MB/s
+
+# Relations with least number of nodes to service the request
+  You need at least X alive nodes (e.g, 4 nodes in 4:2 scheme) to serve the read/write request. If number of nodes drops to below X, the cluster will deny of service. Note that if you only X nodes in the cluster, it means you don't have any redundancy parity generated.
