@@ -45,4 +45,4 @@ at most, while read get 1.15x faster, compared with copies=3 (4:2 scheme)
     erasure code(4 : 2)  : write 46.6 MB/s, read 82.9 MB/s
 
 # Least number of nodes to run cluster
-  You need at least X alive nodes (e.g, 4 nodes in 4:2 scheme) to serve the read/write request. If number of nodes drops to below X, the cluster will deny of service. Note that if you only X nodes in the cluster, it means you don't have any redundancy parity generated.
+  You need at least X alive nodes (e.g, 4 nodes in 4:2 scheme) to serve the read/write request. If number of nodes drops to below X, the cluster will deny of service. Note that if you only have X nodes in the cluster, it means you don't have any redundancy parity generated.
