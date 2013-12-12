@@ -6,7 +6,9 @@ Sitting at protocol layer, you can actually connect to sheepdog volume by other 
 
 To conclude, formats over sheepdog protocol
 
-                    snapshot/clone  | thin-provsion  |   DISCARD    |  encryption  |  compression
+<pre>
+| format          | snapshot/clone  | thin-provsion  |   DISCARD    |  encryption  |  compression
  raw over file    :      NO         |      YES       |      NO      |      NO      |       NO
  raw over sheepdog:      YES        |      YES       |      YES     |      NO      |       NO
- qcow2 over sheepdog:    YES        |      YES       |      YES     |      YES     |       YES
+qcow2 over sheepdog:     YES        |      YES       |      YES     |      YES     |       YES
+</pre>
