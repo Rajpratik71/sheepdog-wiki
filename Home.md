@@ -23,6 +23,7 @@ Enjoy!
  * [[stable branches]]
  * [[Make package on your own]]
  * [[Why The Performance Of My Cluster Is Bad]]
+ * [[Which Format of QEMU Images Should I Run]]
 
 ## Release Plan
 
