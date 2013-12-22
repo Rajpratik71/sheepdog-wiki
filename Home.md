@@ -29,7 +29,7 @@ Enjoy!
 
  * [[release schedule]]
 
- * [0.7.4](https://github.com/collie/sheepdog/tarball/v0.7.4) is the latest stable version:
+ * [0.7.6](https://github.com/collie/sheepdog/tarball/v0.7.6) is the latest stable version:
    See the [[changelog]] for more details.
 
  * 0.8.0 is planned for the end of 2013.11.15, with:
