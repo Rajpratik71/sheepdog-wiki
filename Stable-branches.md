@@ -9,7 +9,7 @@ These stable branches of sheepdog will be maintained until corresponding stable 
 | Branch | Latest Release (tag)      | Corresponding stable version of QEMU |
 |:-----------|:-----------|:-----------|
 | [stable-0.6] (https://github.com/sheepdog/sheepdog/tree/stable-0.6) | [v0.6.3] (https://github.com/sheepdog/sheepdog/releases/tag/v0.6.3) | [stable-1.5] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.5) |
-| [stable-0.7] (https://github.com/sheepdog/sheepdog/tree/stable-0.7) | [v0.7.3] (https://github.com/sheepdog/sheepdog/releases/tag/v0.7.3) | stable-1.6 (not created yet) |
+| [stable-0.7] (https://github.com/sheepdog/sheepdog/tree/stable-0.7) | [v0.7.6] (https://github.com/sheepdog/sheepdog/releases/tag/v0.7.6) | stable-1.6 (not created yet) |
 
 # Maintenance policy of the branches
 ## Basic maintenance policy
