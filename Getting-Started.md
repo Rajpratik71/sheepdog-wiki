@@ -60,8 +60,11 @@ $ cd ..
 </pre>
 
 ### Download, build and install the Sheepdog server and command line tools
+
+If you want to use every feature of the latest sheepdog, please clone our git repository.
+
 <pre>
-$ git clone git://github.com/collie/sheepdog.git
+$ git clone git://github.com/sheepdog/sheepdog.git
 $ cd sheepdog
 $ ./autogen.sh
 $ ./configure
