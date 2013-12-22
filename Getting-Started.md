@@ -61,6 +61,9 @@ $ cd ..
 
 ### Download, build and install the Sheepdog server and command line tools
 
+If you want to use a stable sheepdog, please download our source archive of stable branch and build it. Stable branches of each version are listed [here] (https://github.com/sheepdog/sheepdog/wiki/Stable-branches#obtain-stable-release-based-on-the-stable-branches).
+
+
 If you want to use every feature of the latest sheepdog, please clone our git repository.
 
 <pre>
