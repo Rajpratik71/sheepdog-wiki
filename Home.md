@@ -9,7 +9,7 @@ Enjoy!
  * [[Getting Started]]
  * [[Cluster Management: good practices]]
  * [[Cluster-Management-Backends-and-dual-NIC]]
- * [[Backend Stores, Object Cache and Disk Cache]]
+ * [[Backend Stores, Object Cache]]
  * [[Sheepfs]]
  * [[Journaling]]
  * [[Image Backup]]
