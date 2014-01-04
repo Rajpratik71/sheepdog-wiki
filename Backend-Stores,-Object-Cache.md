@@ -57,10 +57,8 @@ enables writethrough mode.
 
 Object cache is disabled by default in Sheepdog. '-w' is used for enabling object cache in local node. Example of '-w' is like this:
 <pre>
-   sheep -w disk  # enable writeback cache semantics of disks
-   sheep -w disk,object:size=50 # enable writeback cache semantics of disks, and enable object cache with 50MB space
-   sheep -w object:size=50 # enable object cache with 50MB space
-   sheep -w object:size=50:directio # enable object cache with 50MB space with O_DIRECT for cached objects
+   sheep -w size=200G # enable object cache with 200G space
+   sheep -w size=50G,directio # enable object cache with 50G space with O_DIRECT for cached objects
 </pre>
 
 There are some more options to do finer control over how object cache does read/write internally
