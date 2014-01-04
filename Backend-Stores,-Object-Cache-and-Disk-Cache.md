@@ -35,19 +35,12 @@ $ collie cluster snapshot list /path/tobackup # list the backups with tag names
 $ collie cluster snapshot load your-tag /path/to/backup # restore the tagged backup
 </pre>
 
-## Object cache and disk cache [ disk cache was removed after 0.5.6 ]
-Generally speaking, we support _writeback_, which caches write update for a period of time and flushes dirty bits by a 'sync' request from Guest OS, routed by QEMU and _writethrough_, which means we don't need care about cache and backend consistency. In writethrough mode, in fact, QEMU won't issue 'sync' request at all.
+## Object cache
+Generally speaking, we support _writeback_, which caches write update for a period of time and flushes dirty bits by a 'sync' request from Guest OS, routed by QEMU and _writethrough_, which means we don't need care about cache and backend consistency.
 
-There are currently two cache supported by Sheepdog, one is object cache and another is disk cache.  They are operating in different layers, object cache can be thought as local cache while disk cache control how we write to the every host disk. If disk cache is enabled, sheeps open() their object without O_DSYNC flag at backend, this means we take advantage of write cache built in the hard drive.
+For writeback mode, you'll enjoy near native local image performance and for writethrough mode, we can also enjoy performance boost for read requests. (You can think it as read only cache)
 
-Disk cache improves the performance of sheepdog, but you must be careful when you use it.
-
-Because if the disk cache is enabled, write requests to sheeps don't mean storing data to persistent storage. So explicit disk cache flushing is required when guest OSes issue sync request to their block device of QEMU. This sync request causes performance degradation. The degradation is serious especially in an environment which contains lots of VMs.
-
-The performance degradation is workload specific. So you should evaluate the effect of disk cache well.
-Object cache support both writeback and writhrough semantics. For writeback mode, you'll enjoy near native local image performance and for writethrough mode, we can also enjoy performance boost for read requests. (You can think it as read only cache)
-
-We can control which mode object/disk cache is on by manipulating the 'cache' option in QEMU command. For example,
+We can control which mode object cache is on by manipulating the 'cache' option in QEMU command. For example,
 
 <pre>
 $ qemu-system-x86_64 --enable-kvm -m 1024 -drive file=sheepdog:test,cache=writeback
@@ -62,7 +55,7 @@ $ qemu-system-x86_64 --enable-kvm -m 1024 -drive file=sheepdog:test,cache=writet
 </pre>
 enables writethrough mode.
 
-Both object cache and disk cache is disabled by default in Sheepdog. '-w' is used for enabling object cache in local node and disk cache's writeback semantics in backend stores. Example of '-w' is like this:
+Object cache is disabled by default in Sheepdog. '-w' is used for enabling object cache in local node. Example of '-w' is like this:
 <pre>
    sheep -w disk  # enable writeback cache semantics of disks
    sheep -w disk,object:size=50 # enable writeback cache semantics of disks, and enable object cache with 50MB space
@@ -70,26 +63,13 @@ Both object cache and disk cache is disabled by default in Sheepdog. '-w' is use
    sheep -w object:size=50:directio # enable object cache with 50MB space with O_DIRECT for cached objects
 </pre>
 
-Disk cache was removed after 0.5.6. The new command line is incompatible to above old commands. So for release after 0.5.6, the new commands is:
-<pre>
-   sheep -w size=500000 # enable object cache with 500G space
-   sheep -w size=500000, directio # enable object cache with 500G space with O_DIRECT for cached objects
-   sheep -w size=200000,dir=/path/to/cache # enable object cache with 200G to /path/to/cache directory
-</pre>
-
-To modify the max object cache size:
-
-<pre>$ collie node cache 300</pre>
-
-NOTE ‘max cache size' is a hint to Sheepdog that when the object cache size reaches specified 'max cache size', it begins to do reclaiming, that tries to shrink the cache size to a lower watermark. So probably for some corner cases, you might have object cache more than specified max size, when the rate of reclaiming is lower than the new object created by on the fly IO requests.
-
 There are some more options to do finer control over how object cache does read/write internally
 
-As default, object cache layer tries to utilize page cache (memory cache) as much as possible, so if you want a more durable cache, you can specify '-w object:directio' option. This means we don't use kernel's page cache to further cache data before it reaching to disk, and thus those data can survive the host OS crash.
+As default, object cache layer tries to utilize page cache (memory cache) as much as possible, so if you want a more durable cache, you can specify '-w directio' option. This means we don't use kernel's page cache to further cache data before it reaching to disk, and thus those data can survive the host OS crash.
 
 For users that want to use a faster disk to accelerate the IO performance with object cache, you can also specify where the object cache directory is located by:
 <pre>
-   sheep -w object:size=200000:dir=/path/to/cache # enable object cache with 200G to /path/to/cache directory
+   sheep -w size=200G,dir=/path/to/cache # enable object cache with 200G to /path/to/cache directory
 </pre>
 
 ### How object cache works
