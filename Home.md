@@ -23,6 +23,7 @@ Enjoy!
    - [[libvirt]]
  * **Other Interface**
    - [[Sheepfs]]
+   - [[HTTP Simple Storage]] 
  * [[Image Backup]]
  * [[stable branches]]
  * [[Make package on your own]]
