@@ -28,10 +28,10 @@ $ http PUT http://localhost/v1/mandy # create a user account named 'mandy'
 $ http PUT http://localhost/v1/mandy/books # create a book container for 'mandy'
 $ http PUT http://localhost/v1/mandy/movies # create a movie container for 'mandy'
 $ http GET http://localhost/v1/mandy # to see what containers 'mandy' has
-$ http PUT http://localhost/v1/mandy/books/yourbookname < yourbook # upload your book
-$ http PUT http://localhost/v1/mandy/movies/yourmoviename < yourmovie
+$ http PUT http://localhost/v1/mandy/books/yourbookname &lt; yourbook # upload your book
+$ http PUT http://localhost/v1/mandy/movies/yourmoviename &lt; yourmovie
 $ http HEAD http://localhost/v1/mandy/movies/ # Get the statistics of movie container
-$ http GET http://localhost/v1/mandy/books/yourbookname > yourbook # Download your book
+$ http GET http://localhost/v1/mandy/books/yourbookname &gt; yourbook # Download your book
 $ http DELETE http://localhost/v1/mandy/books/yourbookname # delete the book in the container
 </pre>
 
