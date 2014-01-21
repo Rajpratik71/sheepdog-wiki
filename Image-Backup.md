@@ -8,4 +8,4 @@ Besides 'qemu-img convert', we can also use 'vdi read/write/setattr/getattr' the
 
 Sheepdog supports yet another backup mechanism: backup differential data between two snapshots. See more info at [incremental snapshot backup](http://comments.gmane.org/gmane.comp.file-systems.sheepdog/6749)
 
-Sheepdog also provide a convenient mechanism to back up all the snapshots images of the cluster to the central storage you provided, see [cluster backup](https://github.com/collie/sheepdog/wiki/Backend-Stores%2C-Object-Cache-and-Disk-Cache#cluster-backup)
+Sheepdog also provide a convenient mechanism to back up all the snapshots images of the cluster to the central storage you provided, see [cluster backup](https://github.com/collie/sheepdog/wiki/Backend-Stores%2C-Object-Cache#cluster-backup)
