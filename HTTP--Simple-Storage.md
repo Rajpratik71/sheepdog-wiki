@@ -15,6 +15,7 @@ Users can think of HTTP simple storage as a 3 layer of traditional UNIX file sys
  
      $ sheep -r swift ... # we have 's3' and 'swift' as options, but currently only swift is working
 
+Note, currently only local driver and zookeeper(you need zookeeper 1.4.5 or plus) support http service.
 # Play with httpie or curl
 I'll take httpie as client to get/put user objects. Firstly install httpie
 
@@ -33,8 +34,6 @@ $ http HEAD http://localhost/v1/mandy/movies/ # Get the statistics of movie cont
 $ http GET http://localhost/v1/mandy/books/yourbookname > yourbook # Download your book
 $ http DELETE http://localhost/v1/mandy/books/yourbookname # delete the book in the container
 </pre>
-
-Note, currently only local driver and zookeeper(you need zookeeper 1.4.5 or plus) support http service.
 
 # Features
 * there is no limit on the object size, we support object size ranging from 1 bytes to 16PB
