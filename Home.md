@@ -7,7 +7,7 @@ Enjoy!
 ## User Guide
 
  * [[Getting Started]]
- * **Sheep Daemon Realted**
+ * **Sheep Daemon Related**
    - [[Cluster Management: good practices]]
    - [[Cluster-Management-Backends-and-dual-NIC]]
    - [[Log formatter]]
