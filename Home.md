@@ -7,19 +7,23 @@ Enjoy!
 ## User Guide
 
  * [[Getting Started]]
- * [[Cluster Management: good practices]]
- * [[Cluster-Management-Backends-and-dual-NIC]]
- * [[Backend Stores, Object Cache]]
- * [[Sheepfs]]
- * [[Journaling]]
+ * **Sheep Daemon Realted**
+   - [[Cluster Management: good practices]]
+   - [[Cluster-Management-Backends-and-dual-NIC]]
+   - [[Log formatter]]
+ * **Backend Storage Related**
+   - [[Backend Stores, Object Cache]]
+   - [[Discard Support]]
+   - [[Journaling]]
+   - [[Multi disk on Single Node Support]]
+   - [[Erasure Code Support]]
+ * **Other Software Support**
+   - [[General protocol support (iSCSI and NBD)]]
+   - [[OpenStack]]
+   - [[libvirt]]
+ * **Other Interface**
+   - [[Sheepfs]]
  * [[Image Backup]]
- * [[Multi disk on Single Node Support]]
- * [[Erasure Code Support]]
- * [[Discard Support]]
- * [[General protocol support (iSCSI and NBD)]]
- * [[OpenStack]]
- * [[libvirt]]
- * [[Log formatter]]
  * [[stable branches]]
  * [[Make package on your own]]
  * [[Why The Performance Of My Cluster Is Bad]]
