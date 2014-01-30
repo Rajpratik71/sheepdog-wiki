@@ -64,3 +64,17 @@ Then sheepfs will be automatically compiled in. The binary will be located in sh
    When you are done with sheepfs, you can umount the sheepfs directory
 
     $ umount sheepfs_dir
+
+## Sheepfs for swift
+   We can also use swift interface for sheepfs.
+   
+   First set address of swift server:
+
+    $ sheepfs /your/mountpoint
+    $ echo "swift_server_ip:swfit_server_port" > /your/mountpoint/http/address
+
+   Then we can echo full path of object (if we have account "robin", container "fruit", object "one"):
+    
+    $ echo "/robin/fruit/one" > /your/mountpoint/http/object
+
+   Then we can see a file as "/your/mountpoint/http/robin/fruit/one"
