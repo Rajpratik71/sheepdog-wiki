@@ -3,13 +3,14 @@ The stable branches of sheepdog are long term supported versions for production 
 Each major release has its stable branch. e.g. stable branch of 0.6 is [stable-0.6](https://github.com/collie/sheepdog/tree/stable-0.6)
 
 Because the release cycle of sheepdog is corresponding to the cycle of QEMU, each stable version has its corresponding one. e.g. stable-0.6 of sheepdog corresponds to stable-1.5 of QEMU.
-These stable branches of sheepdog will be maintained until corresponding stable branches of QEMU become obsolete.
+These stable branches of sheepdog will be maintained until corresponding stable branches of QEMU become obsolete or as long as possible.
 
 # Obtain stable release based on the stable branches
 | Branch | Latest Release (tag)      | Corresponding stable version of QEMU |
 |:-----------|:-----------|:-----------|
-| [stable-0.6] (https://github.com/sheepdog/sheepdog/tree/stable-0.6) | [v0.6.3] (https://github.com/sheepdog/sheepdog/releases/tag/v0.6.3) | [stable-1.5] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.5) |
-| [stable-0.7] (https://github.com/sheepdog/sheepdog/tree/stable-0.7) | [v0.7.6] (https://github.com/sheepdog/sheepdog/releases/tag/v0.7.6) | stable-1.6 (not created yet) |
+| [stable-0.6] (https://github.com/sheepdog/sheepdog/tree/stable-0.6) (obsolete) | [v0.6.3] (https://github.com/sheepdog/sheepdog/releases/tag/v0.6.3) | [stable-1.5] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.5) |
+| [stable-0.7] (https://github.com/sheepdog/sheepdog/tree/stable-0.7) | [v0.7.7] (https://github.com/sheepdog/sheepdog/releases/tag/v0.7.7) | [stable-1.6] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.6) |
+| [stable-0.8] (https://github.com/sheepdog/sheepdog/tree/stable-0.8) | [v0.8.0] (https://github.com/sheepdog/sheepdog/releases/tag/v0.8.0) | stable-1.7 (not created yet) |
 
 # Maintenance policy of the branches
 ## Basic maintenance policy
