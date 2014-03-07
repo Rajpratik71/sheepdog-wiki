@@ -19,10 +19,10 @@ To boost the performance, you should consider object cache at the first place be
 
 A lesser mechanism is journaling device, which you can double or triple the write performance without object cache enabled, or sync(like you call 'sync' in VM) performance with object cache enabled.
 
-Another option is '-n, --nosync' for sheep daemon, which drops O_SYNC for write of backend. It literally means we don't set 'sync' flag for write of backend. This will dramatically improve write performance if you don't have object cache enabled, at the cost of possibility to lost some data in the case of power failure of the _whole_ cluster. In other words, if only some nodes in the cluster crash, there is no damage of data at all even if you have '--onsync' enabled.(assume the number for failed nodes is protected by the redundancy level). If any one of following conditions goes with your cluster,
+Another option is '-n, --nosync' for sheep daemon, which drops O_SYNC for write of backend. It literally means we don't set 'sync' flag for write of backend. This will dramatically improve write performance if you don't have object cache enabled, at the cost of possibility to lost some data in the case of power failure of the _whole_ cluster. In other words, if only some nodes in the cluster crash, there is no damage of data at all even if you have '--nosync' enabled (assume the number for failed nodes is protected by the redundancy level). If any one of following conditions goes with your cluster,
 
 * your data center promises there is no power outage
 * all the disks are battery-backed
-* you don't care about the very low possibility of power outrage and want the best performance
+* you don't care about the very low possibility of power outage and want the best performance
 
 you can enable '--nosync' option for sheep daemon to enjoy write boost.
