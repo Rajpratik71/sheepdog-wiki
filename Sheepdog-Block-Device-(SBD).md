@@ -7,14 +7,17 @@ and behaves as a normal Linux block device(s) in your local file system.
 With single major allocation scheme, we support 31 partitions for a sheep block
 device at most and 32768 devices can be attached to local fs for a single node.
 
-To complile:
+##To complile:
+<pre>
    $ cd shepdog/sbd/;make
    $ insmod sbd.ko
+</pre>
 
-Usage:
+##Usage:
 
 We control the device the same way as RBD.
 
+<pre>
 # associate vdi 'test' to /dev/sbd0, assume your have sheep daemon listening on localhost
 $ echo 127.0.0.1 7000 test > /sys/bus/sbd/add
 
@@ -24,10 +27,12 @@ $ cat /sys/buf/sbd/list
 
 # remove the device sbd0
 $ echo 0 > /sys/bus/sbd/remove
+</pre>
 
 To get best of performance,
-
+<pre>
 # echo 4096 > /sys/block/sbd0/queue/max_sectors_kb
+</pre>
 
 Which means io scheduler will try its best to handle us 4MB request.
 
