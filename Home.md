@@ -24,6 +24,7 @@ Enjoy!
  * **Other Interface**
    - [[Sheepfs]]
    - [[HTTP Simple Storage]] 
+   - [[Sheepdog Block Device (SBD)]]
  * [[Image Backup]]
  * [[stable branches]]
  * [[Make package on your own]]
