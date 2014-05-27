@@ -9,7 +9,7 @@ device at most and 32768 devices can be attached to local fs for a single node.
 
 ##To complile:
 <pre>
-   $ cd shepdog/sbd/;make
+   $ cd sheepdog/sbd/;make
    $ insmod sbd.ko
 </pre>
 
