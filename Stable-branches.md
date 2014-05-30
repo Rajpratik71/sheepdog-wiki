@@ -45,4 +45,4 @@ In such a case, 2 days are allocated for reviewing window. If no one complains a
 | Date       | Event                                                                           |
 |:-----------|:--------------------------------------------------------------------------------|
 | ~~2014-03-03~~ | Tag v0.8.1_rc0       |
-| 2014-05-31 | Tag v0.8.1_rc0       |
+| 2014-05-31 | Tag v0.8.2_rc0       |
