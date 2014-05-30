@@ -39,9 +39,10 @@ In such a case, 2 days are allocated for reviewing window. If no one complains a
 | ~~2013-10-31~~ | Tag v0.7.5_rc0       |
 | ~~2013-12-17~~ | Tag v0.7.6_rc0       |
 | ~~2014-02-02~~ | Tag v0.7.7_rc0       |
-| 2014-03-03 | Tag v0.7.8_rc0       |
+| ~~2014-03-03~~ | Tag v0.7.8_rc0       |
 
 ## stable-0.8 based releases
 | Date       | Event                                                                           |
 |:-----------|:--------------------------------------------------------------------------------|
-| 2014-03-03 | Tag v0.8.1_rc0       |
+| ~~2014-03-03~~ | Tag v0.8.1_rc0       |
+| 2014-05-31 | Tag v0.8.1_rc0       |
