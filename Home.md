@@ -31,6 +31,7 @@ Enjoy!
  * **Advice**
    - [[Why The Performance Of My Cluster Is Bad]]
    - [[Which Format of QEMU Images Should I Run]]
+   - [[How to make a live snapshot properly]]
  * **For developers**
    - [[clang analysis of sheepdog]]
 
