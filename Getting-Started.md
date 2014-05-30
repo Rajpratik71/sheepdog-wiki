@@ -126,12 +126,7 @@ $ collie cluster format --copies=3
 It is enough to run this command on just one machine.
 "--copies" specifies the number of default data redundancy. In this case, the replicated data will be stored on three machines.
 
-Sheepdog has the back-end store to store the data object persistently on the node basis. Currently you have two choices, one is called Simple Store (default), the other Farm. Farm is supposed to provide advanced features such as cluster-wide snapshot, faster recovery, data de-duplication(not implemented yet) and so on.
-
-You can choose to use Farm as the back-end store by following command:
-<pre>
-$ collie cluster format -b farm --copies=3
-</pre>
+Sheepdog has the back-end store to store the data object persistently on the node basis. 
 
 1. Check cluster state  
 Following list shows that Sheepdog is running on 32 nodes.
