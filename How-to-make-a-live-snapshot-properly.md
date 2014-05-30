@@ -1,5 +1,3 @@
-# Safe snapshots with qemu-ga
-
 ## What is the issue in taking snapshots?
 
 If you write some data on your guest and take a snapshot right after, you might not have this data saved in the snapshot as you may expect.
