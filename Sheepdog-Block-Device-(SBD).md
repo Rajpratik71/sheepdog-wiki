@@ -4,6 +4,9 @@ to expose sheepdog storage as Linux block device interface, which means that we
 can make use of page cache as a client cache for buffered read/write optionally
 and behaves as a normal Linux block device(s) in your local file system.
 
+For now we support to attach sheep vdi or cloned vdi to SBD. Snapshots are not
+supported to attach (yet).Probably we can support a read-only attach for it.
+
 With single major allocation scheme, we support 31 partitions for a sheep block
 device at most and 32768 devices can be attached to local fs for a single node.
 
@@ -37,7 +40,6 @@ To get best of performance,
 Which means io scheduler will try its best to handle us 4MB request.
 
 TODO
-- support cloned sheep vdi
 - auto-reconncect to sheep daemon if connection is off/crashed
 - better error handling
 - block device multi-queue support for recent kernel
