@@ -21,11 +21,12 @@ device at most and 32768 devices can be attached to local fs for a single node.
 We control the device the same way as RBD.
 
 <pre>
-# associate vdi 'test' to /dev/sbd0, assume your have sheep daemon listening on localhost
-$ echo 127.0.0.1 7000 test > /sys/bus/sbd/add
+# associate vdi 'test' to /dev/sbd0
+# sheep daemon must not run on localhost
+$ echo 192.168.10.20 7000 test > /sys/bus/sbd/add
 
 # list the mapped devices
-$ cat /sys/buf/sbd/list
+$ cat /sys/bus/sbd/list
 0 test
 
 # remove the device sbd0
@@ -39,9 +40,19 @@ To get best of performance,
 
 Which means io scheduler will try its best to handle us 4MB request.
 
-TODO
+##TODO
 - auto-reconncect to sheep daemon if connection is off/crashed
 - better error handling
 - block device multi-queue support for recent kernel
 - live snapshot of sbd
 - support hyper volume
+
+##KNOWN ISSUES
+
+On debian wheezy you might get this error when building:
+<pre>fatal error: sheepdog_proto.h: File or directory not found</pre>
+edit sbd.h
+<pre>
+nano sheepdog/sbd/sbd.h
+#include "../include/sheepdog_proto.h"
+</pre>
