@@ -57,6 +57,13 @@ Then sheepfs will be automatically compiled in. The binary will be located in sh
     $ mkfs.ext4 sheepfs_dir/volume/test
     $ sudo mount -o loop sheepfs_dir/volume/test /somewhere
 
+   To attach to a snapshot 'mysnap' of a volume named 'test':
+
+    $ dog vdi clone -s 'mysnap' test testclone
+    $ echo testclone > sheepfs_dir/vdi/mount
+
+   Proceed as above for a normal vdi.
+
    When the connected sheep daemon crashes, we can re-connect to another live sheep deamon on the fly:
 
     $ echo ip:port > sheepfs_dir/config/sheep_info
