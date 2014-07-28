@@ -6,7 +6,7 @@ reliable storage.
    The idea here is that its sometimes useful that we can envision our interaction with
 an sheepdog's object in terms of a directory structure and filesystem operations.
 
-   People mighte be mostly intrested into sheepfs's volume directory, which export
+   People might be mostly interested into sheepfs's volume directory, which export
 VM's volume as a pseudo block file in your local file system hierarchy, which can be used as
 
    1. a big file abstraction, which is actually backed by Sheepdog's storage, distributed in
@@ -14,7 +14,7 @@ VM's volume as a pseudo block file in your local file system hierarchy, which ca
    2. a loop device file, which you can mount wherever you want to use it as a file system
    backed up by Sheepdog.
    3. a loop device file for some VM's image, which you want to access(RW) its internal data.
-   4. stroage media for other hypervisor, such as XEN
+   4. storage media for other hypervisor, such as XEN
 
 This file abstraction integrates well into kernel's pagecache.
 
