@@ -105,7 +105,7 @@ follows:
 the chunk of the virtual disk image
 * vdi object
 <pre>
-&nbsp;struct sheepdog_inode {
+&nbsp;struct sd_inode {
 &nbsp;    char name[SD_MAX_VDI_LEN];              /* the name of this VDI*/
 &nbsp;    char tag[SD_MAX_VDI_TAG_LEN];           /* the snapshot tag name */
 &nbsp;    uint64_t ctime;                         /* creation time of this VDI */
