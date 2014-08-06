@@ -1,9 +1,8 @@
-
 # What is the log formatter and how to use it?
   This page describes what the log formatter is and its applications.
 
 ## What is this?
-   The log formatter is a mechanism of the logger subsystem of libsheepdog. It can be used for choosing log fomrat. Currently, 2 formats are supported: default and JSON.
+   The log formatter is a mechanism of the logger subsystem of libsheepdog. It can be used for choosing log format. Currently, 2 formats are supported: default and JSON.
 
 ## How to choose the format
    Current users of the formatter are sheep and shepherd. Their common command line option -F is used for log format choose. If you pass them an option "-F default", it will do nothing. The format of logs produced by the programs is same to the format when you don't pass "-F default". You can pass them "-F json" as an alternative. If you pass the option, the programs produce logs formatted in JSON.
