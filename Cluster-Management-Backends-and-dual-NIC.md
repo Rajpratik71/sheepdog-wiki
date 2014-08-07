@@ -79,7 +79,7 @@ $ sudo sheep /store  -c zookeeper:IP1:2181,IP2:2181,IP3:2181,timeout=10s # use 1
 
 Lower timeout will reduce the latency to propagate the leave events of failed node, but will consume more network bandwidth. Larger timeout will help reduce the false alarm of failed down in a busy network.
 
-It is recommended to configure dataDir of zookeeper to a  {ramfs, tmpfs, another light use disk} to reduce the chances of operation timeout of zookeeper because of its dumping snapshots onto disk, which might cause several problems of Sheepdog cluster, such as segfault or inconsistent epoch.
+It is recommended to configure dataDir of zookeeper to a  {ramfs, tmpfs, another light use disk} to reduce the chances of operation timeout of zookeeper because of its dumping snapshots onto disk, which might cause sever problems of Sheepdog cluster, such as segfault or inconsistent epoch.
 
 ## Install zookeeper (Debian-based distribution)
 <pre>
