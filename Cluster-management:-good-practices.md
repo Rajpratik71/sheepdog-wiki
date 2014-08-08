@@ -24,10 +24,10 @@ if you kill the complete zone, or only a few sheeps in X different zones
 at a time, there will '''always''' some objects, that are only hold by
 these specific sheeps, only the amount of inaccessible objects will differ.
 
-Including up to version 0.4 you will '''loose your data''' in this case!
+Including up to version 0.4 you will '''lose your data''' in this case!
 With the introduction of plain_store and the rework of farm to use it as
-core in version 0.5, you wont loose data, but as long as the zones are not
-restarted, you cant access the objects that are only available on this
+core in version 0.5, you won't lose data, but as long as the zones are not
+restarted, you can't access the objects that are only available on this
 zones and your VM get a I/O Error.
 
 Make sure your UPS auto-shutdown (eg. apcupsd config) scripts do the correct job!  
