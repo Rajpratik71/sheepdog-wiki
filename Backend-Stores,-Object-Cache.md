@@ -35,6 +35,15 @@ $ collie cluster snapshot list /path/tobackup # list the backups with tag names
 $ collie cluster snapshot load your-tag /path/to/backup # restore the tagged backup
 </pre>
 
+In current master branch, save or load specified VDIs is supported. A new subcommand, cluster snapshot show, is introduced to show VDIs in the tagged backup.
+
+Usage
+<pre>
+$ collie cluster snapshot save your-tag /path/to/backup vdi1 vdi2 vdi3 # save specified vdis only
+$ collie cluster snapshot show your-tag /path/to/backup # show vdis in the tagged backup
+$ collie cluster snapshot load your-tag /path/to/backup vdi3 # restore vdi3 only
+</pre>
+
 ## Object cache
 Generally speaking, we support _writeback_, which caches write update for a period of time and flushes dirty bits by a 'sync' request from Guest OS, routed by QEMU and _writethrough_, which means we don't need care about cache and backend consistency.
 
