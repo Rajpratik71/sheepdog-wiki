@@ -1,5 +1,5 @@
-There's nothing special in these scripts.
-They contain a single command with each option on a single line for better reading.
+There's nothing special in these scripts.  
+They contain a single command with each option on a single line for better reading.  
 You may use them as a template.
 
 run_sheep.sh
