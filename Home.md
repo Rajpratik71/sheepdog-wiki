@@ -61,4 +61,5 @@ Enjoy!
 (http://www.slideshare.net/multics/overview-of-sheepdog)
 
 * [Introduction Video (2014-08-20)]
-(http://youtu.be/zlORo0TETgU)
+(http://youtu.be/zlORo0TETgU)  
+[[Scripts Uded In "Introduction Video"]]
