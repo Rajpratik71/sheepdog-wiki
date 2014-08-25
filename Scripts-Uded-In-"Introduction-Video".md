@@ -2,7 +2,7 @@ There's nothing special in these scripts.
 They contain a single command with each option on a single line for better reading.  
 You may use them as a template.
 
-run_sheep.sh
+_run_sheep.sh_
 
     sheep -n  /var/lib/sheepdog,/mnt/sheep/0 \
     -c zookeeper:192.168.2.45:2181,192.168.2.46:2181,192.168.2.47:2181 \
@@ -13,7 +13,7 @@ zookeeper as cluster manager;
 a dedicated I/O nic.  
 
 
-debian_lxde.sh
+_debian_lxde.sh_
 
     qemu-system-x86_64 \
     -name wheezy_lxde \
