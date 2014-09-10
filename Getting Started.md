@@ -74,6 +74,12 @@ $ qemu-img convert -t directsync ~/Alice.raw sheepdog:Alice
 $ dog vdi list
   Name        Id    Size    Used  Shared    Creation time   VDI id  Copies  Tag
   Alice        0  5.0 GB  864 MB  0.0 MB 2014-09-10 14:57   15d167      3
+</pre>
+Play with more vdi
+<pre>
+$ dog vdi list
+  Name        Id    Size    Used  Shared    Creation time   VDI id  Copies  Tag
+  Alice        0  5.0 GB  864 MB  0.0 MB 2014-09-10 14:57   15d167      3
   test5        0  5.0 GB  864 MB  0.0 MB 2014-09-10 13:04   fd2c30      3              
   test4        0  5.0 GB  864 MB  0.0 MB 2014-09-10 13:04   fd2de4      3              
   test6        0  5.0 GB  864 MB  0.0 MB 2014-09-10 13:05   fd3149      3              
@@ -119,6 +125,7 @@ $ dog vdi snapshot -s preupgrade sheepdog:test2
 <pre>
 $ dog vdi list
   Name        Id    Size    Used  Shared    Creation time   VDI id  Copies  Tag
+  Alice        0  5.0 GB  864 MB  0.0 MB 2014-09-10 14:57   15d167      3
   test5        0  5.0 GB  864 MB  0.0 MB 2014-09-10 13:04   fd2c30      3              
   test4        0  5.0 GB  864 MB  0.0 MB 2014-09-10 13:04   fd2de4      3              
   test6        0  5.0 GB  864 MB  0.0 MB 2014-09-10 13:05   fd3149      3              
@@ -128,34 +135,39 @@ s test2        1  5.0 GB  864 MB  0.0 MB 2014-09-10 13:03   fd3816      3    pre
   test2        0  5.0 GB  0.0 MB  864 MB 2014-09-10 14:22   fd3817      3       
 </pre>
 
-1. You can boot from the snapshot image by specifying snapshot id
-<pre>
-$ qemu-system-x86_64 sheepdog:test2:1
-</pre>
-
 ### Cloning from the snapshot
 1. Create a Charlie's image as a clone of test2 image.
 <pre>
-$ dog vdi clone -s preupgrade test2 sheepdog:Charlie
+$ dog vdi clone -s preupgrade test2 Charlie
 </pre>
 
 1. Charlie's image is added to the virtual machine list.
 <pre>
 $ dog vdi list
-&nbsp; name        id    size    used  shared    creation time  object id
---------------------------------------------------------------------
-&nbsp; Bob          0  2.0 GB  1.6 GB  0.0 MB 2010-03-23 16:16      80000
-&nbsp; Alice        0  256 GB  0.0 MB  0.0 MB 2010-03-23 16:21      c0000
-s Alice        1  256 GB  0.0 MB  0.0 MB 2010-03-23 16:16      40000
-&nbsp; Charlie      0  256 GB  0.0 MB  0.0 MB 2010-03-23 16:23     100000
+  Name        Id    Size    Used  Shared    Creation time   VDI id  Copies  Tag
+  Alice        0  5.0 GB  864 MB  0.0 MB 2014-09-10 14:57   15d167      3              
+c Charlie      0  5.0 GB  0.0 MB  864 MB 2014-09-10 15:02   3ca881      3              
+  test5        0  5.0 GB  864 MB  0.0 MB 2014-09-10 13:04   fd2c30      3              
+  test4        0  5.0 GB  864 MB  0.0 MB 2014-09-10 13:04   fd2de4      3              
+  test6        0  5.0 GB  864 MB  0.0 MB 2014-09-10 13:05   fd3149      3              
+  test1        0  5.0 GB  864 MB  0.0 MB 2014-09-10 09:48   fd32fc      3              
+  test3        0  5.0 GB  864 MB  0.0 MB 2014-09-10 13:03   fd3663      3              
+s test2        1  5.0 GB  864 MB  0.0 MB 2014-09-10 13:03   fd3816      3    preupgrade
+  test2        0  5.0 GB  0.0 MB  864 MB 2014-09-10 14:22   fd3817      3
 </pre>
 
-### qemu-img
+### Qemu-img
+
+All the operation on vdi can be done by qemu-img plus some other.
 <pre>
-$ qemu-img snapshot -c preupgrade sheepdog:test2
-$ qemu-img create -b sheepdog:test2:1 sheepdog:Charlie
-$ qemu-img create sheepdog:Alice 256G # default as raw image
-$ qemu-img create -f qcow2 sheepdog:Alice 256G # you can enjoy all the qcow2 features
+# Create empty vdi (default as raw image)
+qemu-img create sheepdog:Alice 256G
+# Create empty vdi with qcow2 format: you can enjoy all the qcow2 features
+qemu-img create -f qcow2 sheepdog:Alice 256G 
+# Snapshot
+qemu-img create -b sheepdog:test2:1 sheepdog:Charlie
+# Cloning
+qemu-img snapshot -c preupgrade sheepdog:test2
 </pre>
 
 ### Shutdown Sheepdog
@@ -167,4 +179,4 @@ $ dog cluster shutdown
 This command stops all the sheep processes on the cluster.
 
 ### Test Environment
-* Debian squeeze amd64
+* Debian wheezy amd64
