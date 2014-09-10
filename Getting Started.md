@@ -9,31 +9,72 @@
 
 ## Install
 
+A cluster has 3 key compenents:
+
+1. a cluster manager (zookeeper);
+1. sheepdog;
+1. qemu.
+
+Not all of them are required on each nodes.
+Usually sheepdog amd qemu are installed on every node.
+Zookeer on three nodes.
+
 * [Install From Binaries](Install From Binaries)
 * [Install From Sources](Install From Sources)
+
+## Configure the cluste manager
+
+This is an example using three nodes with ip 192.168.2.45,192.168.2.46,192.168.2.47.
+
+<pre>
+# Same on every node
+nano /etc/zookeeper/conf/zoo.cfg
+server.45=192.168.2.45:2888:3888
+server.46=192.168.2.46:2888:3888
+server.47=192.168.2.47:2888:3888
+</pre>
+
+<pre>
+# Give each node set a different id
+# On 192.168.2.45
+nano /etc/zookeeper/conf/myid
+45
+# On 192.168.2.46
+nano /etc/zookeeper/conf/myid
+46
+# On 192.168.2.47
+nano /etc/zookeeper/conf/myid
+47
+</pre>
+
+<pre>
+# Restart the service on every node
+service zookeeper restart
+</pre>
 
 ## Usage
 
 ### Setup Sheepdog
 
-**Launch the sheepdog daemon**: either start it using '/etc/init.d/sheepdog start' or launch the sheepdog daemon by directly calling 'sheepdog <store_dir>' on each machine of the cluster. Make sure that TCP port 7000 is open for sheepdog communication.
+**Launch the sheepdog daemon**: there's an init script '/etc/init.d/sheepdog' but it doesn't make use of zookeeper. Use it only if your cluster manager is corosync.
+It also use /var/lib/sheepdog as default and you can't specify other directories.
 
-Note: At this time, the sheepdog init.d script is hard-coded to use /var/lib/sheepdog as the store directory. If you wish to use another directory, you will need to always start sheepdog using the 'sheep <store_dir>' call.
+In this example, is shown a real scenario that:
+1. keeps metatada on the same device of the operation system (/var/lib/sheepdog)
+1. uses a dedicated mount point (/mnt/sheep/0)
+1. uses zookeeper as cluster manager
 
 <pre>
-$ sudo /etc/init.d/sheepdog start
+$ sheep -n  /var/lib/sheepdog,/mnt/sheep/0 -c zookeeper:192.168.2.45:2181,192.168.2.46:2181,192.168.2.47:2181
 </pre>
 
-Or;
+The directory that sotres object (/mnt/sheep/0) must be on a filesystem with an xattr support. In case of ext3 or ext4, you need to add 'user_xattr' to the mount options.
 
 <pre>
-$ sudo sheep /var/lib/sheepdog
-</pre>
-
-The /var/lib/sheepdog will be where sheepdog will store objects. The directory must be on a filesystem with an xattr support. In case of ext3 or ext4, you need to add 'user_xattr' to the mount options.
-
-<pre>
-$ sudo mount -o remount,user_xattr /var/lib/sheepdog
+# fstab entry example
+/dev/vg00/sheep0        /mnt/sheep/0    ext4     defaults,noatime,user_xattr      0       0
+# To change it in run time
+$ sudo mount -o remount,user_xattr /mnt/sheep/0
 </pre>
 
 **Format sheepdog cluster**
@@ -52,10 +93,10 @@ The following list shows that Sheepdog is running on 4 nodes.
 <pre>
  $ dog node list
   Id   Host:Port         V-Nodes       Zone
-   0   192.168.10.4:7000        126   67807424
-   1   192.168.10.5:7000        129   84584640
-   2   192.168.10.6:7000        129  101361856
-   3   192.168.10.7:7000        129  118139072
+   0   192.168.2.4:7000        126   67807424
+   1   192.168.2.5:7000        129   84584640
+   2   192.168.2.6:7000        129  101361856
+   3   192.168.2.7:7000        129  118139072
 </pre>
 
 ### Create an empty VDI
@@ -96,9 +137,9 @@ $ qemu-system-x86_64 sheepdog:Alice
 
 2. Boot the virtual machine without sheep daemon started on local node
 <pre>
-$ qemu-system-x86_64 sheepdog:192.168.10.2:7000:Alice
+$ qemu-system-x86_64 sheepdog:192.168.2.2:7000:Alice
 </pre>
-This suppose you have one sheep started up on the node with the IP 192.168.10.2 and port 7000
+This suppose you have one sheep started up on the node with the IP 192.168.2.2 and port 7000
 
 3. Sheepdog supports local cache called object cache.
 Object cache caches data and vdi objects on the local node. It is at
