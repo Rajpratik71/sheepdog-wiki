@@ -59,7 +59,7 @@ $ wget -O sheepdog-v0.7.6.tar.gz https://github.com/sheepdog/sheepdog/archive/v0
 $ tar xvzf sheepdog-v0.7.6.tar.gz
 $ cd sheepdog-v0.7.6
 $ ./autogen.sh
-$ ./configure
+$ ./configure --enable-zookeeper
 $ sudo make install
 $ cd ..
 </pre>
