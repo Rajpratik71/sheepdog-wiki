@@ -45,7 +45,7 @@ QEMU 0.13 provides built-in support for sheepdog devices.  Some distributions pr
 <pre>
 $ git clone git://git.sv.gnu.org/qemu.git
 $ cd qemu
-$ ./configure
+$ ./configure --enable-kvm --target-list="x86_64-softmmu"
 $ sudo make install
 $ cd ..
 </pre>
