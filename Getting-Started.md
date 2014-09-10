@@ -60,15 +60,16 @@ service zookeeper restart
 It also use /var/lib/sheepdog as default and you can't specify other directories.
 
 In this example, is shown a real scenario that:
+
 1. keeps metatada on the same device of the operation system (/var/lib/sheepdog)
-1. uses a dedicated mount point (/mnt/sheep/0)
+1. uses a dedicated mount point for objects (/mnt/sheep/0)
 1. uses zookeeper as cluster manager
 
 <pre>
 $ sheep -n  /var/lib/sheepdog,/mnt/sheep/0 -c zookeeper:192.168.2.45:2181,192.168.2.46:2181,192.168.2.47:2181
 </pre>
 
-The directory that sotres object (/mnt/sheep/0) must be on a filesystem with an xattr support. In case of ext3 or ext4, you need to add 'user_xattr' to the mount options.
+The directory that sotres object (/mnt/sheep/0) must be on a filesystem with an xattr support. In case of ext3 or ext4, you need to add 'user_xattr' as mount options.
 
 <pre>
 # fstab entry example
@@ -100,9 +101,9 @@ The following list shows that Sheepdog is running on 4 nodes.
 </pre>
 
 ### Create an empty VDI
-1. Create a 256 GB virtual machine image of Alice.
+1. Create a 5 GB virtual machine image of Alice.
 <pre>
-$ dog vdi create Alice 256G
+$ dog vdi create Alice 5G
 </pre>
 
 1. You can also convert from existing KVM images to Sheepdog ones.
@@ -137,9 +138,9 @@ $ qemu-system-x86_64 sheepdog:Alice
 
 2. Boot the virtual machine without sheep daemon started on local node
 <pre>
-$ qemu-system-x86_64 sheepdog:192.168.2.2:7000:Alice
+$ qemu-system-x86_64 sheepdog:192.168.2.45:7000:Alice
 </pre>
-This suppose you have one sheep started up on the node with the IP 192.168.2.2 and port 7000
+This suppose you have one sheep started up on the node with the IP 192.168.2.45 and port 7000
 
 3. Sheepdog supports local cache called object cache.
 Object cache caches data and vdi objects on the local node. It is at
@@ -153,7 +154,7 @@ you can start QEMU by following command:
 <pre>
 $ qemu-system-x86_64 -drive file=sheepdog:Alice,cache=writeback
 </pre>
-Note: be carefull using object cache.
+Note: be carefull using object cache.  
 Note2: sheep daemon has to be running with (-w, --cache) option. Check the syntax.
 
 ### Snapshot
