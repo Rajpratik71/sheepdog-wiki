@@ -217,7 +217,7 @@ qemu-img snapshot -c preupgrade sheepdog:test2
 $ dog cluster shutdown
 </pre>
 
-This command stops all the sheep processes on the cluster. 
+This command stops all the sheep processes on the cluster.
 
 ### Test Environment
 * Debian wheezy amd64
