@@ -1,7 +1,7 @@
 # Getting Started
 
 ## Requirements
-* One or more x86-64 machines.
+* One or more x86-64 machines
 * Linux kernel 2.6.27 or later
 * glibc 2.9 or later
 * Zookeeper or corosync
@@ -9,22 +9,21 @@
 
 ## Install
 
-A cluster has 3 key compenents:
+A cluster has 3 key components:
 
-1. a cluster manager (zookeeper);
-1. sheepdog;
-1. qemu.
+1. A cluster manager (like zookeeper or corosync)
+1. sheepdog
+1. QEMU
 
-Not all of them are required on each nodes.
-Usually sheepdog amd qemu are installed on every node.
-Zookeer on three nodes.
+Not all of them are required on each node.
+Usually sheepdog and QEMU are installed on every node, and the cluster manager on three nodes.
 
 * [Install From Binaries](Install From Binaries)
 * [Install From Sources](Install From Sources)
 
-## Configure the cluste manager
+## Configure the cluster manager
 
-This is an example using three nodes with ip 192.168.2.45,192.168.2.46,192.168.2.47.
+This is an example using zookeper on three nodes with the following IPs: 192.168.2.45, 192.168.2.46 and 192.168.2.47.
 
 <pre>
 # Same on every node
@@ -35,7 +34,7 @@ server.47=192.168.2.47:2888:3888
 </pre>
 
 <pre>
-# Give each node set a different id
+# Give each node a unique id
 # On 192.168.2.45
 nano /etc/zookeeper/conf/myid
 45
@@ -56,20 +55,20 @@ service zookeeper restart
 
 ### Setup Sheepdog
 
-**Launch the sheepdog daemon**: there's an init script '/etc/init.d/sheepdog' but it doesn't make use of zookeeper. Use it only if your cluster manager is corosync.
-It also use /var/lib/sheepdog as default and you can't specify other directories.
+**Launch the sheepdog daemon**: There's an init script '/etc/init.d/sheepdog', but it doesn't make use of zookeeper. Use it only if your cluster manager is corosync.
+The init script also uses /var/lib/sheepdog as a default storage location and you can't reconfigure this.
 
-In this example, is shown a real scenario that:
+In this example we have a scenario that:
 
-1. keeps metatada on the same device of the operation system (/var/lib/sheepdog)
-1. uses a dedicated mount point for objects (/mnt/sheep/0)
-1. uses zookeeper as cluster manager
+1. Keeps metadata on the same device as of the operation system (/var/lib/sheepdog)
+1. Uses a dedicated mount point for objects (/mnt/sheep/0)
+1. Uses zookeeper as cluster manager
 
 <pre>
 $ sheep -n  /var/lib/sheepdog,/mnt/sheep/0 -c zookeeper:192.168.2.45:2181,192.168.2.46:2181,192.168.2.47:2181
 </pre>
 
-The directory that sotres object (/mnt/sheep/0) must be on a filesystem with an xattr support. In case of ext3 or ext4, you need to add 'user_xattr' as mount options.
+The directory that stores objects (/mnt/sheep/0) must be on a filesystem with xattr support. In case of ext3 or ext4, you need to add 'user_xattr' as a mount option.
 
 <pre>
 # fstab entry example
@@ -101,7 +100,7 @@ The following list shows that Sheepdog is running on 4 nodes.
 </pre>
 
 ### Create an empty VDI
-1. Create a 5 GB virtual machine image of Alice.
+1. Create a 5 GB virtual machine image for Alice.
 <pre>
 $ dog vdi create Alice 5G
 </pre>
@@ -111,7 +110,7 @@ $ dog vdi create Alice 5G
 $ qemu-img convert -t directsync ~/Alice.raw sheepdog:Alice
 </pre>
 
-2. See Sheepdog images by the following command.
+2. See Sheepdog images by running the following command:
 <pre>
 $ dog vdi list
   Name        Id    Size    Used  Shared    Creation time   VDI id  Copies  Tag
@@ -142,19 +141,19 @@ $ qemu-system-x86_64 sheepdog:192.168.2.45:7000:Alice
 </pre>
 This suppose you have one sheep started up on the node with the IP 192.168.2.45 and port 7000
 
-3. Sheepdog supports local cache called object cache.
-Object cache caches data and vdi objects on the local node. It is at
-higher level than backend store. This extra cache layer translate gateway
+3. Sheepdog supports a local cache called the object cache
+The object cache caches data and vdi objects on the local node. It is at a
+higher level than the backend store. This extra cache layer translates gateway
 requests into local requests, largely reducing the network traffic and highly
-improve the IO performance.
-Dirty objects will be flushed to the cluster storage by 'sync' request from
+improves the IO performance.
+Dirty objects will be flushed to the cluster storage by 'sync' requests from the
 guest OS.
-You have to run latest QEMU to work with object cache. To enable the object cache,
-you can start QEMU by following command:
+You have to run the latest QEMU version to work with the object cache. To enable the object cache,
+you can start QEMU by using the following command:
 <pre>
 $ qemu-system-x86_64 -drive file=sheepdog:Alice,cache=writeback
 </pre>
-Note: be carefull using object cache.  
+Note: Be careful using object cache.  
 Note2: sheep daemon has to be running with (-w, --cache) option. Check the syntax.
 
 ### Snapshot
@@ -163,7 +162,7 @@ Note2: sheep daemon has to be running with (-w, --cache) option. Check the synta
 $ dog vdi snapshot -s preupgrade sheepdog:test2
 </pre>
 
-1. After getting snapshot, a new virtual machine images are added as a not-current image.
+1. After getting a snapshot, a new virtual machine image is added as a not-current image.
 <pre>
 $ dog vdi list
   Name        Id    Size    Used  Shared    Creation time   VDI id  Copies  Tag
@@ -178,7 +177,7 @@ s test2        1  5.0 GB  864 MB  0.0 MB 2014-09-10 13:03   fd3816      3    pre
 </pre>
 
 ### Cloning from the snapshot
-1. Create a Charlie's image as a clone of test2 image.
+1. Create a "Charlie" image as a clone of the test2 image.
 <pre>
 $ dog vdi clone -s preupgrade test2 Charlie
 </pre>
@@ -198,13 +197,13 @@ s test2        1  5.0 GB  864 MB  0.0 MB 2014-09-10 13:03   fd3816      3    pre
   test2        0  5.0 GB  0.0 MB  864 MB 2014-09-10 14:22   fd3817      3
 </pre>
 
-### Qemu-img
+### qemu-img
 
-All the operation on vdi can be done by qemu-img plus some other.
+All the operations on vdi can be done by qemu-img plus some other.
 <pre>
 # Create empty vdi (default as raw image)
 qemu-img create sheepdog:Alice 256G
-# Create empty vdi with qcow2 format: you can enjoy all the qcow2 features
+# Create empty vdi with qcow2 format so you can enjoy all the qcow2 features
 qemu-img create -f qcow2 sheepdog:Alice 256G 
 # Snapshot
 qemu-img create -b sheepdog:test2:1 sheepdog:Charlie
@@ -218,7 +217,7 @@ qemu-img snapshot -c preupgrade sheepdog:test2
 $ dog cluster shutdown
 </pre>
 
-This command stops all the sheep processes on the cluster.
+This command stops all the sheep processes on the cluster. 
 
 ### Test Environment
 * Debian wheezy amd64
