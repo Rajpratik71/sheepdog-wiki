@@ -135,7 +135,7 @@ $ dog vdi list
 $ qemu-system-x86_64 sheepdog:Alice
 </pre>
 
-2. Boot the virtual machine without sheep daemon started on local node
+2. Boot the virtual machine with a sheepdog daemon running on a remote node
 <pre>
 $ qemu-system-x86_64 sheepdog:192.168.2.45:7000:Alice
 </pre>
