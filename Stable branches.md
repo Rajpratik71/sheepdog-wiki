@@ -50,4 +50,5 @@ In such a case, 2 days are allocated for reviewing window. If no one complains a
 ## stable-0.9 based releases
 | Date       | Event                                                                           |
 |:-----------|:--------------------------------------------------------------------------------|
-| 2014-09-29 | Tag v0.9.0_rc0       |
+| ~~2014-09-29~~ | Tag v0.9.0_rc0       |
+| 2014-10-06 | Tag v0.9.0       |
