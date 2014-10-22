@@ -1,4 +1,7 @@
 # Introduction
+
+Up to version 0.8.x this is not considered to be stable enough for production usage.
+
 Every node of Sheepdog cluster has a backend store that provides weighted storage for Sheepdog cluster to store objects (For e.g, VDI and data objects), whose location are determined by consistent hashing algorithm.
 
 Object cache caches data and VDI objects on the local node which runs a sheep daemon. It is at higher level than backend store. This extra cache layer translates gateway requests (from VM) into local requests, largely reducing the network traffic and highly improving the IO performance, at the expense of data inconsistency between objects in object cache and backend store. These dirty objects will be flushed to cluster storage by 'sync' request from guest OS.
