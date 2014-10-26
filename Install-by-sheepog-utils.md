@@ -9,3 +9,5 @@ git clone git://github.com/sheepdog/sheepdog-utils.git
 cd sheepdog-utils
 ./install.sh
 </pre>
+
+Please, check README.me before running it.
