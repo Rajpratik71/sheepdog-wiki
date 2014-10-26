@@ -10,4 +10,4 @@ cd sheepdog-utils
 ./install.sh
 </pre>
 
-Please, check README.me before running it.
+Please, check README.md before running it.
