@@ -20,6 +20,7 @@ Usually sheepdog and QEMU are installed on every node, and the cluster manager o
 
 * [Install From Binaries](Install From Binaries)
 * [Install From Sources](Install From Sources)
+* [Install-by-sheepog-utils](Install By Sheepog Utils)
 
 ## Configure the cluster manager
 
