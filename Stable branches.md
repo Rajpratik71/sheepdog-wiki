@@ -6,11 +6,12 @@ Because the release cycle of sheepdog is corresponding to the cycle of QEMU, eac
 These stable branches of sheepdog will be maintained until corresponding stable branches of QEMU become obsolete or as long as possible.
 
 # Obtain stable release based on the stable branches
-| Branch | Latest Release (tag)      | Corresponding stable version of QEMU |
-|:-----------|:-----------|:-----------|
-| [stable-0.8] (https://github.com/sheepdog/sheepdog/tree/stable-0.8) | [v0.8.3] (https://github.com/sheepdog/sheepdog/releases/tag/v0.8.3) | [stable-1.7] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.7) - [tar.bz2](http://wiki.qemu-project.org/download/qemu-1.7.2.tar.bz2) |
-| [stable-0.7] (https://github.com/sheepdog/sheepdog/tree/stable-0.7) | [v0.7.8] (https://github.com/sheepdog/sheepdog/releases/tag/v0.7.8) | [stable-1.6] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.6) |
-| [stable-0.6] (https://github.com/sheepdog/sheepdog/tree/stable-0.6) (obsolete) | [v0.6.3] (https://github.com/sheepdog/sheepdog/releases/tag/v0.6.3) | [stable-1.5] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.5) |
+| Branch | Latest Release (tag)      | Corresponding stable version of QEMU | Release Date |
+|:-----------|:-----------|:-----------|:-----------|
+| [stable-0.9] (https://github.com/sheepdog/sheepdog/tree/stable-0.9) | [v0.9.0] (https://github.com/sheepdog/sheepdog/releases/tag/v0.9.0) | [stable-2.1.2] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-2.1.2) - [tar.bz2](http://wiki.qemu-project.org/download/qemu-2.1.2.tar.bz2) | 10/31/2014 |
+| [stable-0.8] (https://github.com/sheepdog/sheepdog/tree/stable-0.8) | [v0.8.3] (https://github.com/sheepdog/sheepdog/releases/tag/v0.8.3) | [stable-1.7] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.7) - [tar.bz2](http://wiki.qemu-project.org/download/qemu-1.7.2.tar.bz2) | 08/21/2014 |
+| [stable-0.7] (https://github.com/sheepdog/sheepdog/tree/stable-0.7) | [v0.7.8] (https://github.com/sheepdog/sheepdog/releases/tag/v0.7.8) | [stable-1.6] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.6) | missing |
+| [stable-0.6] (https://github.com/sheepdog/sheepdog/tree/stable-0.6) (obsolete) | [v0.6.3] (https://github.com/sheepdog/sheepdog/releases/tag/v0.6.3) | [stable-1.5] (http://git.qemu.org/?p=qemu.git;a=shortlog;h=refs/heads/stable-1.5) | missing |
 
 # Maintenance policy of the branches
 ## Basic maintenance policy
