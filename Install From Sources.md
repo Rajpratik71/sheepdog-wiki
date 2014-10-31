@@ -52,7 +52,8 @@ $ cd ..
 
 ### Download, build and install the Sheepdog server and command line tools
 
-If you want to use a stable sheepdog, please [download our source archive of stable branch](https://github.com/sheepdog/sheepdog/wiki/Stable-branches#obtain-stable-release-based-on-the-stable-branches) and build it.  Below is an example of v0.7.6.
+[DOWNLOAD](https://github.com/sheepdog/sheepdog/archive/v0.9.0.tar.gz) latest stable release.  
+[Older versions](https://github.com/sheepdog/sheepdog/wiki/Stable-branches#obtain-stable-release-based-on-the-stable-branches) can be found here.  Below is an example of v0.7.6.
 
 <pre>
 $ wget -O sheepdog-v0.7.6.tar.gz https://github.com/sheepdog/sheepdog/archive/v0.7.6.tar.gz
