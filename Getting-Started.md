@@ -86,7 +86,8 @@ It is enough to run this command on just one machine.
 "--copies" specifies the number of default data redundancy.  
 In this case, the replicated data will be stored on three machines.
 
-Sheepdog has the back-end store to store the data object persistently on the node basis. 
+Formatting the cluster, Sheepdog is going to use the devices you provided for its backend store (or simply store).
+Cluster capacity = store size / copies. 
 
 **Check cluster state**
 
