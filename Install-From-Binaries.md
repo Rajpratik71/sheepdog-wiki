@@ -14,7 +14,7 @@ aptitude -t wheezy-backports --without-recommends install sheepdog
 # Qemu
 aptitude -t wheezy-backports install qemu-kvm
 # Zookeeper
-aptitude install zookeeper
+aptitude install zookeeper zookeeperd
 </pre>
 
 # Jessie
