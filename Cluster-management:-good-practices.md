@@ -1,25 +1,25 @@
 ## Environment
 
-Sheepdog often use more FDs than you think. The larger scale, the bigget set of FDs will be used in some period of time. So make sure you have big enough limit on FDs
+Sheepdog often uses more file descriptors than you might expect. The larger the scale of the deployment, the bigger the set of FDs that will be used in any given period of time. So make sure your systems have a high enough limit on FDs:
 
     $ ulimit -n
 
-If you see '1024' which is the default value on most distributions, please set it as big as possible.
+If you see '1024' which is the default value on most distributions, set it to a higher value.  For example, 65536.
 
-To help debug crashed Sheepdog of any case, please allow your systems to dump core file. And most importantly, before you throw your blames on Sheepdog, it is nice of you to paste gdb output from core file (the core file of Sheep is default located at /path/to/store/core) by
+To help debug crashed Sheepdog instances, please enable your systems to dump corefiles. And most importantly, before you point blame at Sheepdog, cut and paste gdb output from core file (the core file of Sheep is default located at /path/to/store/core) by
 
     $ gdb /path/to/sheep /path/to/core_file
     $ (gdb console) bt full
 
 ## General remarks
 
-Sheepdog uses a zone concept for data replication. In the default
-configuration, each node in the cluster is one zone and sheepdog replicate
+Sheepdog uses a "zone" concept for data replication. In the default
+configuration, each node in the cluster is one zone and sheepdog replicates
 the vdi objects to the number of zones defined by the number of copies (X).
 
 To keep a working cluster, never kill sheeps in more than X-1 zones at
 a time, or during recovery is not finished. If you kill X or more zones
-at a time, you will have no access to some of the objects. It never mind,
+at a time, you will have no access to some of the objects. It does not matter
 if you kill the complete zone, or only a few sheeps in X different zones
 at a time, there will '''always''' some objects, that are only hold by
 these specific sheeps, only the amount of inaccessible objects will differ.
@@ -39,27 +39,26 @@ whole time, or if you can plan a complete shutdown for some time.
 
 ### Without downtime
 
-If you need to run the cluster all the time, you have to:
+If you need avoid downtime, you have to:
 
-- kill the sheeps on one node, make the update and restart the sheeps.
+- Stop the sheeps on one node, perform the update and restart the sheeps.
 
-- After this, **wait for recovery to complete** and proceed with
-the next node. 
+- After this, **wait for recovery to complete** and proceed with the next node.
 
-- After finishing with all nodes run ''collie cluster cleanup'', this removes obj no longer needed on the
-nodes after successful recovery.
+- After finishing with all nodes, run ''collie cluster cleanup'', this removes objects no longer needed on the
+nodes after a successful recovery.
 
 ### With downtime
 
-If you have a timeframe to shutdown the cluster completely:
+If you have a maintenance window to shutdown the cluster completely:
 
 - use ''collie cluster shutdown'' (shut down
 all connected qemu instances before) to stop all sheeps on all
-nodes which leaves the cluster in a clean state,
+nodes which leaves the cluster in a clean state, then
 
-- then make the updates on all nodes and
+- make the updates on all nodes and
 
-- restart the sheeps, the cluster starts working again, if all original inhabitants are
+- restart the sheeps - the cluster will start working again, if all the original inhabitants are
 back alive on the farm.
 
 ## Migration
