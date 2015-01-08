@@ -79,5 +79,5 @@ zkServer.sh start
 ```
 ##startup sheep service
 ```
-sheep -c zookeeper:IP1:PORT1,IP2:PORT2,IP3:PORT3  ##PORT is ClientPort config in the zoo.cfg
+sheep -c zookeeper:IP1:PORT1,IP2:PORT2,IP3:PORT3 ... ##PORT is ClientPort config in the zoo.cfg
 ```
