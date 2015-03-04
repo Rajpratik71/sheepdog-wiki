@@ -11,12 +11,12 @@ What you probably want is:
 
 ## How to solve?
 
-Manually: by runnin 'sync' command inside the guest to flush data and/or 'fsfreeze' to hold new write requests.
+Manually: by running 'sync' command inside the guest to flush data and/or 'fsfreeze' to hold new write requests.
 This method is interactive so you can't script it.
 
 Using **qemu-ga**: this is an agent that allow us to send some kind of requests from the host to the guest.
 
-## Reuirements
+## Requirements
 
 **The guest must be running qemu-ga.** <br />
 It's possible to run it also on windows guests.<br />
