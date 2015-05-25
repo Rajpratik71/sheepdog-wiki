@@ -5,6 +5,7 @@
 * corosync devel package
 * git (when compiling from source repo)
 * liburcu
+* libtool
 * optional:fuse-devel (for sheepfs)
 
 ### Download, build and install the Sheepdog server and command line tools
