@@ -64,4 +64,4 @@ Enjoy!
 
 * [Introduction Video (2014-08-20)]
 (http://youtu.be/zlORo0TETgU)  
-[[Scripts Uded In "Introduction Video"]]
+[[Scripts Used In "Introduction Video"]]
