@@ -1,4 +1,4 @@
-Sheepdog provide some mechanisms, such as object cache, journaling device, etc., which affect the cluster's performance in teams of IO(VM read/write). It is up to the users to enforce policies on these building blocks. Basically, there are following building blocks user can make use:
+Sheepdog provide some mechanisms, such as object cache, journaling device, etc., which affect the cluster's performance in terms of IO(VM read/write). It is up to the users to enforce policies on these building blocks. Basically, there are following building blocks user can make use:
 
 1. object cache (client side mechanism)
 2. journaling device (server side mechanism)
