@@ -25,5 +25,5 @@ aptitude install sheepdog
 # Qemu
 aptitude qemu-kvm
 # Zookeeper
-aptitude install zookeeper
+aptitude install zookeeper zookeeperd
 </pre>
