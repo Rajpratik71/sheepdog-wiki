@@ -1,7 +1,7 @@
 ## What is the issue in taking snapshots?
 
 If you write some data on your guest and take a snapshot right after, you might not have this data saved in the snapshot as you may expect.
-The reason is becasue **data is cached in guest memory**.
+The reason is because **data is cached in guest memory**.
 What you probably want is:
 
 1. all cached data to be flushed before the snapshot is taken;
