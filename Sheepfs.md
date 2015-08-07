@@ -42,7 +42,7 @@ Then sheepfs will be automatically compiled in. The binary will be located in sh
     Epoch Time           Version
     2012-05-14 15:45:38      1 [127.0.0.1:7000, 127.0.0.1:7001, 127.0.0.1:7002]
 
-   To attach the the volume named of 'test':
+   To attach the the volume named of 'test' (that needs to be already created):
 
     $ echo test > sheepfs_dir/vdi/mount
 
