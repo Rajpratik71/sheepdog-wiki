@@ -6,7 +6,7 @@
    2. Start Sheepdog and format it (See [[Getting Started]])
    3. Download DevStack
 <pre>
-$ git clone git://github.com/openstack-dev/devstack.git
+$ git clone https://github.com/openstack-dev/devstack.git
 </pre>
    4. Start the install
 <pre>
