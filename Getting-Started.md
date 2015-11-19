@@ -161,7 +161,7 @@ Note2: sheep daemon has to be running with (-w, --cache) option. Check the synta
 ### Snapshot
 1. Create a snapshot
 <pre>
-$ dog vdi snapshot -s preupgrade sheepdog:test2
+$ dog vdi snapshot -s preupgrade test2
 </pre>
 
 1. After getting a snapshot, a new virtual machine image is added as a not-current image.
