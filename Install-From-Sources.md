@@ -6,15 +6,27 @@
 * git (when compiling from source repo)
 * liburcu
 * libtool
+* libcfg
+* libcpg
+* yasm
+* optional:zookeeper
 * optional:fuse-devel (for sheepfs)
+
+For ubuntu 14.04, install these using:
+
+<pre>
+apt-get install autoconf pkg-config build-essential liburcu-dev libtool libcorosync-common-dev libcpg-dev libcfg-dev yasm
+</pre>
+
+And install libzookeeper-mt-dev if you want to build zookeeper support.
 
 ### Download, build and install the Sheepdog server and command line tools
 
 [DOWNLOAD](https://github.com/sheepdog/sheepdog/releases) latest stable release.  
 <pre>
-$ wget -O sheepdog-v0.7.6.tar.gz https://github.com/sheepdog/sheepdog/archive/v0.7.6.tar.gz
-$ tar xvzf sheepdog-v0.7.6.tar.gz
-$ cd sheepdog-v0.7.6
+$ wget -O sheepdog-v0.9.3.tar.gz https://github.com/sheepdog/sheepdog/archive/v0.9.3.tar.gz
+$ tar xvzf sheepdog-v0.9.3.tar.gz
+$ cd sheepdog-v0.9.3
 $ ./autogen.sh
 $ ./configure --enable-zookeeper
 $ sudo make install
@@ -87,6 +99,5 @@ $ sudo make install
 </pre>
 
 See also: [[Corosync Config]]
-
 
 
