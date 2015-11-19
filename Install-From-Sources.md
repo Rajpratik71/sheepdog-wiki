@@ -26,7 +26,7 @@ And install libzookeeper-mt-dev if you want to build zookeeper support.
 <pre>
 $ wget -O sheepdog-v0.9.3.tar.gz https://github.com/sheepdog/sheepdog/archive/v0.9.3.tar.gz
 $ tar xvzf sheepdog-v0.9.3.tar.gz
-$ cd sheepdog-v0.9.3
+$ cd sheepdog-0.9.3
 $ ./autogen.sh
 $ ./configure --enable-zookeeper
 $ sudo make install
