@@ -1,19 +1,15 @@
 The architecture of Sheepdog is fully symmetric; there is no central
 node such as a meta-data server. This design enables following
 features.
-Sheepdog是全对称的架构，没有像元数据（meta-data）服务器这样的节点。这样的设计实现了如下这些特性。
 
 * Linear scalability in performance and capacity  
 When more performance or capacity is needed, Sheepdog can be grown
 linearly by simply adding new machines to the cluster.
-* 可线性扩展的性能与容量
-当需要更高的性能与容量，只需要简单的将新的机器加入到群集Sheepdog就能够线性的增长。
 
 * No single point of failure  
 Even if a machine fails, the data is still accessible through other
 machines.
-* 无单点故障
-即便发生了机器故障，数据仍然可以通过其他机器访问
+
 * Easy administration  
 There is no config file about cluster's role. When administrators
 launch the Sheepdog daemon at the newly added machine, Sheepdog
