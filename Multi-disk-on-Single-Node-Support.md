@@ -1,6 +1,6 @@
 # Introduction
 
-Multi-disk support means we can run a single sheep daemon to mange multiple disks on the local node. Previously, we have to run sheep per disk. The management of local disks is as intelligent as our node management, that is, sheep daemon will automatically handle the failures of disks and re-balance/recover data objects on the alive disks and you can hot-plug/hot-unplug the disks on the fly, no manual manage of disks or configuration is needed. 
+Multi-disk support means we can run a single sheep daemon to manage multiple disks on the local node. Previously, we have to run sheep per disk. The management of local disks is as intelligent as our node management, that is, sheep daemon will automatically handle the failures of disks and re-balance/recover data objects on the alive disks and you can hot-plug/hot-unplug the disks on the fly, no manual manage of disks or configuration is needed. 
 
 The basic idea of this multi-disk(MD) is implement RAID-0 like mechanism that distributes sheep objects on the local disks without parity or replicating, which instead relies on the sheepdog's replicated storage to recover the lost objects on the faulty disk or migrate objects to newly add disks for data re-balance. To conclude, MD will make best performance out of underlying disks like RAID-0 and have recovery capability without using extra parity storage (RAID5) or replicating storage (RAID10).
 
