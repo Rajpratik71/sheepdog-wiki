@@ -18,9 +18,9 @@ A cluster has 3 key components:
 Not all of them are required on each node.
 Usually sheepdog and QEMU are installed on every node, and the cluster manager on three nodes.
 
-* [Install From Binaries](Install From Binaries)
-* [Install From Sources](Install From Sources)
-* [Install By Sheepog Utils](Install By Sheepog Utils)
+* [[Install From Binaries|Install From Binaries]]
+* [[Install From Sources|Install From Sources]]
+* [[Install By Sheepog Utils|Install By Sheepog Utils]]
 
 ## Configure the cluster manager
 
