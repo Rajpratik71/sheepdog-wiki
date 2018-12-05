@@ -1,4 +1,4 @@
-Sheepdog HTTP simple storage provides simple object store/retrieve service via RESTful API, similar to Openstack Swift or Amazone S3. Our HTTP API only support GET/PUT/DELETE/HEAD operation and we implement a subset of Openstack Swift API for now and plan to be Amazone S3 compatible in the future.
+Sheepdog HTTP simple storage provides simple object store/retrieve service via RESTful API, similar to Openstack Swift or Amazon S3. Our HTTP API only support GET/PUT/DELETE/HEAD operation and we implement a subset of Openstack Swift API for now and plan to be Amazone S3 compatible in the future.
 
 Users can think of HTTP simple storage as a 3 layer of traditional UNIX file system, with top two layers are directory only (map to user account and container) and the last layer store user files(we call it object), which are fixed in size. To reference these files, you need specify URI(such as http://192.168.1.2/v1/user/container/myfile) instead of file pathname.
 
